@@ -1,3 +1,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+body {
+	color: black;
+	background-color: blue;
+	background-image: url('src/lib/assets/win95setup.webp');
+	background-size: cover;
+	image-rendering: pixelated;
+	font-family: 'Courier New', Courier, monospace;
+}
