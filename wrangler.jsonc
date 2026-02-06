@@ -1,0 +1,16 @@
+{
+	"name": "stellers-gay-svelte",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"compatibility_flags": ["nodejs_als"],
+	"compatibility_date": "2026-02-05",
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"routes": [
+		{
+			"pattern": "stellers.gay",
+			"custom_domain": true
+		}
+	]
+}

@@ -4,18 +4,18 @@
 	import shiptest from '$lib/assets/shiptest-button.webp';
 	import css from '$lib/assets/css.webp';
 	import yogstation from '$lib/assets/yogstation.gif';
-	import htmx from '$lib/assets/HTMXstamp.webp';
 	import mitLicense from '$lib/assets/mit-license.webp';
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
+	import stellers from '$lib/assets/stellersbutton.png';
 </script>
 
 <article>
-	<section class="prose">
+	<section>
 		<h2>Welcome to Steller's Gay!</h2>
 
-		<hr class="rainbow-divider not-prose" />
+		<hr class="rainbow-divider" />
 
 		<p>
 			My name is Mark Suckerberg, and I'm simply a coder who loves to do too many things at once. I
@@ -27,7 +27,15 @@
 
 	<hr class="paperclip-divider" />
 
-	<p class="center *:inline-block">
+	<p class="center">
+		<a href="/" title="Button for this site, lovingly sprited by Ryerice!">
+			<img
+				src={stellers}
+				class="animated-button"
+				alt="An animated button showing a pixelated sleeping blue jay raptor-creatre."
+			/>
+		</a>
+
 		<a target="_blank" href="https://pixelsafari.neocities.org" title="Awesome site!"
 			><img
 				src={pixelSafari}
@@ -68,14 +76,6 @@
 			/></a
 		>
 
-		<a target="_blank" href="https://htmx.org" title="This site was PREVIOUSLY made with HTMX."
-			><img
-				src={htmx}
-				class="animated-button"
-				alt="The logo for the HTMX project, with text saying HTMX Now! 2.0 on the right side"
-			/></a
-		>
-
 		<a
 			target="_blank"
 			rel="license"
@@ -96,6 +96,7 @@
 			decoding="async"
 			class="stamp"
 			alt="A yellow warning stamp that reads, 'WARNING, MY DIET CONSISTS OF Barbed wire'"
+			title="Don't feed after midnight."
 		/>
 		<img
 			src={pokeOverworld}
@@ -103,11 +104,24 @@
 			decoding="async"
 			class="stamp"
 			alt="An animated stamp of the overworld from Pokemon Heartgold with the male trainer patting their Cyndaquil."
+			title="I still have my pokewalker!"
 		/>
 		<img
 			src={iLoveCrows}
 			class="stamp"
 			alt="A stamp that has the sillouhette of a crow on the left, and a heart behind the word crows on the right."
+			title="cro :>"
 		/>
 	</p>
 </article>
+
+<style>
+	.center {
+		text-align: center;
+	}
+
+	.animated-button {
+		height: 31px;
+		width: 88px;
+	}
+</style>

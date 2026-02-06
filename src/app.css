@@ -1,12 +1,49 @@
+/*
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+*/
 
 body {
 	color: black;
 	background-color: blue;
-	background-image: url('src/lib/assets/win95setup.webp');
+	background-image: url('/src/lib/assets/win95setup.webp');
 	background-size: cover;
 	image-rendering: pixelated;
 	font-family: 'Courier New', Courier, monospace;
+}
+
+.rainbow-divider {
+	background-image: url('/src/lib/assets/stripe3.webp');
+	background-repeat: repeat-x;
+	height: 9px;
+	border: none;
+}
+
+.paperclip-divider {
+	background-image: url('/src/lib/assets/paperclips.webp');
+	background-repeat: repeat-x;
+	height: 28px;
+	border: none;
+}
+
+.x-divider {
+	background-image: url('/src/lib/assets/blackstitches.webp');
+	background-repeat: repeat-x;
+	height: 15px;
+	border: none;
+}
+
+.chain-divider {
+	background-image: url('/src/lib/assets/greenchain.webp');
+	background-repeat: repeat-x;
+	height: 11px;
+	border: none;
+}
+
+.powerline-divider {
+	background-image: url('/src/lib/assets/powerlines.webp');
+	background-repeat: repeat-x;
+	height: 31px;
+	border: none;
 }

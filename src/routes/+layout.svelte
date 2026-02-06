@@ -18,6 +18,7 @@
 		<enhanced:img
 			src={jary}
 			alt="A large raptorlike bluejay-patterned creature laying down, asleep."
+			style="width: 100%; height: 100%"
 		/>
 	</aside>
 
@@ -86,7 +87,7 @@
 	</nav>
 
 	<main id="content">
-		<p id="construction" class="bg-orange-400">
+		<p id="construction" class="bg-orange-400" style="background-color: #f70;">
 			<img
 				src={construction}
 				class="inline-block"
@@ -191,6 +192,7 @@
 		text-align: left;
 		padding: 5px;
 		overflow-y: auto;
+		max-height: 75vh;
 	}
 
 	.gridcontainer #content img {
@@ -200,5 +202,10 @@
 
 	.gridcontainer #footer {
 		grid-area: footer;
+	}
+
+	.black-background {
+		background-color: black;
+		height: 32px;
 	}
 </style>
