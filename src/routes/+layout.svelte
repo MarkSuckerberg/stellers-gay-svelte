@@ -2,12 +2,25 @@
 	import '../app.css';
 	import jary from '$lib/assets/bluejarybeast.webp?enhanced';
 	import construction from '$lib/assets/construction.webp';
+	import mrk2 from '$lib/assets/mrk2.webp';
+	import bg from '$lib/assets/win95setup.webp';
 
 	import quoteFile from '$lib/assets/quotes.json';
 	const quotes = quoteFile.quotes;
 
+	import { page } from '$app/state';
+
 	let { children } = $props();
 </script>
+
+<svelte:head>
+	<link rel="preload" href={bg} as="image" />
+	<link rel="preload" href={jary.img.src} as="image" />
+
+	<meta property="og:image" content={mrk2} />
+
+	<link rel="canonical" href="https://stellers.gay{page.route.id}" />
+</svelte:head>
 
 <div class="gridcontainer" style:image-rendering="auto">
 	<header id="header">

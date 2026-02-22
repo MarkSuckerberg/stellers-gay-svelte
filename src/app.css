@@ -6,7 +6,7 @@
 
 body {
 	color: black;
-	background-color: blue;
+	background-color: #00f;
 	background-image: url('/src/lib/assets/win95setup.webp');
 	background-size: cover;
 	image-rendering: pixelated;

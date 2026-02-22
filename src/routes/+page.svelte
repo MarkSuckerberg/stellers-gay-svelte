@@ -8,7 +8,7 @@
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
-	import stellers from '$lib/assets/stellersbutton.png';
+	import stellers from '$lib/assets/stellersbutton.webp';
 </script>
 
 <article>
@@ -23,6 +23,12 @@
 			do any kind of contract/paid work unless it interests me personally. If you've got a good idea
 			that you want done, feel free to float it by me by contacting me on Discord (@marksuckerberg)!
 		</p>
+
+		<p>
+			<b>Update 2/9/26:</b> At long last, I deployed the update to my site that I created about
+			eight months ago. The hitcounter should actually work properly now, and I updated the
+			<a href="media">media</a> tab with some more art, too! Apologies if there's any new bugs.
+		</p>
 	</section>
 
 	<hr class="paperclip-divider" />
@@ -32,7 +38,7 @@
 			<img
 				src={stellers}
 				class="animated-button"
-				alt="An animated button showing a pixelated sleeping blue jay raptor-creatre."
+				alt="An animated button showing a pixelated sleeping blue jay raptor-creatre. Credit to Rylie/RyeRice!"
 			/>
 		</a>
 
