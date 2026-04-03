@@ -9,6 +9,9 @@
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
 	import stellers from '$lib/assets/stellersbutton.webp';
+	import { asset, resolve } from '$app/paths';
+
+	import fontlicense from '$lib/assets/fonts/license.txt';
 </script>
 
 <article>
@@ -27,14 +30,25 @@
 		<p>
 			<b>Update 2/9/26:</b> At long last, I deployed the update to my site that I created about
 			eight months ago. The hitcounter should actually work properly now, and I updated the
-			<a href="media">media</a> tab with some more art, too! Apologies if there's any new bugs.
+			<a href={resolve('/media')}>media</a> tab with some more art, too! Apologies if there's any new
+			bugs.
+		</p>
+
+		<p>
+			<b>Update 4/3/26:</b> Threw some old janky projects of mine onto the
+			<a href={resolve('/fun')}>fun tab</a>, and redid the
+			<a href={resolve('/media')}>media gallery</a>. Been meaning to add more content. Maybe I'll
+			bring my blog back at some point? Also switched to using the Ari-W9500 font (<a
+				href={fontlicense}>license</a
+			>) to emulate the proper Win95 feel. Sadly, there's no way to disable font anti-aliasing with
+			CSS, so we'll all have to suffer with gross pixel smears.
 		</p>
 	</section>
 
 	<hr class="paperclip-divider" />
 
 	<p class="center">
-		<a href="/" title="Button for this site, lovingly sprited by Ryerice!">
+		<a href={resolve('/')} title="Button for this site, lovingly sprited by Ryerice!">
 			<img
 				src={stellers}
 				class="animated-button"
@@ -85,7 +99,7 @@
 		<a
 			target="_blank"
 			rel="license"
-			href="license.txt"
+			href={asset('/license.txt')}
 			title="This site's HTML and CSS is licensed under the MIT license."
 			><img
 				src={mitLicense}

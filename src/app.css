@@ -1,16 +1,71 @@
-/*
-@import 'tailwindcss';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
-*/
+/*@import 'tailwindcss';
+/*@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';*/
 
 body {
 	color: black;
 	background-color: #00f;
-	background-image: url('/src/lib/assets/win95setup.webp');
+	background-image: url('/src/lib/assets/win95setup-clear.webp');
 	background-size: cover;
 	image-rendering: pixelated;
-	font-family: 'Courier New', Courier, monospace;
+	font-family: 'MS Sans Serif', 'Courier New', Courier, monospace;
+	font-smooth: never;
+	-webkit-font-smoothing: none;
+}
+
+.win {
+	border-top: 1px solid #808080;
+	border-bottom: 1px solid white;
+	width: 100%;
+	height: 0;
+}
+
+.outset {
+	border: black 4px ridge;
+	border-top: white 4px ridge;
+	border-left: white 4px ridge;
+	background-color: #c0c0c0;
+}
+
+.inset {
+	border: white 4px groove;
+	border-top: black 4px groove;
+	border-left: black 4px groove;
+	background-color: #b0b0b0;
+}
+
+.small-inset {
+	border: white 2px solid;
+	border-top: #7f7f7f 2px solid;
+	border-left: #7f7f7f 2px solid;
+	background-color: #b0b0b0;
+}
+
+button {
+	font-family: 'MS Sans Serif', 'Courier New', Courier, monospace;
+	cursor: pointer;
+
+	border: black 4px ridge;
+	border-top: white 4px ridge;
+	border-left: white 4px ridge;
+	text-decoration: none;
+	background-color: #c0c0c0;
+	color: black;
+	margin: 3px;
+}
+
+button:disabled {
+	color: #7f7f7f;
+	text-shadow: 1px 1px 0 white;
+	cursor: default;
+}
+
+button:not(:disabled):active {
+	border: white 4px groove;
+	border-top: black 4px groove;
+	border-left: black 4px groove;
+	background-color: #b0b0b0;
+	text-decoration: none;
 }
 
 .rainbow-divider {
@@ -46,4 +101,25 @@ body {
 	background-repeat: repeat-x;
 	height: 31px;
 	border: none;
+}
+
+@font-face {
+	font-family: 'MS Sans Serif';
+	src: url('/src/lib/assets/fonts/ari-w9500-display.otf.woff2') format('woff2');
+	font-style: normal;
+	font-weight: bolder;
+}
+
+@font-face {
+	font-family: 'MS Sans Serif';
+	src: url('/src/lib/assets/fonts/ari-w9500-bold.otf.woff2') format('woff2');
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'MS Sans Serif';
+	src: url('/src/lib/assets/fonts/ari-w9500.otf.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
 }

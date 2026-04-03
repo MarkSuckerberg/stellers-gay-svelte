@@ -2,6 +2,8 @@
 	<section id="projects">
 		<h2>Projects</h2>
 
+		<hr class="powerline-divider" />
+
 		<ul>
 			<li>
 				<a href="https://github.com/blocktest-game/blocktest">Blocktest</a>

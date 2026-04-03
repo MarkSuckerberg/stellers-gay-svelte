@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import jary from '$lib/assets/bluejarybeast.webp?enhanced';
+	import jary from '$lib/assets/bluejarybeast.webp?h=100&?enhanced';
 	import construction from '$lib/assets/construction.webp';
 	import mrk2 from '$lib/assets/mrk2.webp';
 	import bg from '$lib/assets/win95setup.webp';
@@ -9,123 +9,175 @@
 	const quotes = quoteFile.quotes;
 
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
+
+	let time: number | undefined = $state();
+
+	onMount(() => {
+		time = Date.now();
+
+		setTimeout(
+			() =>
+				setInterval(() => {
+					time = Date.now();
+				}, 1000),
+			1000 - (Date.now() % 1000)
+		);
+	});
 </script>
 
 <svelte:head>
 	<link rel="preload" href={bg} as="image" />
-	<link rel="preload" href={jary.img.src} as="image" />
 
 	<meta property="og:image" content={mrk2} />
 
 	<link rel="canonical" href="https://stellers.gay{page.route.id}" />
 </svelte:head>
 
-<div class="gridcontainer" style:image-rendering="auto">
-	<header id="header">
-		<h1 class="text-3xl font-bold">Steller's Gay</h1>
-	</header>
+<div class="outset fakewindow">
+	<div
+		style="background-color: #000080; grid-area: topbar; color: white; display: flex; flex-direction: row; font-weight: bolder; justify-content: space-between"
+	>
+		<p style="margin: 0 3px; padding: 0; font-weight: bold; align-content: center">Welcome!</p>
 
-	<aside id="sidehead">
-		<enhanced:img
-			src={jary}
-			alt="A large raptorlike bluejay-patterned creature laying down, asleep."
-			style="width: 100%; height: 100%"
-		/>
-	</aside>
+		<div>
+			<button disabled style="width: 2.25em;">_</button>
+			<button
+				style="width: 2.25em;"
+				onclick={() => {
+					if (confirm('Are you sure you want to exit?')) {
+						close();
+						if (confirm('Really really sure?')) {
+							alert(
+								'Okay then, close the tab or something, jeez. Javascript nor HTML can actually close normally opened windows.'
+							);
+						}
+					}
+				}}>X</button
+			>
+		</div>
+	</div>
 
-	<nav id="nav" class="navcontainer topcontainer">
-		<a href="/" accesskey="h"><u>H</u>ome</a>
-		<a href="/projects" accesskey="p"><u>P</u>rojects</a>
-		<a href="/media" accesskey="m"><u>M</u>edia</a>
-	</nav>
+	<div class="gridcontainer" style:image-rendering="auto">
+		<header id="header">
+			<h1 class="text-3xl font-bold">Steller's Gay!</h1>
+		</header>
 
-	<nav id="sidebar" class="navcontainer">
-		<a
-			target="_blank"
-			rel="me"
-			href="https://bsky.app/profile/marksuckerberg.bsky.social"
-			accesskey="b"
-			title="I don't use this much!">My <u>B</u>luesky</a
-		>
-		<a
-			target="_blank"
-			rel="me nofollow"
-			href="https://discord.com/users/525509257102098442"
-			accesskey="d">My <u>D</u>iscord</a
-		>
-		<a
-			target="_blank"
-			rel="me"
-			href="https://social.stellers.gay/"
-			accesskey="f"
-			title="I just think it's neat to have!">My <u>F</u>ediverse Instance</a
-		>
-		<a
-			target="_blank"
-			rel="me"
-			href="https://github.com/marksuckerberg"
-			accesskey="g"
-			title="My favourite social media.">My <u>G</u>ithub</a
-		>
-		<a
-			target="_blank"
-			rel="me"
-			href="https://tumblr.suckerberg.gay"
-			accesskey="t"
-			title="My most-used platform.">My <u>T</u>umblog</a
-		>
-
-		<a
-			target="_blank"
-			href="https://hits.stellers.gay/"
-			class="black-background"
-			title="Watch the hits roll in!"
-			><img
-				src="https://hits.stellers.gay/unique/ticker.webp"
-				class="hit-counter"
-				alt="A hitcounter in the style of a seven-segment display."
+		<aside id="sidehead">
+			<enhanced:img
+				src={jary}
+				alt="A large raptorlike bluejay-patterned creature laying down, asleep."
+				style="width: 100%; height: 100%"
 			/>
-		</a>
+		</aside>
 
-		<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"><u>E</u>-mail me!</a>
-		<a
-			target="_blank"
-			rel="me"
-			href="https://ko-fi.com/marksuckerberg"
-			accesskey="k"
-			title="EXTREMELY appreciated!">Buy me a <u>K</u>o-Fi!</a
-		>
-	</nav>
+		<nav id="nav" class="navcontainer topcontainer">
+			<a href={resolve('/')} accesskey="h"><u>H</u>ome</a>
+			<a href={resolve('/projects')} accesskey="p"><u>P</u>rojects</a>
+			<a href={resolve('/media')} accesskey="m"><u>M</u>edia</a>
+			<a href={resolve('/fun')} accesskey="u">F<u>u</u>n stuff</a>
+		</nav>
 
-	<main id="content">
-		<p id="construction" class="bg-orange-400" style="background-color: #f70;">
-			<img
-				src={construction}
-				class="inline-block"
-				alt="An animated diamond-shaped construction sign with a stick figure worker shoveling dirt."
-			/>
-			Warning! This page is under construction. Be sure to check back soon!
-		</p>
+		<nav id="sidebar" class="navcontainer">
+			<a
+				target="_blank"
+				rel="me"
+				href="https://bsky.app/profile/marksuckerberg.bsky.social"
+				accesskey="b"
+				title="I don't use this much!">My <u>B</u>luesky</a
+			>
+			<a
+				target="_blank"
+				rel="me nofollow"
+				href="https://discord.com/users/525509257102098442"
+				accesskey="d">My <u>D</u>iscord</a
+			>
+			<a
+				target="_blank"
+				rel="me"
+				href="https://social.stellers.gay/"
+				accesskey="f"
+				title="I just think it's neat to have!">My <u>F</u>ediverse Instance</a
+			>
+			<a
+				target="_blank"
+				rel="me"
+				href="https://github.com/marksuckerberg"
+				accesskey="g"
+				title="My favourite social media.">My <u>G</u>ithub</a
+			>
+			<a
+				target="_blank"
+				rel="me"
+				href="https://tumblr.suckerberg.gay"
+				accesskey="t"
+				title="My most-used platform.">My <u>T</u>umblog</a
+			>
 
-		{@render children()}
-	</main>
+			<hr class="win" />
 
-	<footer id="footer">
-		<noscript>No javascript, no funny quote!</noscript>
-		{quotes[Math.floor(Math.random() * quotes.length)]}
+			<a
+				target="_blank"
+				href="https://hits.stellers.gay/"
+				class="black-background"
+				title="Watch the hits roll in!"
+				><img
+					src="https://hits.stellers.gay/unique/ticker.webp"
+					class="hit-counter"
+					alt="A hitcounter in the style of a seven-segment display."
+				/>
+			</a>
+
+			<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"><u>E</u>-mail me!</a>
+			<a
+				target="_blank"
+				rel="me"
+				href="https://ko-fi.com/marksuckerberg"
+				accesskey="k"
+				title="EXTREMELY appreciated!">Buy me a <u>K</u>o-Fi!</a
+			>
+		</nav>
+
+		<main id="content" class="inset">
+			<p id="construction" class="bg-orange-400" style="background-color: #f70;">
+				<img
+					src={construction}
+					class="inline-block"
+					alt="An animated diamond-shaped construction sign with a stick figure worker shoveling dirt."
+				/>
+				Warning! This page is under construction. Be sure to check back soon!
+			</p>
+
+			{@render children()}
+		</main>
+	</div>
+
+	<footer id="footer" style="display: flex; width: 100%; gap: 2px; height: 2em">
+		<div class="small-inset" style="flex: 1; padding: 2px;">
+			{quotes[Math.floor(Math.random() * quotes.length)]}
+		</div>
+
+		<noscript class="small-inset" style="padding: 2px">Time to get Javascript.</noscript>
+
+		{#if time}
+			<div class="small-inset" style="padding: 2px">{new Date(time).toLocaleTimeString()}</div>
+		{/if}
 	</footer>
 </div>
 
 <style>
+	.fakewindow {
+		max-width: min(1024px, 100vw);
+		margin: 0 auto;
+	}
+
 	.gridcontainer {
 		display: grid;
 		background-color: #c0c0c0;
 		padding: 10px;
-
-		max-width: 1000px;
-		margin: 0 auto;
 
 		gap: 10px;
 
@@ -133,15 +185,11 @@
 		grid-template-areas:
 			'header header header sidehead'
 			'nav nav nav nav'
-			'sidebar content content content'
-			'footer footer footer footer';
+			'sidebar content content content';
 	}
 
 	.gridcontainer > * {
 		text-align: center;
-		border: black 4px ridge;
-		border-top: white 4px ridge;
-		border-left: white 4px ridge;
 	}
 
 	.gridcontainer #header {
@@ -167,7 +215,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		border: none;
 	}
 
 	.navcontainer a {
@@ -205,7 +252,7 @@
 		text-align: left;
 		padding: 5px;
 		overflow-y: auto;
-		max-height: 75vh;
+		max-height: 70vh;
 	}
 
 	.gridcontainer #content img {
@@ -213,8 +260,9 @@
 		image-rendering: auto;
 	}
 
-	.gridcontainer #footer {
+	footer {
 		grid-area: footer;
+		text-align: center;
 	}
 
 	.black-background {
