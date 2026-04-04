@@ -2,7 +2,7 @@
 	import '../app.css';
 	import jary from '$lib/assets/bluejarybeast.webp?h=100&?enhanced';
 	import construction from '$lib/assets/construction.webp';
-	import mrk2 from '$lib/assets/mrk2.webp';
+	import mrk2 from '$lib/assets/mrk2.webp?h=512&w=512&fit=cover&as=picture&format=png&?enhanced';
 	import bg from '$lib/assets/win95setup.webp';
 
 	import quoteFile from '$lib/assets/quotes.json';
@@ -32,7 +32,14 @@
 <svelte:head>
 	<link rel="preload" href={bg} as="image" />
 
-	<meta property="og:image" content={mrk2} />
+	<meta property="og:image" content={mrk2.img.src} />
+	<meta property="og:image:height" content={mrk2.img.h.toString()} />
+	<meta property="og:image:width" content={mrk2.img.w.toString()} />
+	<meta property="og:image:type" content="image/png" />
+	<meta
+		property="og:image:alt"
+		content="A portrait of an exceptionally fluffy and softly rendered anthropomorphic blue jay with their eyes happily shut."
+	/>
 
 	<link rel="canonical" href="https://stellers.gay{page.route.id}" />
 </svelte:head>

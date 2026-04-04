@@ -3,6 +3,10 @@
 	import { enhance } from '$app/forms';
 </script>
 
+<p>Please be nice!</p>
+
+<hr class="win" />
+
 <table style="width: 100%">
 	<thead>
 		<tr>
@@ -50,6 +54,6 @@
 	}
 
 	tr:nth-child(even) {
-		background-color: grey;
+		background-color: #c0c0c0;
 	}
 </style>

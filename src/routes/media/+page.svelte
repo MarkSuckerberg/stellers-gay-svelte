@@ -65,7 +65,7 @@
 		An absolutely beautiful portrait by
 		<a href="https://furaffinity.net/user/returnaddress" title="Creator link">ReturnAddress</a>!
 	</GalleryButton>
-	<GalleryButton src={enhanced_icon} original={icon} title="Fluffy">
+	<GalleryButton src={enhanced_icon} original={icon} title="Fluffy as hell">
 		Incredible fluffy icon by <a href="https://twitter.com/BeelziebubArts" title="Creator link">
 			Beelziebub
 		</a>!
@@ -73,6 +73,7 @@
 	<GalleryButton
 		src={enhanced_fall}
 		original={fall}
+		title="Mark guy death pose"
 		alt="An anthropomorphic blue jay crumpled to the ground in a familiar pose, set against a version of the default windows XP wallpaper, Bliss."
 	>
 		A very typical Mark sighting, by Ashturi
@@ -80,6 +81,7 @@
 	<GalleryButton
 		src={enhanced_jary}
 		original={jary}
+		title="The Jarybeast"
 		alt="A large raptorlike bluejay-patterned creature laying down, asleep."
 	>
 		The blue jay raptor gryphon snaggle-toothed creature thing that's the mascot of pretty much
@@ -90,12 +92,14 @@
 	<GalleryButton
 		src={enhanced_cowbird}
 		original={cowbird}
+		title="Cowbird"
 		alt="An anthropomorphic blue jay dressed in cowboy fashion, including leather chaps, spurs, a vest, a button-up shirt, a pistol in a belt holster, and a green cloak. They're standing ready to draw their weapon, as if in a duel."
 		>Yee-caw! (By Orcrest)</GalleryButton
 	>
 	<GalleryButton
 		src={enhanced_suited}
 		original={suited}
+		title="Bow-tied up"
 		alt="An anthropomorphic blue jay dressed formally, including a dark necktie, an off-white button-up, a grey vest, black slacks, dark loafers, and a leather longcoat. They're sitting on a bench with one leg crossed over the other."
 	>
 		Well-dressed bird, by the expert in such, <a
@@ -106,6 +110,7 @@
 	<GalleryButton
 		src={enhanced_fancy}
 		original={fancy}
+		title="Dapper jay"
 		alt="A sketch of a fancily dressed anthrpomorphic blue jay dressed in a suit coat fastened at the neck with a bow tie. He also wears small round spectacles atop his beak."
 	>
 		Dapper (if shamefully bowtied) Mark by <a
@@ -113,22 +118,32 @@
 			title="Creator link">FriedKrisp</a
 		>!
 	</GalleryButton>
-	<GalleryButton src={enhanced_fragile} original={fragile}>
+	<GalleryButton
+		src={enhanced_fragile}
+		original={fragile}
+		title="Emotionally fragile"
+		alt="A little blue jay wearing a green ribbon bow tie tearing up with the words &quot;Emotionally Fragile Bird&quot; superimposed."
+	>
 		Please, handle with caw-tion. Adorable meme drawover by <a
 			href="https://bsky.app/profile/lampent51.bsky.social"
 			title="Creator link">Lampent51</a
 		>!
 	</GalleryButton>
-	<GalleryButton src={enhanced_markrow} original={markrow}>
+	<GalleryButton
+		src={enhanced_markrow}
+		original={markrow}
+		title="Front facing Mark"
+		alt="An angry looking front-facing blue jay staring deeply at the viewer."
+	>
 		Stares into your soul and says gwah over and over. A very accurate drawover by Chubbygummibear.
 	</GalleryButton>
-	<GalleryButton src={enhanced_tired} original={tired}>
+	<GalleryButton src={enhanced_tired} original={tired} title="Tired">
 		You know how it is sometimes. Rare northern cardinal mark by <a
 			href="https://honkbird.tumblr.com"
 			title="Creator link">Honkbird</a
 		>.
 	</GalleryButton>
-	<GalleryButton src={enhanced_supermark} original={supermark}>
+	<GalleryButton src={enhanced_supermark} original={supermark} title="Super Mark">
 		The very first drawing of my bird from ages ago, by <a
 			href="https://honkbird.tumblr.com"
 			title="Creator link">Honkbird</a
