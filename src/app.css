@@ -8,7 +8,7 @@ body {
 	background-image: url('/src/lib/assets/win95setup-clear.webp');
 	background-size: cover;
 	image-rendering: pixelated;
-	font-family: 'MS Sans Serif', 'Courier New', Courier, monospace;
+	font-family: 'MS Sans Serif', 'Ari w95', 'Courier New', Courier, monospace;
 	font-smooth: never;
 	-webkit-font-smoothing: none;
 }
@@ -52,6 +52,10 @@ button {
 	background-color: #c0c0c0;
 	color: black;
 	margin: 3px;
+}
+
+button:focus {
+	box-shadow: 1px 1px 0 black;
 }
 
 button:disabled {
@@ -104,22 +108,36 @@ button:not(:disabled):active {
 }
 
 @font-face {
-	font-family: 'MS Sans Serif';
+	font-family: 'Ari w95';
 	src: url('/src/lib/assets/fonts/ari-w9500-display.otf.woff2') format('woff2');
 	font-style: normal;
 	font-weight: bolder;
 }
 
 @font-face {
-	font-family: 'MS Sans Serif';
+	font-family: 'Ari w95';
 	src: url('/src/lib/assets/fonts/ari-w9500-bold.otf.woff2') format('woff2');
 	font-style: normal;
 	font-weight: bold;
 }
 
 @font-face {
-	font-family: 'MS Sans Serif';
+	font-family: 'Ari w95';
 	src: url('/src/lib/assets/fonts/ari-w9500.otf.woff2') format('woff2');
 	font-style: normal;
 	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'MS Sans Serif';
+	src: url('/src/lib/assets/fonts/AriW9500.ttf');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'MS Sans Serif';
+	src: url('/src/lib/assets/fonts/AriW9500Bold.ttf');
+	font-style: normal;
+	font-weight: bold;
 }

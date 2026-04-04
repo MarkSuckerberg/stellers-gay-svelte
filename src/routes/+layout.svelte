@@ -70,7 +70,7 @@
 			<enhanced:img
 				src={jary}
 				alt="A large raptorlike bluejay-patterned creature laying down, asleep."
-				style="width: 100%; height: 100%"
+				style="width: 100%; height: 100%; object-fit: contain;"
 			/>
 		</aside>
 
@@ -97,6 +97,12 @@
 			>
 			<a
 				target="_blank"
+				rel="me nofollow"
+				href="https://matrix.to/#/@mark:stellers.gay"
+				accesskey="r">My Mat<u>r</u>ix account</a
+			>
+			<a
+				target="_blank"
 				rel="me"
 				href="https://social.stellers.gay/"
 				accesskey="f"
@@ -106,8 +112,8 @@
 				target="_blank"
 				rel="me"
 				href="https://github.com/marksuckerberg"
-				accesskey="g"
-				title="My favourite social media.">My <u>G</u>ithub</a
+				accesskey="i"
+				title="My favourite social media.">My G<u>i</u>thub</a
 			>
 			<a
 				target="_blank"
@@ -119,6 +125,9 @@
 
 			<hr class="win" />
 
+			<a href={resolve('/guestbook')} accesskey="g" title="Sign my guestbook!">
+				<b>(New!)</b> <u>G</u>uestbook
+			</a>
 			<a
 				target="_blank"
 				href="https://hits.stellers.gay/"
@@ -155,29 +164,46 @@
 		</main>
 	</div>
 
-	<footer id="footer" style="display: flex; width: 100%; gap: 2px; height: 2em">
+	<footer
+		id="footer"
+		style="display: flex; width: 100%; gap: 2px; height: 2em; align-items: center;"
+	>
 		<div class="small-inset" style="flex: 1; padding: 2px;">
 			{quotes[Math.floor(Math.random() * quotes.length)]}
 		</div>
 
-		<noscript class="small-inset" style="padding: 2px">Time to get Javascript.</noscript>
+		<noscript class="small-inset" style="padding: 2px; width: 8em">Time to get Javascript.</noscript
+		>
 
 		{#if time}
-			<div class="small-inset" style="padding: 2px">{new Date(time).toLocaleTimeString()}</div>
+			<div class="small-inset" style="padding: 2px; width: 8em">
+				{new Date(time).toLocaleTimeString()}
+			</div>
 		{/if}
 	</footer>
 </div>
 
 <style>
 	.fakewindow {
-		max-width: min(1024px, 100vw);
+		width: min(1024px, 100vw);
+		min-width: min(1024px, 100vw);
+		max-width: 100%;
 		margin: 0 auto;
+
+		overflow: scroll;
+		resize: both;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	.gridcontainer {
 		display: grid;
 		background-color: #c0c0c0;
 		padding: 10px;
+
+		flex: 1;
 
 		gap: 10px;
 
@@ -237,6 +263,7 @@
 	.topcontainer {
 		flex-direction: row;
 		justify-content: space-around;
+		height: min-content;
 	}
 
 	.topcontainer a {

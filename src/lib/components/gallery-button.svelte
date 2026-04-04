@@ -9,7 +9,11 @@
 	let {
 		src,
 		original,
-		title = (typeof original == 'string' ? original : original[0]).split('/').at(-1) || 'title',
+		title = (typeof original == 'string' ? original : original[0])
+			.split('/')
+			.at(-1)
+			?.split('.')
+			.at(0) || 'title',
 		alt,
 		children
 	}: {
@@ -46,32 +50,33 @@
 	<figure style="display: flex; align-items: center; flex-direction: column; padding: 0.5em;">
 		{#if typeof original == 'string'}
 			<a href={original} title="View Original">
-				<!--<enhanced:img
-                    {src}
-                    {alt}
-                    style="border: 4px groove white; max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
-                    loading="lazy"
-                >
-                </enhanced:img>-->
-				<img
+				<enhanced:img
+					{src}
+					{alt}
+					style="max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
+					class="inset"
+					loading="lazy"
+				>
+				</enhanced:img>
+				<!--<img
 					src={original}
 					{alt}
 					style="max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
 					class="inset"
 					loading="lazy"
-				/>
+				/>-->
 			</a>
 		{:else}
 			<div style="display: flex; max-width: 80dvw; gap: 1em" class="inset">
 				{#each original as image (image)}
 					<a href={image} title="View Original">
 						<!--<enhanced:img
-                    {src}
-                    {alt}
-                    style="border: 4px groove white; max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
-                    loading="lazy"
-                >
-                </enhanced:img>-->
+                            {src}
+                            {alt}
+                            style="max-height: 80dvh; object-fit: contain;"
+                            loading="lazy"
+                        >
+                        </enhanced:img>-->
 						<img src={image} {alt} style="max-height: 80dvh; object-fit: contain" loading="lazy" />
 					</a>
 				{/each}

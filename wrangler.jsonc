@@ -12,5 +12,27 @@
 			"pattern": "stellers.gay",
 			"custom_domain": true
 		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "stellers-data",
+			"database_id": "95b8be7d-7ac9-4f22-ad84-6d7d741885de"
+		}
+	],
+	"ratelimits": [
+		{
+			"name": "RATE_LIMITER",
+			// An identifier you define, that is unique to your Cloudflare account.
+			// Must be an integer.
+			"namespace_id": "8008",
+			// Limit: the number of tokens allowed within a given period in a single
+			// Cloudflare location
+			// Period: the duration of the period, in seconds. Must be either 10 or 60
+			"simple": {
+				"limit": 3,
+				"period": 60
+			}
+		}
 	]
 }
