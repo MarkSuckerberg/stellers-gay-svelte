@@ -36,8 +36,16 @@ export const actions = {
 		}
 
 		const data = await request.formData();
-		const name = data.get('name');
-		const message = data.get('message');
+		const name = data.get('name')?.toString();
+		const message = data.get('message')?.toString();
+
+		if (!name || !message) {
+			return fail(400, 'Invalid guestbook message');
+		}
+
+		if (name.length > 32 || message.length > 128) {
+			return fail(400, 'Name or message too long');
+		}
 
 		const statement = platform?.env.DB.prepare(
 			'INSERT INTO guestbook (MessageUser, MessageText, MessageTime) VALUES (?, ?, current_timestamp)'
