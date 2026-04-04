@@ -43,6 +43,13 @@
 			>) to emulate the proper Win95 feel. Sadly, there's no way to disable font anti-aliasing with
 			CSS, so we'll all have to suffer with gross pixel smears.
 		</p>
+
+		<p>
+			<b>Update 4/4/26:</b> GUH, okay, so, updated the font a bit, added a
+			<a href={resolve('/guestbook')}>guestbook</a> too, and also actually set the bsky link to the right
+			one. I don't know how long it's been like that but I guess forever. I am NOT marksuckerberg.bsky.social
+			anymore.
+		</p>
 	</section>
 
 	<hr class="paperclip-divider" />

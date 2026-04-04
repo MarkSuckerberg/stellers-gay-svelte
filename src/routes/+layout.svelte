@@ -92,7 +92,7 @@
 			<a
 				target="_blank"
 				rel="me"
-				href="https://bsky.app/profile/marksuckerberg.bsky.social"
+				href="https://bsky.app/profile/stellers.gay"
 				accesskey="b"
 				title="I don't use this much!">My <u>B</u>luesky</a
 			>
