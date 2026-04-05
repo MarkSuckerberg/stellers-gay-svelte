@@ -5,6 +5,8 @@
 	import css from '$lib/assets/css.webp';
 	import yogstation from '$lib/assets/yogstation.gif';
 	import snapps from '$lib/assets/snapps.gif';
+	import htmlbutton from '$lib/assets/htmlbutton.png';
+	import guestbook from '$lib/assets/signguest.gif';
 	import mitLicense from '$lib/assets/mit-license.webp';
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
@@ -64,53 +66,45 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://pixelsafari.neocities.org" title="Awesome site!"
-			><img
-				src={pixelSafari}
-				class="animated-button"
-				alt="An animated button for the Pixel Safari, showing off various graphics they provide, such as Favicons and Dividers."
-			/></a
-		>
-
-		<a target="_blank" href="https://archlinux.org" title="I use Arch Linux btw"
-			><img
-				src={linux}
-				class="animated-button"
-				alt="An animated button showing the windows logo being replaced with Tux the penguin, with the words, 'LinuX Now! 2.0' on the right."
-			/></a
-		>
-
 		<a target="_blank" href="https://shiptest.net" title="Play Shiptest!"
 			><img
 				src={shiptest}
 				class="animated-button"
-				alt="A pixel-art button showing the shiptest logo (sillouhette of a ship in front of a planet eclipsing a star) next to the words 'Shiptest 13' and the BYOND logo."
-			/></a
-		>
-
-		<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="Learn CSS!"
-			><img
-				src={css}
-				class="animated-button"
-				alt="Button that says 'Made with Cascading Style Sheets'"
-			/></a
-		>
+				alt="A pixel-art button showing the shiptest logo (sillouhette of a ship in front of a planet eclipsing a star) next to the words &quot;Shiptest 13&quot; and the BYOND logo."
+			/>
+		</a>
 
 		<a target="_blank" href="https://yogstation.net" title="YOGGERZ!!!"
 			><img
 				src={yogstation}
 				class="animated-button"
 				alt="A pixel-art button showing the Yogstation 13 logo."
-			/></a
-		>
+			/>
+		</a>
 
 		<a target="_blank" href="https://snapps.dev" title="Snakes? For free? Where do I sign up?"
 			><img
 				src={snapps}
 				class="animated-button"
 				alt="An animated pixel-art button showing the words &quot;snapps.dev&quot; with the letters in dev coloured cyan magenta and yellow respectively."
-			/></a
-		>
+			/>
+		</a>
+
+		<a target="_blank" href="https://pixelsafari.neocities.org" title="Awesome site!"
+			><img
+				src={pixelSafari}
+				class="animated-button"
+				alt="An animated button for the Pixel Safari, showing off various graphics they provide, such as Favicons and Dividers."
+			/>
+		</a>
+
+		<a target="_blank" href="https://archlinux.org" title="I use Arch Linux btw"
+			><img
+				src={linux}
+				class="animated-button"
+				alt="An animated button showing the windows logo being replaced with Tux the penguin, with the words, &quot;LinuX Now! 2.0&quot; on the right."
+			/>
+		</a>
 
 		<a
 			target="_blank"
@@ -120,9 +114,36 @@
 			><img
 				src={mitLicense}
 				class="animated-button"
-				alt="Button that says 'Some Rights Reserved,' along with the MIT logo to represent the MIT License."
-			/></a
-		>
+				alt="Button that says &quot;Some Rights Reserved,&quot; along with the MIT logo to represent the MIT License."
+			/>
+		</a>
+
+		<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="Learn CSS!"
+			><img
+				src={css}
+				class="animated-button"
+				alt="Button that says &quot;Made with Cascading Style Sheets&quot;"
+			/>
+		</a>
+
+		<a
+			target="_blank"
+			href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+			title="Also learn HTML so you can actually put the CSS you learned to good use."
+			><img
+				src={htmlbutton}
+				class="animated-button"
+				alt="Button that says &quot;<HTML>, learn it today!&quot;"
+			/>
+		</a>
+
+		<a href={resolve('/guestbook')} title="Come say hi!"
+			><img
+				src={guestbook}
+				class="animated-button"
+				alt="Button that says &quot;Sign my GUEST BOOK&quot; next to a book."
+			/>
+		</a>
 	</p>
 
 	<p class="center">

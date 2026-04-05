@@ -14,6 +14,8 @@
 			within 10km.
 		</p>
 
+		<p>Not (really) mobile-friendly. Oh no.</p>
+
 		<ul>
 			<li>
 				<a href={resolve('/snake')}>Snake!</a> - It's snake. Real cutting edge Nokia 6110 type stuff.

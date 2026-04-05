@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import jary from '$lib/assets/bluejarybeast.webp?h=100&?enhanced';
+	import jary from '$lib/assets/bluejarybeast.webp?h=512&?enhanced';
 	import construction from '$lib/assets/construction.webp';
 	import mrk2 from '$lib/assets/mrk2.webp?h=512&w=512&fit=cover&as=picture&format=png&?enhanced';
 	import bg from '$lib/assets/win95setup.webp';
@@ -16,6 +16,9 @@
 
 	let time: number | undefined = $state();
 
+	let song: HTMLAudioElement | undefined = $state();
+	let paused = $state(true);
+
 	onMount(() => {
 		time = Date.now();
 
@@ -26,6 +29,68 @@
 				}, 1000),
 			1000 - (Date.now() % 1000)
 		);
+	});
+
+	function exitButton() {
+		if (confirm('Are you sure you want to exit?')) {
+			close();
+			let index = 0;
+
+			for (index = 0; index < quoteFile.exitText.length; index++) {
+				const element = quoteFile.exitText[index];
+
+				if (!confirm(element)) {
+					break;
+				}
+			}
+
+			while (++index && confirm(`You've confirmed this dialog box ${index} times.`)) {
+				continue;
+			}
+
+			alert('FINALLY. thank goodness.');
+		}
+	}
+
+	async function toggle() {
+		if (!song) {
+			return;
+		}
+
+		if (paused || song.ended) {
+			await song.play();
+			paused = false;
+		} else {
+			song.pause();
+			paused = true;
+		}
+	}
+
+	let songTime = $state('00:00/00:00');
+
+	function getTime(seconds: number) {
+		const min = Math.floor(seconds / 60)
+			.toString()
+			.padStart(2, '0');
+		const sec = Math.floor(seconds % 60)
+			.toString()
+			.padStart(2, '0');
+
+		return `${min}:${sec}`;
+	}
+
+	onMount(() => {
+		if (!song) {
+			return;
+		}
+
+		songTime = `00:00/${getTime(song.duration)}`;
+
+		song.addEventListener('timeupdate', () => {
+			let target: HTMLAudioElement = song!;
+
+			songTime = `${getTime(target.currentTime)}/${getTime(target.duration)}`;
+		});
 	});
 </script>
 
@@ -52,19 +117,7 @@
 
 		<div>
 			<button disabled style="width: 2.25em;">_</button>
-			<button
-				style="width: 2.25em;"
-				onclick={() => {
-					if (confirm('Are you sure you want to exit?')) {
-						close();
-						if (confirm('Really really sure?')) {
-							alert(
-								'Okay then, close the tab or something, jeez. Javascript nor HTML can actually close normally opened windows.'
-							);
-						}
-					}
-				}}>X</button
-			>
+			<button style="width: 2.25em;" onclick={() => exitButton()}>X</button>
 		</div>
 	</div>
 
@@ -100,12 +153,14 @@
 				target="_blank"
 				rel="me nofollow"
 				href="https://discord.com/users/525509257102098442"
+				title="The IM that we all use."
 				accesskey="d">My <u>D</u>iscord</a
 			>
 			<a
 				target="_blank"
 				rel="me nofollow"
 				href="https://matrix.to/#/@mark:stellers.gay"
+				title="The IM I wish we all used."
 				accesskey="r">My Mat<u>r</u>ix account</a
 			>
 			<a
@@ -127,14 +182,11 @@
 				rel="me"
 				href="https://tumblr.suckerberg.gay"
 				accesskey="t"
-				title="My most-used platform.">My <u>T</u>umblog</a
+				title="My most-used platform. That's not saying much">My <u>T</u>umblog</a
 			>
 
 			<hr class="win" />
 
-			<a href={resolve('/guestbook')} accesskey="g" title="Sign my guestbook!">
-				<b>(New!)</b> <u>G</u>uestbook
-			</a>
 			<a
 				target="_blank"
 				href="https://hits.stellers.gay/"
@@ -147,7 +199,12 @@
 				/>
 			</a>
 
+			<a href={resolve('/guestbook')} accesskey="g" title="Sign my guestbook!">
+				<b>(New!)</b> <u>G</u>uestbook
+			</a>
+
 			<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"><u>E</u>-mail me!</a>
+
 			<a
 				target="_blank"
 				rel="me"
@@ -175,6 +232,21 @@
 		id="footer"
 		style="display: flex; width: 100%; gap: 2px; height: 2em; align-items: center;"
 	>
+		<button
+			style="font-weight: bolder; margin: 0;"
+			style:color={paused ? 'green' : 'red'}
+			onclick={() => toggle()}
+		>
+			{paused ? '⏵︎' : '⏸︎'}
+		</button>
+
+		<marquee width="100px" scrollamount="3" class="small-inset" style="padding: 2px;">
+			<audio loop volume="0.5" src="https://f.stellers.gay/u/happy-chiptune.ogg" bind:this={song}
+				>UNABLE TO LOAD -
+			</audio>
+			Happy Chiptune - Soniau - {songTime}
+		</marquee>
+
 		<div class="small-inset" style="flex: 1; padding: 2px;">
 			{quotes[Math.floor(Math.random() * quotes.length)]}
 		</div>
@@ -192,10 +264,10 @@
 
 <style>
 	.fakewindow {
-		width: min(1024px, 100vw);
-		min-width: min(1024px, 100vw);
-		max-width: 100%;
-		margin: 0 auto;
+		width: min(1024px, calc(100vw - 8px));
+		min-width: min(1024px, calc(100vw - 8px));
+		max-width: calc(100vw - 8px);
+		margin: 1em auto 0 auto;
 
 		overflow: scroll;
 		resize: both;
@@ -302,5 +374,25 @@
 	.black-background {
 		background-color: black;
 		height: 32px;
+	}
+
+	@media only screen and (max-width: 600px) {
+		.fakewindow {
+			resize: none;
+			margin: 0;
+		}
+
+		.gridcontainer {
+			grid-template-columns: repeat(1, 1fr);
+			grid-template-areas:
+				'header'
+				'sidehead'
+				'nav'
+				'content'
+				'sidebar';
+		}
+		.topcontainer {
+			flex-direction: column;
+		}
 	}
 </style>

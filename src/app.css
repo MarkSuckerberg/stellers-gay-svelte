@@ -11,6 +11,7 @@ body {
 	font-family: 'MS Sans Serif', 'Ari w95', 'Courier New', Courier, monospace;
 	font-smooth: never;
 	-webkit-font-smoothing: none;
+	margin: 0;
 }
 
 .win {

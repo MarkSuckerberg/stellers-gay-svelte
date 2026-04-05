@@ -49,33 +49,34 @@
 	};
 
 	function handleKeyPress(event: KeyboardEvent) {
-		let newDir: Dir | undefined;
 		switch (event.key) {
 			case 'w':
 			case 'ArrowUp':
 			case 'Up':
-				newDir = 'N';
+				setDir('N');
 				break;
 
 			case 'a':
 			case 'ArrowLeft':
 			case 'Left':
-				newDir = 'W';
+				setDir('W');
 				break;
 
 			case 's':
 			case 'ArrowDown':
 			case 'Down':
-				newDir = 'S';
+				setDir('S');
 				break;
 
 			case 'd':
 			case 'ArrowRight':
 			case 'Right':
-				newDir = 'E';
+				setDir('E');
 				break;
 		}
+	}
 
+	function setDir(newDir: Dir | undefined) {
 		if (!newDir) {
 			return;
 		}
@@ -180,10 +181,21 @@
 	let dividerIndex = $state(sizeX);
 </script>
 
+<div style="display: grid; float: right;">
+	<button style="grid-column: 2;" onclick={() => setDir('N')}>N</button>
+	<button style="grid-column: 2; grid-row: 3;" onclick={() => setDir('S')}>S</button>
+	<button style="grid-row: 2;" onclick={() => setDir('W')}>W</button>
+	<button style="grid-row: 2; grid-column: 3;" onclick={() => setDir('E')}>E</button>
+</div>
+
 <p>
 	It's just snake. You're the snake (you start on the tile with an "O"). Eat the... apples. The
 	"X"es. C'mon, you know the deal. Arrow keys don't seem to work for whatever reason.
 </p>
+
+{#if lost}
+	<button onclick={() => start()} style="float: right;">Restart?</button>
+{/if}
 
 <p>Score: {score}</p>
 
@@ -211,7 +223,3 @@
 		</div>
 	{/each}
 </code>
-
-{#if lost}
-	<button onclick={() => start()}>Restart?</button>
-{/if}
