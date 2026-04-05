@@ -4,6 +4,7 @@
 	import shiptest from '$lib/assets/shiptest-button.webp';
 	import css from '$lib/assets/css.webp';
 	import yogstation from '$lib/assets/yogstation.gif';
+	import snapps from '$lib/assets/snapps.gif';
 	import mitLicense from '$lib/assets/mit-license.webp';
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
@@ -100,6 +101,14 @@
 				src={yogstation}
 				class="animated-button"
 				alt="A pixel-art button showing the Yogstation 13 logo."
+			/></a
+		>
+
+		<a target="_blank" href="https://snapps.dev" title="Snakes? For free? Where do I sign up?"
+			><img
+				src={snapps}
+				class="animated-button"
+				alt="An animated pixel-art button showing the words &quot;snapps.dev&quot; with the letters in dev coloured cyan magenta and yellow respectively."
 			/></a
 		>
 
