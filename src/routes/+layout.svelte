@@ -89,6 +89,10 @@
 		song.addEventListener('timeupdate', () => {
 			let target: HTMLAudioElement = song!;
 
+			if (target.loop && target.currentTime > 70) {
+				target.currentTime -= 61.365;
+			}
+
 			songTime = `${getTime(target.currentTime)}/${getTime(target.duration)}`;
 		});
 	});
@@ -240,22 +244,26 @@
 			{paused ? '⏵︎' : '⏸︎'}
 		</button>
 
-		<marquee width="100px" scrollamount="3" class="small-inset" style="padding: 2px;">
+		<!-- svelte-ignore a11y_distracting_elements -->
+		<marquee width="76" scrollamount="3" class="small-inset" style="padding: 2px;">
 			<audio loop volume="0.5" src="https://f.stellers.gay/u/happy-chiptune.ogg" bind:this={song}
 				>UNABLE TO LOAD -
 			</audio>
 			Happy Chiptune - Soniau - {songTime}
 		</marquee>
 
-		<div class="small-inset" style="flex: 1; padding: 2px;">
+		<div
+			class="small-inset"
+			style="flex: 1; padding: 2px; text-overflow: ellipsis; overflow: hidden; text-wrap-mode: nowrap;"
+		>
 			{quotes[Math.floor(Math.random() * quotes.length)]}
 		</div>
 
-		<noscript class="small-inset" style="padding: 2px; width: 8em">Time to get Javascript.</noscript
+		<noscript class="small-inset" style="padding: 2px; width: 6em">Time to get Javascript.</noscript
 		>
 
 		{#if time}
-			<div class="small-inset" style="padding: 2px; width: 8em">
+			<div class="small-inset" style="padding: 2px; width: 6em">
 				{new Date(time).toLocaleTimeString()}
 			</div>
 		{/if}
@@ -269,7 +277,7 @@
 		max-width: calc(100vw - 8px);
 		margin: 1em auto 0 auto;
 
-		overflow: scroll;
+		overflow: auto;
 		resize: both;
 
 		display: flex;
@@ -393,6 +401,10 @@
 		}
 		.topcontainer {
 			flex-direction: column;
+		}
+
+		.gridcontainer #content {
+			max-height: unset;
 		}
 	}
 </style>
