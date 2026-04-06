@@ -6,7 +6,7 @@ interface GuestbookMessage {
 	MessageId: number;
 	MessageUser: string;
 	MessageText: string;
-	MessageTime: Date;
+	MessageTime: string;
 }
 
 export const load: PageServerLoad = async ({ platform }) => {
@@ -15,11 +15,18 @@ export const load: PageServerLoad = async ({ platform }) => {
 	).run<GuestbookMessage>();
 
 	if (!messages?.success) {
-		return { messages: messages?.results };
+		return { messages: messages?.results || [] };
 	}
+
+	messages.results.forEach((message) => {
+		//mistakes were made alright
+		message.MessageTime = message.MessageTime + ' UTC';
+	});
 
 	return { messages: messages.results };
 };
+
+const advertisingRegex = /http|www\.|(?:[a-z0-9_-]+@[a-z0-9_-]+\.[a-z0-9_-]+)/i;
 
 export const actions = {
 	default: async ({ request, platform }) => {
@@ -43,6 +50,13 @@ export const actions = {
 			return fail(400, 'Invalid guestbook message');
 		}
 
+		if (advertisingRegex.test(message) || advertisingRegex.test(name)) {
+			return fail(
+				400,
+				'Advertising is not allowed, please refrain from including URLs or email addresses.'
+			);
+		}
+
 		if (name.length > 32 || message.length > 128) {
 			return fail(400, 'Name or message too long');
 		}
@@ -57,6 +71,8 @@ export const actions = {
 			return;
 		}
 
-		return { error: result?.error };
+		console.error(result?.error);
+
+		return fail(500, 'Error saving guestbook entry');
 	}
 } satisfies Actions;

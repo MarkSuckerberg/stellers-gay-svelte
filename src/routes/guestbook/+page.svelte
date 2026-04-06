@@ -1,6 +1,32 @@
 <script lang="ts">
-	let { data } = $props();
+	let { data, form } = $props();
 	import { enhance } from '$app/forms';
+
+	const SEC = 1000;
+	const MIN = 60 * SEC;
+	const HOUR = 60 * MIN;
+	const DAY = 24 * HOUR;
+	const WEEK = 7 * DAY;
+
+	function formatDBDate(input: string) {
+		const date = new Date(input);
+		const ago = Date.now() - date.valueOf();
+		const fmt = new Intl.RelativeTimeFormat(undefined, {
+			style: 'narrow'
+		});
+
+		if (ago < HOUR) {
+			return fmt.format(-Math.floor(ago / MIN), 'minutes');
+		}
+		if (ago < DAY) {
+			return fmt.format(-Math.floor(ago / HOUR), 'hours');
+		}
+		if (ago < WEEK) {
+			return fmt.format(-Math.floor(ago / DAY), 'days');
+		}
+
+		return date.toLocaleString();
+	}
 </script>
 
 <p>Please be nice!</p>
@@ -18,7 +44,9 @@
 	<tbody>
 		{#each data.messages as message (message.MessageId)}
 			<tr>
-				<td style="width: min-content">{new Date(message.MessageTime).toLocaleString()}</td>
+				<td style="width: min-content" title={new Date(message.MessageTime).toString()}>
+					{formatDBDate(message.MessageTime)}
+				</td>
 				<td style="width: min-content">{message.MessageUser}</td>
 				<td style="width: max-content">{message.MessageText}</td>
 			</tr>
@@ -27,6 +55,10 @@
 </table>
 
 <hr class="win" />
+
+{#if form}
+	<p><b>Error submitting:</b> {form}</p>
+{/if}
 
 <form
 	action=""
