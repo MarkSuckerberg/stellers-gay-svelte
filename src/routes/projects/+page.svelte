@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Projects - Steller's Gay</title>
+</svelte:head>
+
 <article>
 	<section id="projects">
 		<h2>Projects</h2>

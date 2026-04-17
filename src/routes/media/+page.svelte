@@ -32,6 +32,10 @@
 	import GalleryButton from '$lib/components/gallery-button.svelte';
 </script>
 
+<svelte:head>
+	<title>Media - Steller's Gay</title>
+</svelte:head>
+
 <h2>Media</h2>
 
 <hr class="rainbow-divider" />

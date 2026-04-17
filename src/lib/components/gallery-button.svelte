@@ -5,6 +5,7 @@
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { pushState } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	let {
 		src,
@@ -37,19 +38,15 @@
 	{title}
 	bind:open
 	onOpen={() => {
-		const newURL = page.url;
-		newURL.hash = title;
-		pushState(newURL, page.state);
+		pushState(resolve(`/media#${title}`), page.state);
 	}}
 	onClose={() => {
-		const newURL = page.url;
-		newURL.hash = '';
-		pushState(newURL, page.state);
+		pushState(resolve(`/media`), page.state);
 	}}
 >
 	<figure style="display: flex; align-items: center; flex-direction: column; padding: 0.5em;">
 		{#if typeof original == 'string'}
-			<a href={original} title="View Original">
+			<a href={original} title="View Original" rel="external" target="_blank">
 				<enhanced:img
 					{src}
 					{alt}
@@ -69,7 +66,7 @@
 		{:else}
 			<div style="display: flex; max-width: 80dvw; gap: 1em" class="inset">
 				{#each original as image (image)}
-					<a href={image} title="View Original">
+					<a href={image} title="View Original" rel="external" target="_blank">
 						<!--<enhanced:img
                             {src}
                             {alt}
@@ -89,7 +86,7 @@
 </Window>
 
 <button {title} onclick={() => (open = true)} class="media-button">
-	<enhanced:img {src} {alt} {title} sizes="250px" width="220em" height="220em" class="button-img">
+	<enhanced:img {src} {alt} {title} sizes="250px" width="220" height="220" class="button-img">
 	</enhanced:img>
 </button>
 
@@ -99,9 +96,9 @@
 		margin: 0;
 	}
 
-	button {
+	.media-button {
 		padding: 0;
-		cursor: pointer;
+		flex: 1 1 0px;
 	}
 
 	.button-img {
@@ -110,6 +107,5 @@
 
 	.button-img:hover {
 		object-fit: contain;
-		filter: blur(1);
 	}
 </style>

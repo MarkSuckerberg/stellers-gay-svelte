@@ -1,0 +1,37 @@
+---
+title: Misadventures in VR, the beginnings
+date: 2026-4-16 11:00 PM CDT
+
+summary: Brief overview of my work-in-progress DIY VR headset attempt, specifically focusing on the original idea, my first attempt with google cardboard + PhoneVR, and my findings about gyrometers, accelerometers, and magnetometers and how they help determine orientation.
+
+tags:
+  - computers
+  - vr
+  - projects
+---
+
+Well, this is a long one, since I probably should have taken these notes down while I was actually in the thick of doing the project, rather than long after when I decided to start keeping a blog again. Basically, I was fed up and tired of everyone and their second-cousin seeming to have a VR headset, while as I'd never even experienced it before. So, I did the (un)reasonable thing and thought, "Well, VR is expensive, right? Why don't I just build my own?" And, well, that's pretty much what I did. I do not recommend following in my footsteps, as, A, the experience was certainly sub-par, and B, looking on eBay after the fact reveals that there's quite a lot of headsets that are available for far cheaper than the cost of all the stuff I used, even if you don't include the parts I just had lying around, like a bunch of wiimotes. Yes, that's right, wiimotes are involved.
+
+So, it all started when I saw [some YouTube video about someone making a VR headset out of CRT screens.](https://www.youtube.com/watch?v=rYPhC9lsVYs) I figured, if they can make one with that kind of handicap, why can't I make one as well? So, I looked into it, and found some initially promising results. There were two freely available open-source headsets on github, [Relativty](https://github.com/relativty/Relativty) (sic), and [HadesVR](https://github.com/HadesVR/HadesVR). The former, Relativty was more "complete" in the hardware department, but the driver for it was very heavily Windows-based, so I would have had to do a lot of rewriting (or use windows, but I don't want to do that, really). The latter, HadesVR, was missing a lot of the 3D print files for the hardware, but the driver was a lot closer to what I wanted. So, I followed the guides for both, getting lenses, a screen and controller board for it, and... attempted to print out the Relativty case. I'll admit, I struggle a lot with 3D printing, but that's a story for another day.
+
+### Google Cardboard
+
+So I had this hardware ready, but I didn't have a proper case. "That's fine," I thought, "I'll just do something in the meantime, wasn't google cardboard a thing?" And, indeed, I was correct, it _was_ a thing. The resources and documentation is still readily available, and it's fairly well supported, but I do not believe that Google is doing any further development on it at this time. Which sucks, because honestly? I _DO_ recommend messing around with google cardboard if you've never tried VR and you've got a phone that supports it, get some lenses for cheap and use literal cardboard to make a case, and you'll get a limited, but still honestly very cool (in my opinion) experience. You can do all the native google cardboard things, which there seems to be a fair amount of, and you can even outright use it as a VR headset using [PhoneVR](https://github.com/PhoneVR-Developers/PhoneVR) with [ALVR](https://github.com/alvr-org/ALVR). However, I found it rather jittery on anything besides the default SteamVR idle environment, even when I hooked the phone up to my trusty USB-C to ethernet connector and used that. According to the graphs, it was still mostly a network issue, but if that's the case, then I can't really do better than ethernet. It might have been some issue with encoding/decoding, but in the end, it just wasn't good enough for me. My phone, a Google Pixel 5, also suffered pretty thoroughly from the screen-door effect, and in the end, I just moved on.
+
+### Making a VR headset from scratch is easy, right?
+
+No, I don't think so. I think I'm at least considered an "average person" in terms of technical skill (if not a fair bit more), and I do NOT recommend average people try anything like this unless they really want one hell of a project. So, PhoneVR. It's really convenient, honestly. You get orientation tracking that doesn't drift that much because your phone has a good gyroscope, accelerometer, and magnetometer.
+
+### Why knowing which direction is down is exceedingly useful
+
+_Note: Don't trust what I say, do your own research on all this. I might and probably very likely have something wrong in this following section._
+
+Funnily enough, this project helped me learn why the accelerometer is actually the most import one: since, well, if you're "at rest" on the ground, there will be a constant force of ~9.81m/s^2 in the direction of down. This will let you know what direction down is, which is useful. There's also the direction you're facing. THIS is where the gyroscope/gyrometer comes into play, as well as a magnetometer. A gyrometer measures _angular velocity_, meaning when you spin a certain way, it can track the speed at which you're doing so. Knowing which direction down tells you nothing about which direction you're facing PERPENDICULAR to the ground. So, you just take the angular velocity and apply that to the direction you're currently facing, and then bam, you can roughly track all the possible rotations in 3D space. A magnetometer reduces the drift that comes from not actually having a fixed direction to compare to like with "down", introducing "north". With those three things in mind, and once again, this is ONLY FOR ORIENTATION. You CANNOT track position with this in any reasonable way.
+
+So, I did the very Mark thing of buying the cheapest possible IMU (Inertial Measurement Unit) to use for orientation. Notably, the ones I got do not come with magnetometers, so to this day the direction I'm facing drifts at least a little bit and I have to recenter fairly often. Honestly, I'm not going to say I regret the purchase, since I'd rather spend ~$3 on something for a proof of concept to make sure it works than spend $20+ on something better that might end up being totally useless as the concept itself is flawed. I'll include the exact parts I used at the end or something, but again, do not reccomend them, really. I ended up using two IMUs and averaging them out to try and account for some of the random sensor noise, which seemed to do nicely, but again... they don't have magnetometers, nor would I need to do this with a better part.
+
+_Another note: yes, you could possibly use the accelerometer to estimate movement by continuously deriving the acceleration and applying the velocity. However, even a tiny bit of error would compound so much that it'd be unusuable. [This page](https://www.chrobotics.com/library/accel-position-velocity) explained it pretty well to me._
+
+### Just shut up already
+
+Okay, okay. I'll give it a break for now. I'm gonna either update this, or just have multiple parts in the [vr](/blog/tag/vr) tag once I finish writing. The next parts I'm thinking of writing are probably... how I'm using microcontrollers (specifically Raspberry Pi Picos) for this project, my experiences with 3D printing that still make me want to rip my crestfeathers out, the actual driver itself and the lengths I had to go to bodge together a horrible solution that I'm still abominating, the magic of my position tracking (triangulation and wiimotes, oh my), or any other number of things. I want to write about other stuff, too, but I do also want to get all this out while it's fresh-ish in my head.

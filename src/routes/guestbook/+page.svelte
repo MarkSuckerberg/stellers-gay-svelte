@@ -16,18 +16,24 @@
 		});
 
 		if (ago < HOUR) {
-			return fmt.format(-Math.floor(ago / MIN), 'minutes');
+			return fmt.format(-Math.round(ago / MIN), 'minutes');
 		}
 		if (ago < DAY) {
-			return fmt.format(-Math.floor(ago / HOUR), 'hours');
+			return fmt.format(-Math.round(ago / HOUR), 'hours');
 		}
 		if (ago < WEEK) {
-			return fmt.format(-Math.floor(ago / DAY), 'days');
+			return fmt.format(-Math.round(ago / DAY), 'days');
 		}
 
 		return date.toLocaleString();
 	}
 </script>
+
+<svelte:head>
+	<title>Guestbook - Steller's Gay</title>
+
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</svelte:head>
 
 <p>Please be nice!</p>
 
@@ -44,11 +50,11 @@
 	<tbody>
 		{#each data.messages as message (message.MessageId)}
 			<tr>
-				<td style="width: min-content" title={new Date(message.MessageTime).toString()}>
-					{formatDBDate(message.MessageTime)}
+				<td class="details" title={new Date(message.MessageTime).toString()}>
+					<time datetime={message.MessageTime}>{formatDBDate(message.MessageTime)}</time>
 				</td>
-				<td style="width: min-content">{message.MessageUser}</td>
-				<td style="width: max-content">{message.MessageText}</td>
+				<td class="details">{message.MessageUser}</td>
+				<td class="message">{message.MessageText}</td>
 			</tr>
 		{/each}
 	</tbody>
@@ -85,7 +91,16 @@
 		border-collapse: collapse;
 	}
 
+	td,
+	th {
+		padding-right: 0.5em;
+	}
+
 	tr:nth-child(even) {
 		background-color: #c0c0c0;
+	}
+
+	.details {
+		text-wrap: nowrap;
 	}
 </style>

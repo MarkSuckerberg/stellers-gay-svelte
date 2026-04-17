@@ -3,7 +3,7 @@
 	import jary from '$lib/assets/bluejarybeast.webp?h=512&?enhanced';
 	import construction from '$lib/assets/construction.webp';
 	import mrk2 from '$lib/assets/mrk2.webp?h=512&w=512&fit=cover&as=picture&format=png&?enhanced';
-	import bg from '$lib/assets/win95setup.webp';
+	import bg from '$lib/assets/win95setup-clear.webp';
 
 	import quoteFile from '$lib/assets/quotes.json';
 	const quotes = quoteFile.quotes;
@@ -40,7 +40,7 @@
 				const element = quoteFile.exitText[index];
 
 				if (!confirm(element)) {
-					break;
+					return;
 				}
 			}
 
@@ -48,7 +48,7 @@
 				continue;
 			}
 
-			alert('FINALLY. thank goodness.');
+			alert('FINALLY. thank goodness. Go do something productive now.');
 		}
 	}
 
@@ -59,10 +59,8 @@
 
 		if (paused || song.ended) {
 			await song.play();
-			paused = false;
 		} else {
 			song.pause();
-			paused = true;
 		}
 	}
 
@@ -86,11 +84,27 @@
 
 		songTime = `00:00/${getTime(song.duration)}`;
 
+		song.addEventListener('pause', () => {
+			paused = true;
+		});
+
+		song.addEventListener('play', () => {
+			paused = false;
+		});
+
+		song.addEventListener('ended', () => {
+			paused = true;
+		});
+
 		song.addEventListener('timeupdate', () => {
 			let target: HTMLAudioElement = song!;
 
-			if (target.loop && target.currentTime > 70) {
-				target.currentTime -= 61.365;
+			if (target.loop && target.currentTime > 71.5) {
+				if (target['fastSeek']) {
+					target.fastSeek(target.currentTime - 61.2);
+				} else {
+					target.currentTime -= 61.2;
+				}
 			}
 
 			songTime = `${getTime(target.currentTime)}/${getTime(target.duration)}`;
@@ -110,7 +124,7 @@
 		content="A portrait of an exceptionally fluffy and softly rendered anthropomorphic blue jay with their eyes happily shut."
 	/>
 
-	<link rel="canonical" href="https://stellers.gay{page.route.id}" />
+	<link rel="canonical" href="https://stellers.gay{page.url.pathname}" />
 </svelte:head>
 
 <div class="outset fakewindow">
@@ -203,8 +217,12 @@
 				/>
 			</a>
 
+			<a href={resolve('/blog')} accesskey="b" title="See if I've remembered it exists!">
+				<b>(New!)</b> My <u>B</u>log
+			</a>
+
 			<a href={resolve('/guestbook')} accesskey="g" title="Sign my guestbook!">
-				<b>(New!)</b> <u>G</u>uestbook
+				<u>G</u>uestbook
 			</a>
 
 			<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"><u>E</u>-mail me!</a>
@@ -219,14 +237,14 @@
 		</nav>
 
 		<main id="content" class="inset">
-			<p id="construction" class="bg-orange-400" style="background-color: #f70;">
+			<aside id="construction" class="bg-orange-400" style="background-color: #f70; margin: 1em 0">
 				<img
 					src={construction}
 					class="inline-block"
 					alt="An animated diamond-shaped construction sign with a stick figure worker shoveling dirt."
 				/>
 				Warning! This page is under construction. Be sure to check back soon!
-			</p>
+			</aside>
 
 			{@render children()}
 		</main>
@@ -246,8 +264,11 @@
 
 		<!-- svelte-ignore a11y_distracting_elements -->
 		<marquee width="76" scrollamount="3" class="small-inset" style="padding: 2px;">
-			<audio loop volume="0.5" src="https://f.stellers.gay/u/happy-chiptune.ogg" bind:this={song}
-				>UNABLE TO LOAD -
+			<audio loop volume="0.5" bind:this={song} preload="metadata">
+				<source src="https://f.stellers.gay/u/happy-chiptune.m4a" type="audio/mp4" />
+				<source src="https://f.stellers.gay/u/happy-chiptune.ogg" type="audio/ogg" />
+				<source src="https://f.stellers.gay/u/happy-chiptune.webm" type="audio/webm" />
+				UNABLE TO LOAD -
 			</audio>
 			Happy Chiptune - Soniau - {songTime}
 		</marquee>

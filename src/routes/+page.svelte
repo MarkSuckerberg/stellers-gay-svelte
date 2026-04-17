@@ -11,11 +11,16 @@
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
+	import stamp17776 from '$lib/assets/17776.png';
 	import stellers from '$lib/assets/stellersbutton.webp';
 	import { asset, resolve } from '$app/paths';
 
 	import fontlicense from '$lib/assets/fonts/license.txt';
 </script>
+
+<svelte:head>
+	<title>Steller's Gay</title>
+</svelte:head>
 
 <article>
 	<section>
@@ -27,12 +32,14 @@
 			My name is Mark Suckerberg, and I'm simply a coder who loves to do too many things at once. I
 			work with many languages, such as C#, Dream Maker, JS, MySQL, PHP, and Python. I don't usually
 			do any kind of contract/paid work unless it interests me personally. If you've got a good idea
-			that you want done, feel free to float it by me by contacting me on Discord (@marksuckerberg)!
+			that you want done, feel free to float it by me by contacting me on Discord (<a
+				href="https://discord.com/users/525509257102098442">@marksuckerberg</a
+			>)!
 		</p>
 
 		<p>
 			<b>Update 2/9/26:</b> At long last, I deployed the update to my site that I created about
-			eight months ago. The hitcounter should actually work properly now, and I updated the
+			eight months ago. The hit counter should actually work properly now, and I updated the
 			<a href={resolve('/media')}>media</a> tab with some more art, too! Apologies if there's any new
 			bugs.
 		</p>
@@ -169,6 +176,9 @@
 			alt="A stamp that has the sillouhette of a crow on the left, and a heart behind the word crows on the right."
 			title="cro :>"
 		/>
+		<a href="https://www.sbnation.com/a/17776-football" title="Something is very wrong.">
+			<img src={stamp17776} alt="" loading="lazy" decoding="async" class="stamp" />
+		</a>
 	</p>
 </article>
 
@@ -180,5 +190,10 @@
 	.animated-button {
 		height: 31px;
 		width: 88px;
+	}
+
+	.stamp {
+		height: 56px;
+		width: 99px;
 	}
 </style>

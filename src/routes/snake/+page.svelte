@@ -181,6 +181,10 @@
 	let dividerIndex = $state(sizeX);
 </script>
 
+<svelte:head>
+	<title>Snake - Steller's Gay</title>
+</svelte:head>
+
 <div style="display: grid; float: right;">
 	<button style="grid-column: 2;" onclick={() => setDir('N')}>N</button>
 	<button style="grid-column: 2; grid-row: 3;" onclick={() => setDir('S')}>S</button>

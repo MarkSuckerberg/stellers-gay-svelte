@@ -1,8 +1,19 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { mdsvex } from 'mdsvex';
+
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+//import rehypeToc from 'rehype-toc';
 
 const config = {
-	preprocess: [vitePreprocess()],
+	preprocess: [
+		mdsvex({
+			extensions: ['.md'],
+			rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
+		}),
+		vitePreprocess()
+	],
 	kit: {
 		adapter: adapter({
 			platformProxy: {
@@ -17,7 +28,7 @@ const config = {
 			}
 		})
 	},
-	extensions: ['.svelte', '.svx']
+	extensions: ['.svelte', '.svx', '.md']
 };
 
 export default config;

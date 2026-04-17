@@ -2,6 +2,10 @@
 	import { resolve } from '$app/paths';
 </script>
 
+<svelte:head>
+	<title>Fun Stuff - Steller's Gay</title>
+</svelte:head>
+
 <article>
 	<section id="fun">
 		<h2>Fun Stuff!</h2>
