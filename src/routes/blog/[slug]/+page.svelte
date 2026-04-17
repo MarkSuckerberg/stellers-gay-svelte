@@ -5,7 +5,7 @@
 	import '$lib/codeblocks.css';
 	import { resolve } from '$app/paths';
 
-	let { data } = $props();
+	let { data, form } = $props();
 
 	let published = $derived(new Date(data.date));
 	let updated = $derived(data.updated ? new Date(data.updated) : undefined);
@@ -44,6 +44,7 @@
 		href={resolve(`/blog/oembed?format=json&url=${page.url}`)}
 		title="oEmbed"
 	/>
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 	<title>{data.title} - Steller's Gay</title>
 </svelte:head>
@@ -99,4 +100,36 @@
 			<BlogTags tags={data.tags} />
 		</p>
 	{/if}
+
+	<details>
+		<summary>Send Feedback</summary>
+
+		<p>
+			Currently just set up to send a message directly to me, but I might make a full-fledged
+			comments system eventually!
+		</p>
+
+		{#if form}
+			<p><b>Error submitting:</b> {form}</p>
+		{/if}
+
+		<form
+			action=""
+			method="POST"
+			style="display: grid; gap: 0.5em; grid-template-columns: min-content auto;"
+		>
+			<label for="name">Name:</label> <input type="text" name="name" id="names" maxlength="32" />
+
+			<label for="message">Message:</label>
+			<textarea name="message" id="message" maxlength="256" style="resize: vertical;"></textarea>
+
+			<div
+				class="cf-turnstile"
+				data-sitekey="0x4AAAAAABtXmAIQt-jTsWC6"
+				style="grid-column-end: span 2;"
+			></div>
+
+			<button type="submit" style="grid-column-end: span 2;">Submit</button>
+		</form>
+	</details>
 </article>

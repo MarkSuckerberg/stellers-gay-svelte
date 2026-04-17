@@ -1,3 +1,5 @@
+import { resolve } from '$app/paths';
+import { DISCORD_WEBHOOK } from '$env/static/private';
 import { verifyCaptcha } from '$lib/captcha';
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
@@ -29,7 +31,7 @@ export const load: PageServerLoad = async ({ platform }) => {
 const advertisingRegex = /http|www\.|(?:[a-z0-9_-]+@[a-z0-9_-]+\.[a-z0-9_-]+)/i;
 
 export const actions = {
-	default: async ({ request, platform }) => {
+	default: async ({ request, platform, fetch }) => {
 		const captcha = await verifyCaptcha(request);
 
 		if (!captcha.success) {
@@ -68,6 +70,22 @@ export const actions = {
 		const result = await statement?.bind(name, message).run();
 
 		if (result?.success) {
+			await fetch(DISCORD_WEBHOOK, {
+				method: 'POST',
+				body: JSON.stringify({
+					username: "Steller's Gay",
+					embeds: [
+						{
+							title: 'New guestbook entry!',
+							description: `${name}: ${message}`,
+							timestamp: new Date(Date.now()),
+							url: 'https://stellers.gay' + resolve('/guestbook')
+						}
+					]
+				}),
+				headers: { 'Content-Type': 'application/json' }
+			});
+
 			return;
 		}
 

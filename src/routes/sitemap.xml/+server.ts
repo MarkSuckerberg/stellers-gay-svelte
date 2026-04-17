@@ -1,6 +1,6 @@
 import { resolve } from '$app/paths';
 import type { RouteId } from '$app/types';
-import { GetPostMeta, SlugFromImport, type BlogMeta } from '$lib/blog';
+import { GetPostMeta, SlugFromImport } from '$lib/blog';
 
 const pages = Object.entries({
 	'/': 1,
