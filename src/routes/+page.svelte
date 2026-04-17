@@ -33,7 +33,9 @@
 			work with many languages, such as C#, Dream Maker, JS, MySQL, PHP, and Python. I don't usually
 			do any kind of contract/paid work unless it interests me personally. If you've got a good idea
 			that you want done, feel free to float it by me by contacting me on Discord (<a
-				href="https://discord.com/users/525509257102098442">@marksuckerberg</a
+				href="https://discord.com/users/525509257102098442"
+				rel="external"
+				target="_blank">@marksuckerberg</a
 			>)!
 		</p>
 
@@ -49,7 +51,8 @@
 			<a href={resolve('/fun')}>fun tab</a>, and redid the
 			<a href={resolve('/media')}>media gallery</a>. Been meaning to add more content. Maybe I'll
 			bring my blog back at some point? Also switched to using the Ari-W9500 font (<a
-				href={fontlicense}>license</a
+				href={fontlicense}
+				target="_blank">license</a
 			>) to emulate the proper Win95 feel. Sadly, there's no way to disable font anti-aliasing with
 			CSS, so we'll all have to suffer with gross pixel smears.
 		</p>
@@ -73,7 +76,7 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://shiptest.net" title="Play Shiptest!"
+		<a target="_blank" href="https://shiptest.net" title="Play Shiptest!" rel="external"
 			><img
 				src={shiptest}
 				class="animated-button"
@@ -81,7 +84,7 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://yogstation.net" title="YOGGERZ!!!"
+		<a target="_blank" href="https://yogstation.net" title="YOGGERZ!!!" rel="external"
 			><img
 				src={yogstation}
 				class="animated-button"
@@ -89,7 +92,11 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://snapps.dev" title="Snakes? For free? Where do I sign up?"
+		<a
+			target="_blank"
+			href="https://snapps.dev"
+			title="Snakes? For free? Where do I sign up?"
+			rel="external"
 			><img
 				src={snapps}
 				class="animated-button"
@@ -97,7 +104,7 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://pixelsafari.neocities.org" title="Awesome site!"
+		<a target="_blank" href="https://pixelsafari.neocities.org" title="Awesome site!" rel="external"
 			><img
 				src={pixelSafari}
 				class="animated-button"
@@ -105,7 +112,7 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://archlinux.org" title="I use Arch Linux btw"
+		<a target="_blank" href="https://archlinux.org" title="I use Arch Linux btw" rel="external"
 			><img
 				src={linux}
 				class="animated-button"
@@ -125,7 +132,11 @@
 			/>
 		</a>
 
-		<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="Learn CSS!"
+		<a
+			target="_blank"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+			title="Learn CSS!"
+			rel="external"
 			><img
 				src={css}
 				class="animated-button"
@@ -137,6 +148,7 @@
 			target="_blank"
 			href="https://developer.mozilla.org/en-US/docs/Web/HTML"
 			title="Also learn HTML so you can actually put the CSS you learned to good use."
+			rel="external"
 			><img
 				src={htmlbutton}
 				class="animated-button"
@@ -176,7 +188,12 @@
 			alt="A stamp that has the sillouhette of a crow on the left, and a heart behind the word crows on the right."
 			title="cro :>"
 		/>
-		<a href="https://www.sbnation.com/a/17776-football" title="Something is very wrong.">
+		<a
+			href="https://www.sbnation.com/a/17776-football"
+			title="Something is very wrong."
+			rel="external"
+			target="_blank"
+		>
 			<img src={stamp17776} alt="" loading="lazy" decoding="async" class="stamp" />
 		</a>
 	</p>

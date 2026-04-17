@@ -10,7 +10,12 @@
 	<title>Posts tagged {page.params.tag} - Steller's Gay</title>
 </svelte:head>
 
-<a href={resolve('/blog')}>Back to listing</a>
+<p>
+	<a href={resolve('/blog')}>Back to all posts</a>
+</p>
+<p>
+	<a href={resolve('/blog/tag')}>Back to all tags</a>
+</p>
 
 <h2>Tagged: {page.params.tag}</h2>
 

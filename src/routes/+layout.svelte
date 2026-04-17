@@ -115,7 +115,7 @@
 <svelte:head>
 	<link rel="preload" href={bg} as="image" />
 
-	<meta property="og:image" content={mrk2.img.src} />
+	<meta property="og:image" content={'https://stellers.gay' + mrk2.img.src} />
 	<meta property="og:image:height" content={mrk2.img.h.toString()} />
 	<meta property="og:image:width" content={mrk2.img.w.toString()} />
 	<meta property="og:image:type" content="image/png" />

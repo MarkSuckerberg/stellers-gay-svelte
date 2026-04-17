@@ -1,7 +1,7 @@
-import { GetAllPosts } from '$lib/blog';
+import { GetPostMeta } from '$lib/blog';
+
+const pages = GetPostMeta();
 
 export async function load() {
-	const pages = GetAllPosts();
-
 	return { pages };
 }

@@ -28,6 +28,19 @@
 				<a href={resolve('/solitaire')}>Solitaire</a> - I think it's specifically called Klondike or something.
 				Kinda breaks when you exhaust the talon. Save system does work, at least.
 			</li>
+			<li>
+				<a href="https://draw.stellers.gay" target="_blank">Drawpile Server</a> - Pretty sure I have anonymous
+				hosting disabled, but feel free to ask for a room!
+			</li>
+			<li>
+				<a href="https://fortuna.stellers.gay" target="_blank">Fortuna Character Creator</a> - A
+				character creator based on the one from the webcomic
+				<a href="https://cosmosdex.com/fortuna/p/0" rel="external" target="_blank">Fortuna</a>! Also
+				a super simple SVG
+				<a href="https://cosmosdex.com/cosmosdex/species/aftik" rel="external" target="_blank"
+					>Aftik</a
+				> avatar creator.
+			</li>
 		</ul>
 	</section>
 </article>

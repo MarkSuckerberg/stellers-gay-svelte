@@ -1,3 +1,5 @@
+import type { Component } from 'svelte';
+
 export interface BlogMeta {
 	title: string;
 	date: string;
@@ -8,7 +10,7 @@ export interface BlogMeta {
 	summary?: string;
 	externalUrl?: string;
 	authors?: {
-		name?: string;
+		name: string;
 		url?: string;
 		avatar?: string;
 	}[];
@@ -18,7 +20,19 @@ export function SlugFromImport(importString: string) {
 	return importString.split('/').at(-1)!.replace('.md', '');
 }
 
-export function GetAllPosts(desc = true) {
+export function GetPosts() {
+	const entries = Object.entries(
+		import.meta.glob<{ default: Component; metadata: BlogMeta }>('/src/routes/blog/*.md', {
+			eager: true
+		})
+	);
+
+	const other: typeof entries = entries.map(([path, data]) => [SlugFromImport(path), data]);
+
+	return Object.fromEntries(other);
+}
+
+export function GetPostMeta(desc = true) {
 	const pages = Object.entries(
 		import.meta.glob<Partial<BlogMeta> | undefined>('../routes/blog/*.md', {
 			eager: true,
@@ -45,7 +59,7 @@ export function GetAllPosts(desc = true) {
 		});
 	}
 
-	const values = filtered.filter(([title, meta]) => !meta.draft);
+	const values = filtered.filter(([, meta]) => !meta.draft);
 
 	return values;
 }

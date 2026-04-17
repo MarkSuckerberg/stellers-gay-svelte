@@ -1,21 +1,34 @@
 import { resolve } from '$app/paths';
-import { SlugFromImport, type BlogMeta } from '$lib/blog';
+import type { RouteId } from '$app/types';
+import { GetPostMeta, SlugFromImport, type BlogMeta } from '$lib/blog';
 
-const pages: Record<string, number | undefined> = {
-	'': 1,
-	media: 0.7,
-	projects: 0.6,
-	guestbook: 0.5,
-	blog: 0.5,
-	fun: 0.4,
-	snake: 0.2,
-	solitaire: 0.2
-};
+const pages = Object.entries({
+	'/': 1,
+	'/media': 0.7,
+	'/projects': 0.6,
+	'/guestbook': 0.5,
+	'/blog': 0.5,
+	'/fun': 0.4,
+	'/snake': 0.2,
+	'/solitaire': 0.2,
+	'/atom': 0.2,
+	'/rss': 0.2,
+	'/feed.json': 0.2
+} as Record<RouteId, number>) as [RouteId, number][];
 
-const posts = import.meta.glob<BlogMeta>('/src/routes/blog/*.md', {
-	eager: true,
-	import: 'metadata'
+const subdomains = Object.entries({
+	'https://social.stellers.gay/': 0.5,
+	'https://social.stellers.gay/mark': 0.3,
+	'https://chat.stellers.gay/': 0.3,
+	'https://auth.stellers.gay/': 0.2,
+	'https://hits.stellers.gay/': 0.2,
+	'https://git.stellers.gay/': 0.2,
+	'https://draw.stellers.gay/': 0.1
 });
+
+const posts = GetPostMeta();
+
+const lastMod = new Date(Date.now()).toISOString();
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
@@ -26,22 +39,35 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8" ?>
   xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
   xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
 >
-  ${Object.entries(pages)
+  ${pages
 		.map(
 			([page, priority]) => `
   <url>
-    <loc>${resolve('/')}${page}</loc>
-    <changefreq>daily</changefreq>
-    <priority>${priority || 0.2}</priority>
+    <loc>https://stellers.gay${page}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>${priority}</priority>
+	<lastmod>${lastMod}</lastmod>
   </url>
   `
 		)
 		.join('')}
-  ${Object.entries(posts)
+  ${subdomains
+		.map(
+			([page, priority]) => `
+  <url>
+    <loc>${page}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>${priority}</priority>
+	<lastmod>${lastMod}</lastmod>
+  </url>
+  `
+		)
+		.join('')}
+  ${posts
 		.map(
 			([page, meta]) => `
   <url>
-    <loc>${resolve('/blog/[slug]', { slug: SlugFromImport(page) })}</loc>
+    <loc>https://stellers.gay${resolve('/blog/[slug]', { slug: SlugFromImport(page) })}</loc>
     <changefreq>monthly</changefreq>
     <lastmod>${new Date(meta.updated || meta.date).toISOString()}</lastmod>
     <priority>0.2</priority>

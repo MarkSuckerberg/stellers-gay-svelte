@@ -3,6 +3,7 @@
 	import BlogTags from '$lib/components/blog-tags.svelte';
 
 	import '$lib/codeblocks.css';
+	import { resolve } from '$app/paths';
 
 	let { data } = $props();
 
@@ -12,32 +13,46 @@
 
 <svelte:head>
 	<meta name="keywords" content={data.tags?.join(', ')} />
-	<meta
-		name="author"
-		content={data.authors
-			? data.authors.map((author) => author.name || 'unknown')?.join(', ')
-			: 'Mark Suckerberg'}
-	/>
+
 	<meta name="description" content={data.summary} />
 
 	<meta property="og:title" content={data.title} />
 	<meta property="og:description" content={data.summary} />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://stellers.gay{page.url.pathname}" />
+	<meta property="og:image" content={data.imageUrl} />
+	<meta property="og:article:published_time" content={published.toISOString()} />
+	<meta property="og:article:modified_time" content={updated?.toISOString()} />
 
 	{#each data.tags as tag (tag)}
-		<meta property="article:tag" content={tag} />
+		<meta property="og:article:tag" content={tag} />
 	{/each}
 
-	<meta property="article:published_time" content={published.toISOString()} />
-	<meta property="article:modified_time" content={updated?.toISOString()} />
+	{#if data.authors}
+		{#each data.authors as author (author.name)}
+			<meta name="author" content={author.name} />
+			<meta property="og:article:author:username" content={author.name} />
+		{/each}
+	{:else}
+		<meta name="author" content="Mark Suckerbird" />
+		<meta property="og:article:author:username" content="Mark Suckerbird" />
+	{/if}
 
-	<meta property="og:image" content={data.imageUrl} />
+	<link
+		rel="alternate"
+		type="application/json+oembed"
+		href={resolve(`/blog/oembed?format=json&url=${page.url}`)}
+		title="oEmbed"
+	/>
 
 	<title>{data.title} - Steller's Gay</title>
 </svelte:head>
 
 <article>
+	<p>
+		<a href={resolve('/blog')}>Back to all posts</a>
+	</p>
+
 	<h2>{data.title}</h2>
 
 	<p style="font-style: italic;">

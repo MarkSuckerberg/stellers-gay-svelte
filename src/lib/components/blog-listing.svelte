@@ -12,7 +12,7 @@
 			<th>Title</th>
 			<th>Date</th>
 			<th>Author</th>
-			<th>Tags</th>
+			<th><a href={resolve('/blog/tag')}>Tags</a></th>
 		</tr>
 	</thead>
 	<tbody>
