@@ -25,7 +25,7 @@
 			return fmt.format(-Math.round(ago / DAY), 'days');
 		}
 
-		return date.toLocaleString();
+		return date.toLocaleDateString();
 	}
 </script>
 
