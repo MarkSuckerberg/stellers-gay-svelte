@@ -1,8 +1,11 @@
 ---
 title: Misadventures in VR, the beginnings
 date: 2026-4-16 11:00 PM CDT
+updated: 2024-4-18 4:45 PM CDT
 
 summary: Brief overview of my work-in-progress DIY VR headset attempt, specifically focusing on the original idea, my first attempt with google cardboard + PhoneVR, and my findings about gyrometers, accelerometers, and magnetometers and how they help determine orientation.
+
+imageUrl: /blogimg/markulusgrift1.webp
 
 tags:
   - computers
@@ -13,6 +16,8 @@ tags:
 Well, this is a long one, since I probably should have taken these notes down while I was actually in the thick of doing the project, rather than long after when I decided to start keeping a blog again. Basically, I was fed up and tired of everyone and their second-cousin seeming to have a VR headset, while as I'd never even experienced it before. So, I did the (un)reasonable thing and thought, "Well, VR is expensive, right? Why don't I just build my own?" And, well, that's pretty much what I did. I do not recommend following in my footsteps, as, A, the experience was certainly sub-par, and B, looking on eBay after the fact reveals that there's quite a lot of headsets that are available for far cheaper than the cost of all the stuff I used, even if you don't include the parts I just had lying around, like a bunch of wiimotes. Yes, that's right, wiimotes are involved.
 
 So, it all started when I saw [some YouTube video about someone making a VR headset out of CRT screens.](https://www.youtube.com/watch?v=rYPhC9lsVYs) I figured, if they can make one with that kind of handicap, why can't I make one as well? So, I looked into it, and found some initially promising results. There were two freely available open-source headsets on github, [Relativty](https://github.com/relativty/Relativty) (sic), and [HadesVR](https://github.com/HadesVR/HadesVR). The former, Relativty was more "complete" in the hardware department, but the driver for it was very heavily Windows-based, so I would have had to do a lot of rewriting (or use windows, but I don't want to do that, really). The latter, HadesVR, was missing a lot of the 3D print files for the hardware, but the driver was a lot closer to what I wanted. So, I followed the guides for both, getting lenses, a screen and controller board for it, and... attempted to print out the Relativty case. I'll admit, I struggle a lot with 3D printing, but that's a story for another day.
+
+![Google-cardboard reminiscent DIY VR headset with an added head strap and a breadboard attached to the top with a rubber band](/blogimg/markulusgrift1.webp)
 
 ### Google Cardboard
 
@@ -31,6 +36,8 @@ Funnily enough, this project helped me learn why the accelerometer is actually t
 So, I did the very Mark thing of buying the cheapest possible IMU (Inertial Measurement Unit) to use for orientation. Notably, the ones I got do not come with magnetometers, so to this day the direction I'm facing drifts at least a little bit and I have to recenter fairly often. Honestly, I'm not going to say I regret the purchase, since I'd rather spend ~$3 on something for a proof of concept to make sure it works than spend $20+ on something better that might end up being totally useless as the concept itself is flawed. I'll include the exact parts I used at the end or something, but again, do not reccomend them, really. I ended up using two IMUs and averaging them out to try and account for some of the random sensor noise, which seemed to do nicely, but again... they don't have magnetometers, nor would I need to do this with a better part.
 
 _Another note: yes, you could possibly use the accelerometer to estimate movement by continuously deriving the acceleration and applying the velocity. However, even a tiny bit of error would compound so much that it'd be unusuable. [This page](https://www.chrobotics.com/library/accel-position-velocity) explained it pretty well to me._
+
+[![Table listing the accumulated error after deriving velocity from acceleration over increasing periods of time](/blogimg/velocityandpositionerror.webp)](https://www.chrobotics.com/library/accel-position-velocity)
 
 ### Just shut up already
 

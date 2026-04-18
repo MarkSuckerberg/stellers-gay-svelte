@@ -49,10 +49,10 @@
 	<title>{data.title} - Steller's Gay</title>
 </svelte:head>
 
-<article>
-	<p>
+<article class="blog-article">
+	<nav>
 		<a href={resolve('/blog')}>Back to all posts</a>
-	</p>
+	</nav>
 
 	<h2>{data.title}</h2>
 
@@ -101,35 +101,43 @@
 		</p>
 	{/if}
 
-	<details>
-		<summary>Send Feedback</summary>
+	<aside>
+		<details>
+			<summary>Send Feedback</summary>
 
-		<p>
-			Currently just set up to send a message directly to me, but I might make a full-fledged
-			comments system eventually!
-		</p>
+			<p>
+				Currently just set up to send a message directly to me, but I might make a full-fledged
+				comments system eventually!
+			</p>
 
-		{#if form}
-			<p><b>Error submitting:</b> {form}</p>
-		{/if}
+			{#if form}
+				<p><b>Error submitting:</b> {form}</p>
+			{/if}
 
-		<form
-			action=""
-			method="POST"
-			style="display: grid; gap: 0.5em; grid-template-columns: min-content auto;"
-		>
-			<label for="name">Name:</label> <input type="text" name="name" id="names" maxlength="32" />
+			<form
+				action=""
+				method="POST"
+				style="display: grid; gap: 0.5em; grid-template-columns: min-content auto;"
+			>
+				<label for="name">Name:</label> <input type="text" name="name" id="names" maxlength="32" />
 
-			<label for="message">Message:</label>
-			<textarea name="message" id="message" maxlength="256" style="resize: vertical;"></textarea>
+				<label for="message">Message:</label>
+				<textarea name="message" id="message" maxlength="256" style="resize: vertical;"></textarea>
 
-			<div
-				class="cf-turnstile"
-				data-sitekey="0x4AAAAAABtXmAIQt-jTsWC6"
-				style="grid-column-end: span 2;"
-			></div>
+				<div
+					class="cf-turnstile"
+					data-sitekey="0x4AAAAAABtXmAIQt-jTsWC6"
+					style="grid-column-end: span 2;"
+				></div>
 
-			<button type="submit" style="grid-column-end: span 2;">Submit</button>
-		</form>
-	</details>
+				<button type="submit" style="grid-column-end: span 2;">Submit</button>
+			</form>
+		</details>
+	</aside>
 </article>
+
+<style>
+	:global(.blog-article img) {
+		max-width: 100%;
+	}
+</style>
