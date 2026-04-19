@@ -1,5 +1,5 @@
 ---
-title: My Times with Tunneling
+title: (OLD) My Times with Tunneling
 date: 2025-2-17
 
 summary: I explain the part of my server setup I hate most, the fact it's behind a NAT and I have to use tunneling to bypass it.

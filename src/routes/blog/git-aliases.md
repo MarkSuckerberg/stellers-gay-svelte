@@ -1,6 +1,6 @@
 ---
 title: Git Aliases (Repost)
-date: 2023-3-5
+date: 2023-3-5 6:56 PM CST
 externalUrl: https://tech.lgbt/@moony/109973614187292820
 
 summary: How to use multiple git 'accounts' on one computer.

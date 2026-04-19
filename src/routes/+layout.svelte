@@ -124,6 +124,15 @@
 		content="A portrait of an exceptionally fluffy and softly rendered anthropomorphic blue jay with their eyes happily shut."
 	/>
 
+	<link
+		rel="alternate"
+		href={resolve('/feed.json')}
+		type="application/feed+json"
+		title="JSON Feed"
+	/>
+	<link rel="alternate" href={resolve('/rss')} type="application/rss+xml" title="RSS Feed" />
+	<link rel="alternate" href={resolve('/atom')} type="application/atom+xml" title="ATOM Feed" />
+
 	<link rel="canonical" href="https://stellers.gay{page.url.pathname}" />
 </svelte:head>
 
@@ -164,8 +173,8 @@
 				target="_blank"
 				rel="me"
 				href="https://bsky.app/profile/stellers.gay"
-				accesskey="b"
-				title="I don't use this much!">My <u>B</u>luesky</a
+				accesskey="s"
+				title="I don't use this much!">My Blue<u>s</u>ky</a
 			>
 			<a
 				target="_blank"

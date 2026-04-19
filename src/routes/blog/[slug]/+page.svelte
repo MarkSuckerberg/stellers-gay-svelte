@@ -66,7 +66,9 @@
 		{#if updated}
 			<br />
 			<span>
-				Updated: <time datetime={updated.toISOString()}>{updated.toLocaleDateString()}</time>
+				Updated: <time datetime={updated.toISOString()} title={updated.toLocaleString()}
+					>{updated.toLocaleDateString()}</time
+				>
 			</span>
 		{/if}
 	</p>
@@ -139,5 +141,17 @@
 <style>
 	:global(.blog-article img) {
 		max-width: 100%;
+	}
+
+	:global(.blog-article blockquote) {
+		border: black 4px ridge;
+		border-top: white 4px ridge;
+		border-left: white 4px ridge;
+		background-color: #c0c0c0;
+
+		font-style: italic;
+
+		margin: 0;
+		padding: 0 0.5em;
 	}
 </style>

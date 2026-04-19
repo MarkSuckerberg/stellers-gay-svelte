@@ -1,5 +1,5 @@
 ---
-title: First Blog Post
+title: (OLD) First Blog Post
 date: 2025-2-14
 
 summary: Strange bird creature once again rambles into the void talking about how this blog will be used.
