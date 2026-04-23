@@ -5,14 +5,22 @@
 	import css from '$lib/assets/css.webp';
 	import yogstation from '$lib/assets/yogstation.gif';
 	import snapps from '$lib/assets/snapps.gif';
+	import honk from '$lib/assets/honk.webp';
 	import htmlbutton from '$lib/assets/htmlbutton.png';
 	import guestbook from '$lib/assets/signguest.gif';
 	import mitLicense from '$lib/assets/mit-license.webp';
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
-	import stamp17776 from '$lib/assets/17776.png';
+	import btn17776 from '$lib/assets/17776.gif';
 	import stellers from '$lib/assets/stellersbutton.webp';
+	import btn88x31 from '$lib/assets/88x31.gif';
+	import canineTools from '$lib/assets/caninetools.png';
+	import bigrat from '$lib/assets/bigratdotmonster.png';
+	import gay from '$lib/assets/gay.gif';
+	import crouton from '$lib/assets/crouton.png';
+	import ia from '$lib/assets/ia.webp';
+
 	import { asset, resolve } from '$app/paths';
 
 	import fontlicense from '$lib/assets/fonts/license.txt';
@@ -24,7 +32,7 @@
 
 <article>
 	<section>
-		<h2>Welcome to Steller's Gay!</h2>
+		<h1>Welcome to Steller's Gay!</h1>
 
 		<hr class="rainbow-divider" />
 
@@ -72,7 +80,7 @@
 			<img
 				src={stellers}
 				class="animated-button"
-				alt="An animated button showing a pixelated sleeping blue jay raptor-creatre. Credit to Rylie/RyeRice!"
+				alt="An animated button showing a pixelated sleeping blue jay raptor-creature. Credit to Rylie/RyeRice!"
 			/>
 		</a>
 
@@ -101,6 +109,18 @@
 				src={snapps}
 				class="animated-button"
 				alt="An animated pixel-art button showing the words &quot;snapps.dev&quot; with the letters in dev coloured cyan magenta and yellow respectively."
+			/>
+		</a>
+
+		<a
+			target="_blank"
+			href="https://honkbird.neocities.org/"
+			title="Wonderfully birdy fellow, you should go read all his comics IMMEDIATELY"
+			rel="external"
+			><img
+				src={honk}
+				class="animated-button"
+				alt="A flashing graphic advertising comics on Honkbird's site"
 			/>
 		</a>
 
@@ -163,6 +183,78 @@
 				alt="Button that says &quot;Sign my GUEST BOOK&quot; next to a book."
 			/>
 		</a>
+
+		<a
+			href="https://eightyeightthirty.one/#stellers.gay"
+			title="world wide web of cool people"
+			rel="external"
+			target="_blank"
+		>
+			<img
+				src={btn88x31}
+				class="animated-button"
+				alt="Italic text on a button that reads &quot;88x31&quot;"
+			/>
+		</a>
+
+		<a
+			href="https://canine.tools"
+			title="Lots of cool tools here. I use the searxng instance."
+			rel="external"
+			target="_blank"
+		>
+			<img
+				src={canineTools}
+				class="animated-button"
+				alt="canine.tools badge, which has a paw icon above text that has the domain name"
+			/>
+		</a>
+
+		<a
+			href="https://lgbtqia.wiki/wiki/Aegosexual"
+			title="Technically I'm aegosexual/homoromantic, and that's just part of the description, but c'mon. The button looks cool."
+			rel="external"
+			target="_blank"
+		>
+			<img src={gay} class="animated-button" alt="" />
+		</a>
+
+		<a href="https://bigrat.monster" title="big rat dot monster" rel="external" target="_blank">
+			<img
+				src={bigrat}
+				class="animated-button"
+				alt="A wonderfully large rat perched gracefully atop a denim-clad leg"
+			/>
+		</a>
+
+		<a href="https://crouton.net" title="crouton" rel="external" target="_blank">
+			<img src={crouton} class="animated-button" alt="A crouton" />
+		</a>
+
+		<a
+			href="https://www.sbnation.com/a/17776-football"
+			title="Something is very wrong."
+			rel="external"
+			target="_blank"
+		>
+			<img
+				src={btn17776}
+				class="animated-button"
+				alt="Button with the text &quot;1776&quot; with the green, red, and yellow silouhettes of three satellites around it."
+			/>
+		</a>
+
+		<a
+			href="https://archive.org"
+			title="The internet deserves to be preserved"
+			rel="external"
+			target="_blank"
+		>
+			<img
+				src={ia}
+				alt="Button with the internet archive logo, the text &quot;Preserve&quot; followed by animated text listing out content preserved by the Internet Archive."
+			/>
+		</a>
 	</p>
 
 	<p class="center">
@@ -188,14 +280,6 @@
 			alt="A stamp that has the sillouhette of a crow on the left, and a heart behind the word crows on the right."
 			title="cro :>"
 		/>
-		<a
-			href="https://www.sbnation.com/a/17776-football"
-			title="Something is very wrong."
-			rel="external"
-			target="_blank"
-		>
-			<img src={stamp17776} alt="" loading="lazy" decoding="async" class="stamp" />
-		</a>
 	</p>
 </article>
 
