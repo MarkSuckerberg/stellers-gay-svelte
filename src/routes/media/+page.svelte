@@ -36,7 +36,7 @@
 	<title>Media - Steller's Gay</title>
 </svelte:head>
 
-<h2>Media</h2>
+<h1>Media</h1>
 
 <hr class="rainbow-divider" />
 

@@ -369,6 +369,8 @@
 	<title>Solitaire - Steller's Gay</title>
 </svelte:head>
 
+<h1>Solitaire</h1>
+
 <p>
 	I was very tempted to make the suits bird species. Or maybe the ranks. An egg (ace) of blue jays.
 </p>

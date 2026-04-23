@@ -9,7 +9,7 @@
 	<title>Blog - Steller's Gay</title>
 </svelte:head>
 
-<h2>Blog pages</h2>
+<h1>Blog pages</h1>
 
 <hr class="win" />
 

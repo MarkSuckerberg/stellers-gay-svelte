@@ -35,6 +35,8 @@
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
+<h1>Guestbook</h1>
+
 <p>Please be nice!</p>
 
 <hr class="win" />

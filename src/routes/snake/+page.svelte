@@ -191,6 +191,8 @@
 	<button style="grid-row: 2; grid-column: 3;" onclick={() => setDir('E')}>E</button>
 </div>
 
+<h1>Snake</h1>
+
 <p>
 	It's just snake. You're the snake (you start on the tile with an "O"). Eat the... apples. The
 	"X"es. C'mon, you know the deal. Arrow keys don't seem to work for whatever reason.
