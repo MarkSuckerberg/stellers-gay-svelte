@@ -45,7 +45,7 @@
 	<nav
 		style="background-color: #000080; display: flex; justify-content: space-between; color: white;"
 	>
-		<h4 style="margin: 0 3px; padding: 0; font-weight: bold; align-content: center">{title}</h4>
+		<h3 style="margin: 0 3px; padding: 0; font-weight: bold; align-content: center">{title}</h3>
 		<button
 			onclick={() => {
 				dialog?.close();

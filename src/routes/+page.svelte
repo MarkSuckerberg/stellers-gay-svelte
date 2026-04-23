@@ -216,7 +216,11 @@
 			rel="external"
 			target="_blank"
 		>
-			<img src={gay} class="animated-button" alt="" />
+			<img
+				src={gay}
+				class="animated-button"
+				alt="A blue rectangle with a rainbow going diagonally from upper-right towards the bottom-left"
+			/>
 		</a>
 
 		<a href="https://bigrat.monster" title="big rat dot monster" rel="external" target="_blank">

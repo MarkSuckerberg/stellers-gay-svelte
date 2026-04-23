@@ -164,7 +164,7 @@
 
 		<nav id="nav" class="navcontainer topcontainer">
 			<a href={resolve('/')} accesskey="h"><u>H</u>ome</a>
-			<a href={resolve('/projects')} accesskey="p"><u>P</u>rojects</a>
+			<a href={resolve('/about')} accesskey="a"><u>A</u>bout</a>
 			<a href={resolve('/media')} accesskey="m"><u>M</u>edia</a>
 			<a href={resolve('/fun')} accesskey="u">F<u>u</u>n stuff</a>
 		</nav>
