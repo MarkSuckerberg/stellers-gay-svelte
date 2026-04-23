@@ -29,7 +29,13 @@ export async function verifyCaptcha(request: Request) {
 	}
 	const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
 		method: 'POST',
-		body: formData
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			response: code,
+			secret: TURNSTILE
+		})
 	});
 
 	const evaluation: TurnstileResponse = await response.json();

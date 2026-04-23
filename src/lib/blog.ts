@@ -20,6 +20,19 @@ export function SlugFromImport(importString: string) {
 	return importString.split('/').at(-1)!.replace('.md', '');
 }
 
+export function GetPostsRaw() {
+	return import.meta.glob<{ default: Component; metadata: BlogMeta }>('/src/routes/blog/*.md', {
+		eager: true
+	});
+}
+
+export function GetPostsMetaRaw() {
+	return import.meta.glob<Partial<BlogMeta> | undefined>('/src/routes/blog/*.md', {
+		eager: true,
+		import: 'metadata'
+	});
+}
+
 export function GetPosts() {
 	const entries = Object.entries(
 		import.meta.glob<{ default: Component; metadata: BlogMeta }>('/src/routes/blog/*.md', {

@@ -11,6 +11,7 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
+	import { building } from '$app/environment';
 
 	let { children } = $props();
 
@@ -150,7 +151,7 @@
 
 	<div class="gridcontainer" style:image-rendering="auto">
 		<header id="header">
-			<h1 class="text-3xl font-bold">Steller's Gay!</h1>
+			<h2 class="text-3xl font-bold" style="font-size: 2em">Steller's Gay!</h2>
 		</header>
 
 		<aside id="sidehead">
@@ -286,17 +287,20 @@
 			class="small-inset"
 			style="flex: 1; padding: 2px; text-overflow: ellipsis; overflow: hidden; text-wrap-mode: nowrap;"
 		>
-			{quotes[Math.floor(Math.random() * quotes.length)]}
+			{#if building}
+				&nbsp;<noscript>No javascript, no funny quote!</noscript>
+			{:else}
+				{quotes[Math.floor(Math.random() * quotes.length)]}
+			{/if}
 		</div>
 
-		<noscript class="small-inset" style="padding: 2px; width: 6em">Time to get Javascript.</noscript
-		>
-
-		{#if time}
-			<div class="small-inset" style="padding: 2px; width: 6em">
+		<div class="small-inset" style="padding: 2px; width: 6em">
+			{#if time && !building}
 				{new Date(time).toLocaleTimeString()}
-			</div>
-		{/if}
+			{:else}
+				&nbsp;<noscript>Time for JS.</noscript>
+			{/if}
+		</div>
 	</footer>
 </div>
 

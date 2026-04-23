@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { Vec2 } from '$lib/vec2';
 
 	const sizeX = 47;

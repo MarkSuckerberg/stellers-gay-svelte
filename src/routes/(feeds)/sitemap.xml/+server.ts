@@ -1,6 +1,9 @@
 import { resolve } from '$app/paths';
-import type { RouteId } from '$app/types';
+import type { Pathname } from '$app/types';
 import { GetPostMeta, SlugFromImport } from '$lib/blog';
+import { text } from '@sveltejs/kit';
+
+export const prerender = true;
 
 const pages = Object.entries({
 	'/': 1,
@@ -14,7 +17,7 @@ const pages = Object.entries({
 	'/atom': 0.2,
 	'/rss': 0.2,
 	'/feed.json': 0.2
-} as Record<RouteId, number>) as [RouteId, number][];
+} as Record<Pathname, number>) as [Pathname, number][];
 
 const subdomains = Object.entries({
 	'https://social.stellers.gay/': 0.5,
@@ -78,7 +81,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8" ?>
 </urlset>`;
 
 export async function GET() {
-	return new Response(sitemap, {
+	return text(sitemap, {
 		headers: {
 			'content-type': 'application/xml'
 		}

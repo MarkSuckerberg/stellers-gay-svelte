@@ -39,10 +39,10 @@
 				<td>
 					{#if meta.authors}
 						{#each meta.authors as author (author.name)}
-							<a href={author.url} rel="external">{author.name}</a>&nbsp;
+							<a href={author.url} rel="external">{author.name}</a>
 						{/each}
 					{:else}
-						Mark Suckerbird
+						Mark&nbsp;Suckerbird
 					{/if}
 				</td>
 				<td>

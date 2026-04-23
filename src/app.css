@@ -73,6 +73,15 @@ button:not(:disabled):active {
 	text-decoration: none;
 }
 
+input,
+textarea {
+	font-family: 'MS Sans Serif', 'Courier New', Courier, monospace;
+
+	border: white 2px solid;
+	border-top: #555 2px solid;
+	border-left: #555 2px solid;
+}
+
 .rainbow-divider {
 	background-image: url('/src/lib/assets/stripe3.webp');
 	background-repeat: repeat-x;

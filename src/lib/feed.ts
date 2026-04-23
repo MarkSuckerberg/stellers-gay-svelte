@@ -1,14 +1,16 @@
 import { asset, resolve } from '$app/paths';
 import { GetPosts } from '$lib/blog';
-import { json } from '@sveltejs/kit';
+import { json, text } from '@sveltejs/kit';
 import { render } from 'svelte/server';
 
 import markPFP from '$lib/assets/mrk2.webp?w=512&h=512&?enhanced';
 import jary from '$lib/assets/bluejarybeast.webp?w=512&h=512&?enhanced';
 import stellersButton from '$lib/assets/stellersbutton.gif';
+import { AlreadyHas, EtagHeaders } from './caching';
 
 const posts = GetPosts();
 
+const builtISO = new Date(Date.now()).toISOString();
 const builtRFC822 = new Date(Date.now()).toUTCString();
 
 const feed = {
@@ -106,7 +108,7 @@ const feedATOM = `<?xml version="1.0" encoding="UTF-8" ?>
   <link href="${feed.home_page_url}" />
   <link href="https://stellers.gay${resolve('/atom')}" rel="self" />
   <subtitle>${feed.description}</subtitle>
-  <updated>${new Date(Date.now()).toISOString()}</updated>
+  <updated>${builtISO}</updated>
   <language>${feed.language}</language>
   <author>
     <name>Mark Suckerbird</name>
@@ -115,8 +117,6 @@ const feedATOM = `<?xml version="1.0" encoding="UTF-8" ?>
 ${atomItems.join('\n')}
 </feed>`;
 
-let feedHash: string;
-
 export enum FeedType {
 	RSS,
 	ATOM,
@@ -124,50 +124,42 @@ export enum FeedType {
 	ANY
 }
 
-async function GetHash() {
-	return [
-		...new Uint8Array(await crypto.subtle.digest('sha-1', new TextEncoder().encode(feedATOM)))
-	]
-		.map((value) => value.toString(16).padStart(2, '0'))
-		.join('');
-}
-
 export async function getFeed(request: Request, type = FeedType.ANY) {
-	feedHash ??= await GetHash();
-	const noneMatch = request.headers.get('If-None-Match') == feedHash;
-	const modSince = request.headers.get('If-Modified-Since') == builtRFC822;
+	if (await AlreadyHas(request, feedATOM)) {
+		if (type === FeedType.ANY) {
+			return new Response(null, {
+				status: 304,
+				statusText: 'Not Modified',
+				headers: { Vary: 'Accept' }
+			});
+		}
 
-	if (noneMatch && modSince) {
 		return new Response(null, {
 			status: 304,
-			statusText: 'Not Modified',
-			headers: { Vary: 'Accept' }
+			statusText: 'Not Modified'
 		});
 	}
 
 	switch (type) {
 		case FeedType.RSS:
-			return new Response(feedRSS, {
+			return text(feedRSS, {
 				headers: {
 					'Content-Type': 'application/rss+xml',
-					'Last-Modified': builtRFC822,
-					Etag: feedHash
+					...(await EtagHeaders(feedATOM))
 				}
 			});
 		case FeedType.ATOM:
-			return new Response(feedATOM, {
+			return text(feedATOM, {
 				headers: {
 					'Content-Type': 'application/atom+xml',
-					'Last-Modified': builtRFC822,
-					Etag: feedHash
+					...(await EtagHeaders(feedATOM))
 				}
 			});
 		case FeedType.JSON:
 			return json(feed, {
 				headers: {
 					'Content-Type': 'application/feed+json',
-					'Last-Modified': builtRFC822,
-					Etag: feedHash
+					...(await EtagHeaders(feedATOM))
 				}
 			});
 
@@ -180,30 +172,27 @@ export async function getFeed(request: Request, type = FeedType.ANY) {
 		return json(feed, {
 			headers: {
 				'Content-Type': 'application/feed+json',
-				'Last-Modified': builtRFC822,
 				Vary: 'Accept',
-				Etag: feedHash
+				...(await EtagHeaders(feedATOM))
 			}
 		});
 	}
 
 	if (accept?.includes('application/atom+xml')) {
-		return new Response(feedATOM, {
+		return text(feedATOM, {
 			headers: {
 				'Content-Type': 'application/atom+xml',
-				'Last-Modified': builtRFC822,
 				Vary: 'Accept',
-				Etag: feedHash
+				...(await EtagHeaders(feedATOM))
 			}
 		});
 	}
 
-	return new Response(feedRSS, {
+	return text(feedRSS, {
 		headers: {
 			'Content-Type': 'application/rss+xml',
-			'Last-Modified': builtRFC822,
 			Vary: 'Accept',
-			Etag: feedHash
+			...(await EtagHeaders(feedATOM))
 		}
 	});
 }

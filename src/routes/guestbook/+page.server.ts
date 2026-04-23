@@ -4,6 +4,8 @@ import { verifyCaptcha } from '$lib/captcha';
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
 
+export const prerender = false;
+
 interface GuestbookMessage {
 	MessageId: number;
 	MessageUser: string;

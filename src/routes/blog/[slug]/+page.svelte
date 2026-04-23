@@ -4,6 +4,7 @@
 
 	import '$lib/codeblocks.css';
 	import { resolve } from '$app/paths';
+	import { enhance } from '$app/forms';
 
 	let { data, form } = $props();
 
@@ -54,7 +55,7 @@
 		<a href={resolve('/blog')}>Back to all posts</a>
 	</nav>
 
-	<h2>{data.title}</h2>
+	<h1>{data.title}</h1>
 
 	<p style="font-style: italic;">
 		<span>
@@ -120,8 +121,9 @@
 				action=""
 				method="POST"
 				style="display: grid; gap: 0.5em; grid-template-columns: min-content auto;"
+				use:enhance
 			>
-				<label for="name">Name:</label> <input type="text" name="name" id="names" maxlength="32" />
+				<label for="name">Name:</label> <input type="text" name="name" id="name" maxlength="32" />
 
 				<label for="message">Message:</label>
 				<textarea name="message" id="message" maxlength="256" style="resize: vertical;"></textarea>
