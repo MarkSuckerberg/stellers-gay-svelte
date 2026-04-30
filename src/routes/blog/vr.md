@@ -19,15 +19,15 @@ So, it all started when I saw [some YouTube video about someone making a VR head
 
 ![Google-cardboard reminiscent DIY VR headset with an added head strap and a breadboard attached to the top with a rubber band](/blogimg/markulusgrift1.webp)
 
-### Google Cardboard
+## Google Cardboard
 
 So I had this hardware ready, but I didn't have a proper case. "That's fine," I thought, "I'll just do something in the meantime, wasn't google cardboard a thing?" And, indeed, I was correct, it _was_ a thing. The resources and documentation is still readily available, and it's fairly well supported, but I do not believe that Google is doing any further development on it at this time. Which sucks, because honestly? I _DO_ recommend messing around with google cardboard if you've never tried VR and you've got a phone that supports it, get some lenses for cheap and use literal cardboard to make a case, and you'll get a limited, but still honestly very cool (in my opinion) experience. You can do all the native google cardboard things, which there seems to be a fair amount of, and you can even outright use it as a VR headset using [PhoneVR](https://github.com/PhoneVR-Developers/PhoneVR) with [ALVR](https://github.com/alvr-org/ALVR). However, I found it rather jittery on anything besides the default SteamVR idle environment, even when I hooked the phone up to my trusty USB-C to ethernet connector and used that. According to the graphs, it was still mostly a network issue, but if that's the case, then I can't really do better than ethernet. It might have been some issue with encoding/decoding, but in the end, it just wasn't good enough for me. My phone, a Google Pixel 5, also suffered pretty thoroughly from the screen-door effect, and in the end, I just moved on.
 
-### Making a VR headset from scratch is easy, right?
+## Making a VR headset from scratch is easy, right?
 
 No, I don't think so. I think I'm at least considered an "average person" in terms of technical skill (if not a fair bit more), and I do NOT recommend average people try anything like this unless they really want one hell of a project. So, PhoneVR. It's really convenient, honestly. You get orientation tracking that doesn't drift that much because your phone has a good gyroscope, accelerometer, and magnetometer.
 
-### Why knowing which direction is down is exceedingly useful
+## Why knowing which direction is down is exceedingly useful
 
 _Note: Don't trust what I say, do your own research on all this. I might and probably very likely have something wrong in this following section._
 
@@ -39,6 +39,6 @@ _Another note: yes, you could possibly use the accelerometer to estimate movemen
 
 [![Table listing the accumulated error after deriving velocity from acceleration over increasing periods of time](/blogimg/velocityandpositionerror.webp)](https://www.chrobotics.com/library/accel-position-velocity)
 
-### Just shut up already
+## Just shut up already
 
 Okay, okay. I'll give it a break for now. I'm gonna either update this, or just have multiple parts in the [vr](/blog/tag/vr) tag once I finish writing. The next parts I'm thinking of writing are probably... how I'm using microcontrollers (specifically Raspberry Pi Picos) for this project, my experiences with 3D printing that still make me want to rip my crestfeathers out, the actual driver itself and the lengths I had to go to bodge together a horrible solution that I'm still abominating, the magic of my position tracking (triangulation and wiimotes, oh my), or any other number of things. I want to write about other stuff, too, but I do also want to get all this out while it's fresh-ish in my head.

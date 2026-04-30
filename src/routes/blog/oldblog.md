@@ -15,7 +15,7 @@ tags:
 >
 > -MS
 
-### Update 2026
+## Update 2026
 
 Wow. This was a little while ago. Let it be known this is obviously inaccurate, this site isn't static anymore. Like, SvelteKit does actually build down into static files for the most part, but I use the integration with cloudflare workers to have a mostly-serverless site that just has a few small features that require some serverside integration (the guestbook, and the blog "comments" section... ah, honestly not a lot on second thought). I still do use markdown, though! You can view this very file [on github](https://github.com/MarkSuckerberg/stellers-gay-svelte/blob/master/src/routes/blog/oldblog.md), actually.
 
