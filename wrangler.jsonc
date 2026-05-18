@@ -11,6 +11,10 @@
 		{
 			"pattern": "stellers.gay",
 			"custom_domain": true
+		},
+		{
+			"pattern": "www.stellers.gay",
+			"custom_domain": true
 		}
 	],
 	"d1_databases": [

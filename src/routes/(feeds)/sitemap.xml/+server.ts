@@ -8,9 +8,10 @@ export const prerender = true;
 const pages = Object.entries({
 	'/': 1,
 	'/media': 0.7,
-	'/projects': 0.6,
+	'/about': 0.6,
 	'/guestbook': 0.5,
 	'/blog': 0.5,
+	'/blog/tag': 0.3,
 	'/fun': 0.4,
 	'/snake': 0.2,
 	'/solitaire': 0.2,
@@ -30,6 +31,7 @@ const subdomains = Object.entries({
 });
 
 const posts = GetPostMeta();
+const tags = Array.from(new Set(posts.flatMap(([, data]) => data.tags || [])));
 
 const lastMod = new Date(Date.now()).toISOString();
 
@@ -62,6 +64,18 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8" ?>
     <changefreq>weekly</changefreq>
     <priority>${priority}</priority>
 	<lastmod>${lastMod}</lastmod>
+  </url>
+  `
+		)
+		.join('')}
+  ${tags
+		.map(
+			(tag) => `
+  <url>
+    <loc>https://stellers.gay${resolve('/blog/tag/[tag]', { tag })}</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>${lastMod}</lastmod>
+    <priority>0.2</priority>
   </url>
   `
 		)

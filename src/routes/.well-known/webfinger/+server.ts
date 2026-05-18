@@ -31,7 +31,12 @@ export async function GET({ url, fetch, request }) {
 			href: PUBLIC_AUTH_ISSUER_URL
 		});
 
-		return json(data);
+		const headers = new Headers(result.headers);
+
+		headers.delete('Content-Encoding');
+		headers.delete('Content-Length');
+
+		return json(data, { headers });
 	} catch {
 		return await fetch(PUBLIC_AKKOMA_URL + '.well-known/webfinger' + url.search);
 	}

@@ -1,5 +1,74 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+
+	type DeviceEntry = string | { name: string; url: string };
+
+	interface Device {
+		name: string;
+		Model?: DeviceEntry;
+		CPU?: DeviceEntry;
+		GPU?: DeviceEntry;
+		RAM?: DeviceEntry;
+		Storage?: DeviceEntry;
+		Display?: DeviceEntry;
+		OS?: DeviceEntry;
+		DE?: DeviceEntry;
+
+		[entry: string]: DeviceEntry | undefined;
+	}
+
+	const devices: Device[] = [
+		{
+			name: 'Main PC',
+			CPU: {
+				name: 'Intel i7-7700 (4c/8t, 3.60GHz/4.20GHz boost)',
+				url: 'https://www.intel.com/content/www/us/en/products/sku/97128/intel-core-i77700-processor-8m-cache-up-to-4-20-ghz/specifications.html'
+			},
+			GPU: 'AMD RX 6750',
+			RAM: '32gb DDR4',
+			Storage: 'Intel 670p 1tb NVMe, 4tb HDD, 10tb HDD',
+			Display: '2x Dell E221HB FHD 60Hz 21.5", 1x ??? FHD 72Hz',
+			OS: 'Arch Linux + (unused) Windows 10 Dual Boot',
+			DE: 'KDE Plasma Wayland'
+		},
+		{
+			name: 'Laptop',
+			Model: 'Dell XPS 15 9520',
+			CPU: {
+				name: 'Intel i9-12900HK (14c/20t, 6p/8e, 3.80GHz eCore/5.00GHz pCore)',
+				url: 'https://www.intel.com/content/www/us/en/products/sku/132215/intel-core-i912900hk-processor-24m-cache-up-to-5-00-ghz/specifications.html'
+			},
+			GPU: 'NVIDIA GeForce RTX 3050 Ti Mobile',
+			RAM: '64GB DDR5',
+			Storage: 'SK hynix 1tb NVMe',
+			Display: '??? FHD 60Hz',
+			OS: 'Arch Linux',
+			DE: 'KDE Plasma Wayland'
+		},
+		{
+			name: 'Server',
+			CPU: 'Intel Xeon W3550 (4c/8t, 3.06GHz/3.33GHz boost)',
+			RAM: '24GB DDR3',
+			Storage: '2x 2TB HDD, 2x 500GB HDD, 1x 256GB SSD',
+			OS: 'Proxmox VE'
+		},
+		{
+			name: 'Phone',
+			Model: 'Google Pixel 5',
+			RAM: '8GB',
+			Storage: '128GB eMMC',
+			Display: '1080x2340 90Hz 6"',
+			'3.5mm Jack': 'no :(',
+			OS: 'Android 14'
+		},
+		{
+			name: 'VR Headset',
+			Model: 'Markulus Grift v0',
+			Display: '1440x2560 72Hz 5.5"',
+			Tracking: '2x MPU-6050 Rot, PixArt IR Pos',
+			Driver: 'Monado Custom'
+		}
+	];
 </script>
 
 <svelte:head>
@@ -10,8 +79,8 @@
 	<h1>About Me</h1>
 
 	<p>
-		Well, I already explained most of who I am on my <a href={resolve('/')}>homepage</a>, but this
-		is for the probably less-interesting details.
+		Well, I already explained most of who I am on my <a href={resolve('/')}>homepage</a>, but
+		this is for the probably less-interesting details.
 	</p>
 
 	<section id="projects">
@@ -42,8 +111,8 @@
 				<a href="https://cosmosdex.com">fortuna</a> ttrpg, SvelteKit/TS
 			</li>
 			<li>
-				<a href="https://github.com/MarkSuckerberg/stellers-gay-svelte">Steller's Gay</a>- this
-				site! how amazing! Sveltekit/TS
+				<a href="https://github.com/MarkSuckerberg/stellers-gay-svelte">Steller's Gay</a>-
+				this site! how amazing! Sveltekit/TS
 			</li>
 			<li>
 				<a href="https://github.com/MarkSuckerberg/fss">FA-RSS</a>
@@ -84,183 +153,34 @@
 		<h2>Specs</h2>
 
 		<ul>
-			<li>
-				<details>
-					<summary>Main PC</summary>
-
-					<table>
-						<tbody>
-							<tr>
-								<th>CPU</th>
-								<td>
-									<a
-										href="https://www.intel.com/content/www/us/en/products/sku/97128/intel-core-i77700-processor-8m-cache-up-to-4-20-ghz/specifications.html"
-									>
-										Intel i7-7700 (4c/8t, 3.60GHz/4.20GHz boost)
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<th>GPU</th>
-								<td>AMD RX 6750-XT</td>
-							</tr>
-							<tr>
-								<th>RAM</th>
-								<td>32gb DDR4</td>
-							</tr>
-							<tr>
-								<th>Storage</th>
-								<td>Intel 670p 1tb NVMe, 4tb HDD, 10tb HDD</td>
-							</tr>
-							<tr>
-								<th>Display</th>
-								<td>2x Dell E221HB FHD 60Hz 21.5", 1x ??? FHD 72Hz</td>
-							</tr>
-							<tr>
-								<th>OS</th>
-								<td>Arch Linux + (unused) Windows 10 Dual Boot</td>
-							</tr>
-							<tr>
-								<th>DE</th>
-								<td>KDE Plasma Wayland</td>
-							</tr>
-						</tbody>
-					</table>
-				</details>
-			</li>
-			<li>
-				<details>
-					<summary>Laptop</summary>
-
-					<table>
-						<tbody>
-							<tr>
-								<th>Model</th>
-								<td>Dell XPS 15 9520</td>
-							</tr>
-							<tr>
-								<th>CPU</th>
-								<td>
-									<a
-										href="https://www.intel.com/content/www/us/en/products/sku/132215/intel-core-i912900hk-processor-24m-cache-up-to-5-00-ghz/specifications.html"
-									>
-										Intel i9-12900HK (14c/20t, 6p/8e, 3.80GHz eCore/5.00GHz pCore)
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<th>GPU</th>
-								<td>NVIDIA GeForce RTX 3050 Ti Mobile</td>
-							</tr>
-							<tr>
-								<th>RAM</th>
-								<td>64GB DDR5</td>
-							</tr>
-							<tr>
-								<th>Storage</th>
-								<td>SK hynix 1tb NVMe</td>
-							</tr>
-							<tr>
-								<th>Display</th>
-								<td>??? FHD 60Hz</td>
-							</tr>
-							<tr>
-								<th>OS</th>
-								<td>Arch Linux</td>
-							</tr>
-							<tr>
-								<th>DE</th>
-								<td>KDE Plasma Wayland</td>
-							</tr>
-						</tbody>
-					</table>
-				</details>
-			</li>
-			<li>
-				<details>
-					<summary>Server</summary>
-
-					<table>
-						<tbody>
-							<tr>
-								<th>CPU</th>
-								<td>Intel Xeon W3550 (4c/8t, 3.06GHz/3.33GHz boost)</td>
-							</tr>
-							<tr>
-								<th>RAM</th>
-								<td>24GB DDR3</td>
-							</tr>
-							<tr>
-								<th>Storage</th>
-								<td>2x 2TB HDD, 2x 500GB HDD, 1x 256GB SSD</td>
-							</tr>
-							<tr>
-								<th>OS</th>
-								<td>Proxmox VE</td>
-							</tr>
-						</tbody>
-					</table>
-				</details>
-			</li>
-			<li>
-				<details>
-					<summary>Phone</summary>
-
-					<table>
-						<tbody>
-							<tr>
-								<th>Model</th>
-								<td>Google Pixel 5</td>
-							</tr>
-							<tr>
-								<th>RAM</th>
-								<td>8GB</td>
-							</tr>
-							<tr>
-								<th>Storage</th>
-								<td>128GB</td>
-							</tr>
-							<tr>
-								<th>Screen</th>
-								<td>1080x2340 90Hz 6"</td>
-							</tr>
-							<tr>
-								<th>3.5mm Jack</th>
-								<td>no :(</td>
-							</tr>
-							<tr>
-								<th>OS</th>
-								<td>Android 14</td>
-							</tr>
-						</tbody>
-					</table>
-				</details>
-			</li>
-			<li>
-				<details>
-					<summary>VR Headset</summary>
-					<table>
-						<tbody>
-							<tr>
-								<th>Model</th>
-								<td>Markulus Grift v0</td>
-							</tr>
-							<tr>
-								<th>Display</th>
-								<td>1440x2560 72Hz 5.5"</td>
-							</tr>
-							<tr>
-								<th>Tracking</th>
-								<td>MPU-6050 Rot, PixArt IR Pos</td>
-							</tr>
-							<tr>
-								<th>Driver</th>
-								<td>Monado Custom</td>
-							</tr>
-						</tbody>
-					</table>
-				</details>
-			</li>
+			{#each devices as device (device.name)}
+				<li>
+					<details>
+						<summary>{device.name}</summary>
+						<table>
+							<tbody>
+								{#each Object.entries(device) as [value, entry] (value)}
+									{#if value == 'name'}{:else if typeof entry === 'string'}
+										<tr>
+											<th>{value}</th>
+											<td>{entry}</td>
+										</tr>
+									{:else if entry != undefined}
+										<tr>
+											<th>{value}</th>
+											<td
+												><a href={entry.url} rel="external" target="_blank"
+													>{entry.name}</a
+												></td
+											>
+										</tr>
+									{/if}
+								{/each}
+							</tbody>
+						</table>
+					</details>
+				</li>
+			{/each}
 		</ul>
 	</section>
 
@@ -284,7 +204,7 @@
 		padding-right: 0.5em;
 	}
 
-	tr:nth-child(even) {
+	tr:nth-child(odd) {
 		background-color: #c0c0c0;
 	}
 </style>

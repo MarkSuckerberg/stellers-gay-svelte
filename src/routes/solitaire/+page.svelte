@@ -57,18 +57,18 @@
 	}
 
 	let deckIndex = $state(0);
-	let deckCard = $derived(deck.at(deckIndex));
+	let deckCard = $derived(deckIndex > 0 ? deck[deckIndex] : undefined);
 
 	function nextCard() {
 		selected = undefined;
 
-		if (deck.length == 0) {
+		if (deck.length <= 0) {
 			deckIndex = 0;
 			deckCard = undefined;
 			return;
 		}
 
-		deckIndex = (deckIndex + 1) % deck.length;
+		deckIndex = Math.max((deckIndex + 1) % deck.length, 0);
 
 		moves++;
 	}
@@ -240,15 +240,6 @@
 			return;
 		}
 
-		if (finalTop[deckCard.suit] == undefined) {
-			if (deckCard.rank == Rank.Ace) {
-				clickDeck();
-				clickFinal(deckCard.suit);
-				return true;
-			}
-			return;
-		}
-
 		if (canMoveOntoFinal(deckCard)) {
 			clickDeck();
 			clickFinal(deckCard.suit);
@@ -372,7 +363,8 @@
 <h1>Solitaire</h1>
 
 <p>
-	I was very tempted to make the suits bird species. Or maybe the ranks. An egg (ace) of blue jays.
+	I was very tempted to make the suits bird species. Or maybe the ranks. An egg (ace) of blue
+	jays.
 </p>
 
 <div style="background-color: #008000; padding: 1em; color: white" class="inset">
@@ -395,7 +387,8 @@
 		<div style="width: 50%; display: flex; gap: 1em">
 			<div style="width: 25%">
 				{#if deckCard != undefined}
-					<CardButton card={deckCard} disabled={false} onclick={() => clickDeck()}></CardButton>
+					<CardButton card={deckCard} disabled={false} onclick={() => clickDeck()}
+					></CardButton>
 				{/if}
 			</div>
 			<button
@@ -413,7 +406,8 @@
 				{#if finalTop[suit] != undefined}
 					<CardButton
 						card={finalTop[suit]}
-						disabled={selected && !(canMoveOntoFinal(selected) && selected.suit == suit)}
+						disabled={selected &&
+							!(canMoveOntoFinal(selected) && selected.suit == suit)}
 						onclick={() => clickFinal(suit)}
 					/>
 				{:else}
@@ -436,16 +430,21 @@
 		{#each columns as column, col (col)}
 			<div>
 				{#if column.length == 0}
-					<CardButton disabled={true} onclick={() => clickEmpty(col)}>- Empty -</CardButton>
+					<CardButton disabled={true} onclick={() => clickEmpty(col)}
+						>- Empty -</CardButton
+					>
 				{/if}
 				{#each column as card, pos (pos)}
 					{#if card.revealed}
 						{#if selected == card}
-							<CardButton {card} disabled={false} onclick={() => clickCard(col, pos)}></CardButton>
+							<CardButton {card} disabled={false} onclick={() => clickCard(col, pos)}
+							></CardButton>
 						{:else if selected && (!canMoveOnto(selected, card) || pos != column.length - 1)}
-							<CardButton {card} disabled={true} onclick={() => clickCard(col, pos)}></CardButton>
+							<CardButton {card} disabled={true} onclick={() => clickCard(col, pos)}
+							></CardButton>
 						{:else}
-							<CardButton {card} disabled={false} onclick={() => clickCard(col, pos)}></CardButton>
+							<CardButton {card} disabled={false} onclick={() => clickCard(col, pos)}
+							></CardButton>
 						{/if}
 					{:else}
 						<CardButton disabled>Card</CardButton>

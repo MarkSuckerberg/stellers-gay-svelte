@@ -57,7 +57,9 @@
 		title="A bird in the hand"
 		alt="An anthropomorphic blue jay standing with one talon-hand on their hip as as a Northern Cardinal, a red bird, perches on their other. The blue jay is saying I just think they're neat, while the cardinal is going Chorp."
 	>
-		<a href="https://www.furaffinity.net/view/54899236/" title="Art link">Wonderful MSPaint art</a>
+		<a href="https://www.furaffinity.net/view/54899236/" title="Art link"
+			>Wonderful MSPaint art</a
+		>
 		by
 		<a href="https://furaffinity.net/user/returnaddress" title="Creator link">ReturnAddress</a>!
 	</GalleryButton>
@@ -89,8 +91,9 @@
 		alt="A large raptorlike bluejay-patterned creature laying down, asleep."
 	>
 		The blue jay raptor gryphon snaggle-toothed creature thing that's the mascot of pretty much
-		everything me. The bluejary beast, by <a href="https://honkbird.tumblr.com" title="Creator link"
-			>Honkbird</a
+		everything me. The bluejary beast, by <a
+			href="https://honkbird.tumblr.com"
+			title="Creator link">Honkbird</a
 		>!
 	</GalleryButton>
 	<GalleryButton
@@ -139,15 +142,26 @@
 		title="Front facing Mark"
 		alt="An angry looking front-facing blue jay staring deeply at the viewer."
 	>
-		Stares into your soul and says gwah over and over. A very accurate drawover by Chubbygummibear.
+		Stares into your soul and says gwah over and over. A very accurate drawover by
+		Chubbygummibear.
 	</GalleryButton>
-	<GalleryButton src={enhanced_tired} original={tired} title="Tired">
+	<GalleryButton
+		src={enhanced_tired}
+		original={tired}
+		title="Tired"
+		alt="Anthropomorphic northern cardinal wearing a sleeveless hoodie and puce-coloured tie and striped thigh highs sitting on a comfy chair on the moon"
+	>
 		You know how it is sometimes. Rare northern cardinal mark by <a
 			href="https://honkbird.tumblr.com"
 			title="Creator link">Honkbird</a
 		>.
 	</GalleryButton>
-	<GalleryButton src={enhanced_supermark} original={supermark} title="Super Mark">
+	<GalleryButton
+		src={enhanced_supermark}
+		original={supermark}
+		title="Super Mark"
+		alt="Super animal royale-esque blue jay wielding a sword and green cape, with a brown bandolier and boots"
+	>
 		The very first drawing of my bird from ages ago, by <a
 			href="https://honkbird.tumblr.com"
 			title="Creator link">Honkbird</a

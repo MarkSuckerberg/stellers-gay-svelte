@@ -17,7 +17,7 @@
 	<a href={resolve('/blog/tag')}>Back to all tags</a>
 </p>
 
-<h2>Tagged: {page.params.tag}</h2>
+<h1>Tagged: {page.params.tag}</h1>
 
 <hr class="win" />
 

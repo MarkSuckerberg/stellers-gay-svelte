@@ -12,7 +12,7 @@
 	<a href={resolve('/blog')}>Back to all posts</a>
 </p>
 
-<h2>Tag listing</h2>
+<h1>Tag listing</h1>
 
 <hr class="win" />
 
