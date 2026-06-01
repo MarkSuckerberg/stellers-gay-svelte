@@ -5,5 +5,5 @@
 </script>
 
 {#each tags as tag (tag)}
-	<a href={resolve('/blog/tag/[tag]', { tag })}>{tag}</a>&nbsp;
+	<a href={resolve('/blog/tag/[tag]', { tag })} rel="tag">{tag}</a>&nbsp;
 {/each}
