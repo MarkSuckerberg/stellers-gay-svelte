@@ -1,7 +1,7 @@
 ---
 title: Site Updates
 date: 2026-02-09
-updated: 2026-07-01
+updated: 2026-07-01 6:12 PM CDT
 
 summary: Where I put site updates.
 
@@ -9,6 +9,10 @@ tags:
   - hosting
   - projects
 ---
+
+**Update 2026-07-01 part 2:** Added a little weather readout to the [fun](/fun) page that specifically shows
+the weather I'm currently experiencing. Since I thought It'd be funny. Also a box with the HTML code for
+using my 88x31 button. Also moves the games underneath "/fun" and fixes some Content-type headers.
 
 **Update 2026-07-01:** Added a link to [my new XMPP instance](xmpp:mark@stellers.gay)!
 I'm running ejabberd and as usual have it hooked into my central identity provider, so

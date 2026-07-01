@@ -1,32 +1,7 @@
 <script lang="ts">
 	let { data, form } = $props();
 	import { enhance } from '$app/forms';
-
-	const SEC = 1000;
-	const MIN = 60 * SEC;
-	const HOUR = 60 * MIN;
-	const DAY = 24 * HOUR;
-	const WEEK = 7 * DAY;
-
-	function formatDBDate(input: string) {
-		const date = new Date(input);
-		const ago = Date.now() - date.valueOf();
-		const fmt = new Intl.RelativeTimeFormat(undefined, {
-			style: 'narrow'
-		});
-
-		if (ago < HOUR) {
-			return fmt.format(-Math.round(ago / MIN), 'minutes');
-		}
-		if (ago < DAY) {
-			return fmt.format(-Math.round(ago / HOUR), 'hours');
-		}
-		if (ago < WEEK) {
-			return fmt.format(-Math.round(ago / DAY), 'days');
-		}
-
-		return date.toLocaleDateString();
-	}
+	import { relativeDate } from '$lib/time.js';
 </script>
 
 <svelte:head>
@@ -53,7 +28,7 @@
 		{#each data.messages as message (message.MessageId)}
 			<tr>
 				<td class="details" title={new Date(message.MessageTime).toString()}>
-					<time datetime={message.MessageTime}>{formatDBDate(message.MessageTime)}</time>
+					<time datetime={message.MessageTime}>{relativeDate(message.MessageTime)}</time>
 				</td>
 				<td class="details">{message.MessageUser}</td>
 				<td class="message">{message.MessageText}</td>

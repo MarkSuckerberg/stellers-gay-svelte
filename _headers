@@ -9,4 +9,18 @@
 /.well-known/host-meta.json
    Content-Type: application/xrd+json
    Access-Control-Allow-Origin: *
+/.well-known/matrix/client
+  Content-Type: application/json
+   Access-Control-Allow-Origin: *
+/.well-known/matrix/server
+  Content-Type: application/json
+   Access-Control-Allow-Origin: *
 
+/rss
+   Content-Type: 'application/rss+xml'
+/atom
+   Content-Type: 'application/atom+xml'
+/feed.json
+   Content-Type: 'application/feed+json'
+/sitemap.xml
+   Content-Type: 'application/xml'

@@ -13,8 +13,9 @@ const pages = Object.entries({
 	'/blog': 0.5,
 	'/blog/tag': 0.3,
 	'/fun': 0.4,
-	'/snake': 0.2,
-	'/solitaire': 0.2,
+	'/fun/snake': 0.2,
+	'/fun/solitaire': 0.2,
+	'/fun/gameoflife': 0.2,
 	'/atom': 0.2,
 	'/rss': 0.2,
 	'/feed.json': 0.2

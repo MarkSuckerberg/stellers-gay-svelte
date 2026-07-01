@@ -1,5 +1,8 @@
 <script>
 	import { asset, resolve } from '$app/paths';
+	import { relativeDate as relativeTime } from '$lib/time.js';
+
+	let { data } = $props();
 
 	const buttonCode = `<a href="https://stellers.gay" title="Button for this site, lovingly sprited by Ryerice!">
 	<img src="https://stellers.gay{asset('/assets/stellersbutton.gif')}"
@@ -27,10 +30,11 @@
 
 	<ul>
 		<li>
-			<a href={resolve('/snake')}>Snake!</a> - It's snake. Real cutting edge Nokia 6110 type stuff.
+			<a href={resolve('/fun/snake')}>Snake!</a> - It's snake. Real cutting edge Nokia 6110 type
+			stuff.
 		</li>
 		<li>
-			<a href={resolve('/solitaire')}>Solitaire</a> - I think it's specifically called Klondike
+			<a href={resolve('/fun/solitaire')}>Solitaire</a> - I think it's specifically called Klondike
 			or something. Kinda breaks when you exhaust the talon. Save system does work, at least.
 		</li>
 		<li>
@@ -61,6 +65,37 @@
 			definition of "fun" here.
 		</li>
 	</ul>
+
+	<hr class="paperclip-divider" />
+
+	<p>
+		It's currently {new Date(Date.now()).toLocaleTimeString(undefined, {
+			timeZone: 'America/Chicago',
+			timeStyle: 'short'
+		})} where I'm at!
+	</p>
+
+	<p><b>The weather for me {data.day ? 'today' : 'tonight'} is:</b> {data.weatherNow}.</p>
+
+	<p><b>The weather for me this week will be:</b> {data.weatherFuture}.</p>
+
+	<p>
+		Weather data provided by <a href="https://open-meteo.com/">open-meteo</a>! Last updated:
+		{#if data.error}
+			<span
+				style="text-decoration: dashed underline;"
+				title={new Date(data.updated).toLocaleString() +
+					', updates every 15m, error: ' +
+					data.error}>error</span
+			>
+		{:else}
+			<span
+				style="text-decoration: dashed underline;"
+				title={new Date(data.updated).toLocaleString() + ', updates every 15m'}
+				>{relativeTime(data.updated)}</span
+			>
+		{/if}
+	</p>
 
 	<hr class="rainbow-divider" />
 
