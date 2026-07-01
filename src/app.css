@@ -123,35 +123,35 @@ textarea {
 
 @font-face {
 	font-family: 'Ari w95';
-	src: url('/src/lib/assets/fonts/ari-w9500-display.otf.woff2') format('woff2');
+	src: url('/assets/fonts/ari-w9500-display.otf.woff2') format('woff2');
 	font-style: normal;
 	font-weight: bolder;
 }
 
 @font-face {
 	font-family: 'Ari w95';
-	src: url('/src/lib/assets/fonts/ari-w9500-bold.otf.woff2') format('woff2');
+	src: url('/assets/fonts/ari-w9500-bold.otf.woff2') format('woff2');
 	font-style: normal;
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Ari w95';
-	src: url('/src/lib/assets/fonts/ari-w9500.otf.woff2') format('woff2');
+	src: url('/assets/fonts/ari-w9500.otf.woff2') format('woff2');
 	font-style: normal;
 	font-weight: normal;
 }
 
 @font-face {
 	font-family: 'MS Sans Serif';
-	src: url('/src/lib/assets/fonts/AriW9500.ttf');
+	src: url('/assets/fonts/AriW9500.ttf');
 	font-style: normal;
 	font-weight: normal;
 }
 
 @font-face {
 	font-family: 'MS Sans Serif';
-	src: url('/src/lib/assets/fonts/AriW9500Bold.ttf');
+	src: url('/assets/fonts/AriW9500Bold.ttf');
 	font-style: normal;
 	font-weight: bold;
 }

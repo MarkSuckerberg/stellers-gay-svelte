@@ -45,6 +45,8 @@ export function GetPosts() {
 	return Object.fromEntries(other);
 }
 
+export const posts = GetPosts();
+
 export function GetPostMeta(desc = true) {
 	const pages = Object.entries(
 		import.meta.glob<Partial<BlogMeta> | undefined>('../routes/blog/*.md', {
@@ -61,13 +63,15 @@ export function GetPostMeta(desc = true) {
 	if (desc) {
 		filtered.sort((a, b) => {
 			return (
-				new Date(b[1].date).getTime() - new Date(a[1].date).getTime() || b[0].localeCompare(a[0])
+				new Date(b[1].date).getTime() - new Date(a[1].date).getTime() ||
+				b[0].localeCompare(a[0])
 			);
 		});
 	} else {
 		filtered.sort((a, b) => {
 			return (
-				new Date(a[1].title).getTime() - new Date(b[1].date).getTime() || a[0].localeCompare(b[0])
+				new Date(a[1].title).getTime() - new Date(b[1].date).getTime() ||
+				a[0].localeCompare(b[0])
 			);
 		});
 	}

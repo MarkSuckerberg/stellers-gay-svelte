@@ -1,5 +1,11 @@
 <script>
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
+
+	const buttonCode = `<a href="https://stellers.gay" title="Button for this site, lovingly sprited by Ryerice!">
+	<img src="https://stellers.gay{asset('/assets/stellersbutton.gif')}"
+		style="height: 31px; width: 88px;"
+		alt="An animated button showing a pixelated sleeping blue jay raptor-creature. Credit to Rylie/RyeRice!" />
+</a>`;
 </script>
 
 <svelte:head>
@@ -55,4 +61,23 @@
 			definition of "fun" here.
 		</li>
 	</ul>
+
+	<hr class="rainbow-divider" />
+
+	<p>Add my button to your site! Click the code to copy it.</p>
+
+	<textarea
+		class="inset"
+		style="overflow: clip; field-sizing: content; background: #fff;"
+		onfocus={(ev) => ev.currentTarget.select()}
+		onclick={() => navigator.clipboard.writeText(buttonCode)}>{buttonCode}</textarea
+	>
+
+	<a href="https://stellers.gay" title="Button for this site, lovingly sprited by Ryerice!">
+		<img
+			src="https://stellers.gay{asset('/assets/stellersbutton.gif')}"
+			style="height: 31px; width: 88px;"
+			alt="An animated button showing a pixelated sleeping blue jay raptor-creature. Credit to Rylie/RyeRice!"
+		/>
+	</a>
 </article>

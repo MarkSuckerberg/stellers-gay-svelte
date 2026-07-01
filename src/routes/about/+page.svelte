@@ -69,6 +69,27 @@
 			Driver: 'Monado Custom'
 		}
 	];
+
+	const pgpkey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: User ID:	Mark Suckerberg <mark@stellers.gay>
+Comment: Fingerprint:	DB51 39CE F82E C631 5EBC  4C12 791A DCBA AA71 CA93
+Comment: Valid from:	7/1/26 12:08 PM
+Comment: Valid until:	7/1/29 12:00 PM
+
+mDMEakVJexYJKwYBBAHaRw8BAQdA5GcBAgWmY707Yrf4GgObi+B6PcvgqU4OAV/8
+0cWw9hS0I01hcmsgU3Vja2VyYmVyZyA8bWFya0BzdGVsbGVycy5nYXk+iJYEExYK
+AD4WIQTbUTnO+C7GMV68TBJ5Gty6qnHKkwUCakVJewIbAwUJBaTqFQULCQgHAgYV
+CgkICwIEFgIDAQIeAQIXgAAKCRB5Gty6qnHKk2+pAP9Q9Q3468eirHLh5utIoZMS
+QOEjTdnbT26Bg+0uzsmkpAD/bDb4eCgopxBcs3NYs+YVR7xdgx8nhyqzleFSCKgw
+nQ+IdQQQFgoAHRYhBP3R82Yb3tdLTRT6Db1LvP49g9yABQJqRUoIAAoJEL1LvP49
+g9yAFo8A/3tmWQxS2e45NlrjJKf/xUpsUE8rJZzlc2zVxlEPBV+EAP95dk1SqkCK
+jil1tl+qSzPz1XHSzdnoRqgX+P948U7SB7g4BGpFSXsSCisGAQQBl1UBBQEBB0BR
+iIYSGbzaQdHPExn6tBaH1DJ3oYcgZyRUOB92YXJoLQMBCAeIfgQYFgoAJhYhBNtR
+Oc74LsYxXrxMEnka3LqqccqTBQJqRUl7AhsMBQkFpOoVAAoJEHka3LqqccqTeisA
+/0i/9WF+v//jREMcFvSyTv7+JkAwc2BzK4xnY3dgFrisAQD05PnGVjYPE55SFAdG
+xLgjt5D1mKjPxv4Mu/ecaUzBAA==
+=rfCe
+-----END PGP PUBLIC KEY BLOCK-----`;
 </script>
 
 <svelte:head>
@@ -152,11 +173,11 @@
 	<section id="specs">
 		<h2>Specs</h2>
 
-		<ul>
+		<ul style="list-style: none; padding-left: 1.5em;">
 			{#each devices as device (device.name)}
 				<li>
 					<details>
-						<summary>{device.name}</summary>
+						<summary style="cursor: pointer;">{device.name}</summary>
 						<table>
 							<tbody>
 								{#each Object.entries(device) as [value, entry] (value)}
@@ -184,15 +205,35 @@
 		</ul>
 	</section>
 
-	<!--<hr />
+	<hr class="chain-divider" />
 
 	<section id="id">
 		<h2>Identity</h2>
 
-		<details>
-			<summary>GPG Key</summary>
-		</details>
-	</section>-->
+		<ul>
+			<li>ActivityPub: social.stellers.gay/mark</li>
+			<li>Bluesky: mark@stellers.gay</li>
+			<li>Discord: @marksuckerberg</li>
+			<li>Email: mark@stellers.gay</li>
+			<li>Github: marksuckerberg</li>
+			<li>Matrix: @mark:stellers.gay</li>
+			<li>Twitter: haha as if</li>
+			<li>Tumblr: tumblr.suckerberg.gay</li>
+			<li>Wikipedia: Marksuckerberg</li>
+			<li>XMPP: mark@stellers.gay</li>
+
+			<li>
+				<details>
+					<summary style="cursor: pointer;">
+						GPG Key
+						<button onclick={() => navigator.clipboard.writeText(pgpkey)}>Copy</button>
+					</summary>
+
+					<pre>{pgpkey}</pre>
+				</details>
+			</li>
+		</ul>
+	</section>
 </article>
 
 <style>

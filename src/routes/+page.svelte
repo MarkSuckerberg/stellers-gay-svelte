@@ -24,8 +24,9 @@
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
 
 	import { asset, resolve } from '$app/paths';
+	import { posts } from '$lib/blog';
 
-	import fontlicense from '$lib/assets/fonts/license.txt';
+	const Updates = posts['updates'].default;
 </script>
 
 <svelte:head>
@@ -50,31 +51,14 @@
 			>)!
 		</p>
 
-		<p>
-			<b>Update 2/9/26:</b> At long last, I deployed the update to my site that I created
-			about eight months ago. The hit counter should actually work properly now, and I updated
-			the
-			<a href={resolve('/media')}>media</a> tab with some more art, too! Apologies if there's any
-			new bugs.
-		</p>
+		<hr class="chain-divider" />
 
-		<p>
-			<b>Update 4/3/26:</b> Threw some old janky projects of mine onto the
-			<a href={resolve('/fun')}>fun tab</a>, and redid the
-			<a href={resolve('/media')}>media gallery</a>. Been meaning to add more content. Maybe
-			I'll bring my blog back at some point? Also switched to using the Ari-W9500 font (<a
-				href={fontlicense}
-				target="_blank">license</a
-			>) to emulate the proper Win95 feel. Sadly, there's no way to disable font anti-aliasing
-			with CSS, so we'll all have to suffer with gross pixel smears.
-		</p>
-
-		<p>
-			<b>Update 4/4/26:</b> GUH, okay, so, updated the font a bit, added a
-			<a href={resolve('/guestbook')}>guestbook</a> too, and also actually set the bsky link to
-			the right one. I don't know how long it's been like that but I guess forever. I am NOT marksuckerberg.bsky.social
-			anymore.
-		</p>
+		<div>
+			<div style="max-height: 10em;" class="blurbottom">
+				<Updates />
+			</div>
+			<a href={resolve('/blog/[slug]', { slug: 'updates' })}>More Updates...</a>
+		</div>
 	</section>
 
 	<hr class="paperclip-divider" />
@@ -320,5 +304,21 @@
 	.stamp {
 		height: 56px;
 		width: 99px;
+	}
+
+	.blurbottom {
+		overflow: hidden;
+		position: relative;
+	}
+
+	.blurbottom::after {
+		content: '';
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		height: 50%;
+		bottom: 0px;
+		background: linear-gradient(180deg, rgba(139, 167, 32, 0) 0%, #b0b0b0 100%);
+		pointer-events: none;
 	}
 </style>

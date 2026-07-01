@@ -186,13 +186,6 @@
 			>
 			<a
 				target="_blank"
-				rel="me nofollow"
-				href="https://matrix.to/#/@mark:stellers.gay"
-				title="The IM I wish we all used."
-				accesskey="r">My Mat<u>r</u>ix account</a
-			>
-			<a
-				target="_blank"
 				rel="me"
 				href="https://social.stellers.gay/"
 				accesskey="f"
@@ -207,10 +200,24 @@
 			>
 			<a
 				target="_blank"
+				rel="me nofollow"
+				href="https://matrix.to/#/@mark:stellers.gay"
+				title="The IM I wish we all used."
+				accesskey="r">My Mat<u>r</u>ix account</a
+			>
+			<a
+				target="_blank"
 				rel="me"
 				href="https://tumblr.suckerberg.gay"
 				accesskey="t"
-				title="My most-used platform. That's not saying much">My <u>T</u>umblog</a
+				title="I'm occasionally active here, too.">My <u>T</u>umblog</a
+			>
+			<a
+				target="_blank"
+				rel="me"
+				href="xmpp:mark@stellers.gay"
+				title="Another IM service that I am indifferent about."
+				accesskey="x">My <u>X</u>MPP account</a
 			>
 
 			<hr class="win" />
@@ -228,14 +235,16 @@
 			</a>
 
 			<a href={resolve('/blog')} accesskey="b" title="See if I've remembered it exists!">
-				<b>(New!)</b> My <u>B</u>log
+				My <u>B</u>log
 			</a>
 
 			<a href={resolve('/guestbook')} accesskey="g" title="Sign my guestbook!">
 				<u>G</u>uestbook
 			</a>
 
-			<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"><u>E</u>-mail me!</a>
+			<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"
+				><u>E</u>-mail me!</a
+			>
 
 			<a
 				target="_blank"
@@ -244,10 +253,24 @@
 				accesskey="k"
 				title="EXTREMELY appreciated!">Buy me a <u>K</u>o-Fi!</a
 			>
+
+			<hr class="win" />
+
+			<a
+				target="_blank"
+				href="https://auth.stellers.gay"
+				accesskey="l"
+				title="Log-in to my suite of services."
+				>Steller's Gay <u>L</u>ogin
+			</a>
 		</nav>
 
 		<main id="content" class="inset">
-			<aside id="construction" class="bg-orange-400" style="background-color: #f70; margin: 1em 0">
+			<aside
+				id="construction"
+				class="bg-orange-400"
+				style="background-color: #f70; margin: 1em 0"
+			>
 				<img
 					src={construction}
 					class="inline-block"
