@@ -28,6 +28,10 @@
 			or something. Kinda breaks when you exhaust the talon. Save system does work, at least.
 		</li>
 		<li>
+			<a href={resolve('/fun/gameoflife')}>Conway's Game of Life</a> - Super simple implementation
+			of the famous cellular automaton
+		</li>
+		<li>
 			<a href="https://draw.stellers.gay" target="_blank">Drawpile Server</a> - Pretty sure I have
 			anonymous hosting disabled, but feel free to ask for a room!
 		</li>

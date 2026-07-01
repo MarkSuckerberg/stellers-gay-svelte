@@ -44,12 +44,15 @@
 		pushState(resolve(`/media`), page.state);
 	}}
 >
-	<figure style="display: flex; align-items: center; flex-direction: column; padding: 0.5em;">
+	<figure
+		style="display: flex; align-items: center; flex-direction: column; padding: 0.5em; overflow: scroll;"
+	>
 		{#if typeof original == 'string'}
 			<a href={original} title="View Original" rel="external" target="_blank">
 				<enhanced:img
 					{src}
 					{alt}
+					sizes="720px"
 					style="max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
 					class="inset"
 					loading="lazy"
@@ -74,7 +77,12 @@
                             loading="lazy"
                         >
                         </enhanced:img>-->
-						<img src={image} {alt} style="max-height: 80dvh; object-fit: contain" loading="lazy" />
+						<img
+							src={image}
+							{alt}
+							style="max-height: 80dvh; object-fit: contain"
+							loading="lazy"
+						/>
 					</a>
 				{/each}
 			</div>

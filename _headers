@@ -1,0 +1,12 @@
+/.well-known/*
+   Access-Control-Allow-Origin: *
+/.well-known/openpgpkey/*
+   Content-Type: application/octet-stream
+   Access-Control-Allow-Origin: *
+/.well-known/host-meta
+   Content-Type: application/xrd+xml
+   Access-Control-Allow-Origin: *
+/.well-known/host-meta.json
+   Content-Type: application/xrd+json
+   Access-Control-Allow-Origin: *
+

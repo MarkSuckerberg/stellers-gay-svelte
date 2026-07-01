@@ -1,25 +1,27 @@
 <script>
-	import pixelSafari from '$lib/assets/pixelsafari.webp';
-	import linux from '$lib/assets/1linux2.webp';
-	import shiptest from '$lib/assets/shiptest-button.webp';
-	import css from '$lib/assets/css.webp';
-	import yogstation from '$lib/assets/yogstation.gif';
-	import snapps from '$lib/assets/snapps.gif';
-	import honk from '$lib/assets/honk.webp';
-	import htmlbutton from '$lib/assets/htmlbutton.png';
-	import guestbook from '$lib/assets/signguest.gif';
-	import mitLicense from '$lib/assets/mit-license.webp';
+	import pixelSafari from '$lib/assets/88x31/pixelsafari.webp';
+	import linux from '$lib/assets/88x31/1linux2.webp';
+	import shiptest from '$lib/assets/88x31/shiptest-button.webp';
+	import css from '$lib/assets/88x31/css.webp';
+	import yogstation from '$lib/assets/88x31/yogstation.gif';
+	import snapps from '$lib/assets/88x31/snapps.gif';
+	import honk from '$lib/assets/88x31/honk.webp';
+	import htmlbutton from '$lib/assets/88x31/htmlbutton.png';
+	import guestbook from '$lib/assets/88x31/signguest.gif';
+	import mitLicense from '$lib/assets/88x31/mit-license.webp';
+	import btn17776 from '$lib/assets/88x31/17776.gif';
+	import stellers from '$lib/assets/88x31/stellersbutton.webp';
+	import btn88x31 from '$lib/assets/88x31/88x31.gif';
+	import canineTools from '$lib/assets/88x31/caninetools.png';
+	import bigrat from '$lib/assets/88x31/bigratdotmonster.png';
+	import gay from '$lib/assets/88x31/gay.gif';
+	import crouton from '$lib/assets/88x31/crouton.png';
+	import ia from '$lib/assets/88x31/ia.webp';
+	import parrot from '$lib/assets/88x31/parrotbanner.gif';
+
 	import barbedWire from '$lib/assets/barbedwire.webp';
 	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
 	import iLoveCrows from '$lib/assets/ilovecrows.webp';
-	import btn17776 from '$lib/assets/17776.gif';
-	import stellers from '$lib/assets/stellersbutton.webp';
-	import btn88x31 from '$lib/assets/88x31.gif';
-	import canineTools from '$lib/assets/caninetools.png';
-	import bigrat from '$lib/assets/bigratdotmonster.png';
-	import gay from '$lib/assets/gay.gif';
-	import crouton from '$lib/assets/crouton.png';
-	import ia from '$lib/assets/ia.webp';
 
 	import { asset, resolve } from '$app/paths';
 
@@ -263,6 +265,18 @@
 			<img
 				src={ia}
 				alt="Button with the internet archive logo, the text &quot;Preserve&quot; followed by animated text listing out content preserved by the Internet Archive."
+			/>
+		</a>
+
+		<a
+			href="https://cultofthepartyparrot.com/"
+			title="THE PARROT INSISTS"
+			rel="external"
+			target="_blank"
+		>
+			<img
+				src={parrot}
+				alt="Button with a colour-changing, dancing parrot head moving from left to right on it."
 			/>
 		</a>
 	</p>

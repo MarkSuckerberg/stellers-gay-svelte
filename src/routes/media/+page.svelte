@@ -13,6 +13,9 @@
 	import tired from '$lib/assets/tired.png';
 	import supermark from '$lib/assets/super_mark.png';
 	import jary from '$lib/assets/bluejarybeast.webp';
+	import flomnf from '$lib/assets/flomnf.png';
+	import flustered from '$lib/assets/flustered.png';
+	import pridebeak from '$lib/assets/pridebeak.png';
 
 	import enhanced_ref from '$lib/assets/mark_ref.webp?enhanced';
 	import enhanced_msp from '$lib/assets/mark_msp.webp?enhanced';
@@ -28,6 +31,9 @@
 	import enhanced_tired from '$lib/assets/tired.png?enhanced';
 	import enhanced_supermark from '$lib/assets/super_mark.png?enhanced';
 	import enhanced_jary from '$lib/assets/bluejarybeast.webp?enhanced';
+	import enhanced_flomnf from '$lib/assets/flomnf.png?enhanced';
+	import enhanced_flustered from '$lib/assets/flustered.png?enhanced';
+	import enhanced_pridebeak from '$lib/assets/pridebeak.png?enhanced';
 
 	import GalleryButton from '$lib/components/gallery-button.svelte';
 </script>
@@ -77,6 +83,29 @@
 		</a>!
 	</GalleryButton>
 	<GalleryButton
+		src={enhanced_flomnf}
+		original={flomnf}
+		title="The magnificent Jarybeast"
+		alt="A large raptorlike bluejay-patterned creature sprawled out towards the camera, asleep, drooling slightly."
+	>
+		A beautiful rendition of the (hopefully) beloved bluejary beast sprawled out even more
+		majestically than ever before, by the ever-wonderful friend of mine, <a
+			href="https://bsky.app/profile/gryphonthegryphon.bsky.social"
+			title="Creator link">GryphonTheGryphon</a
+		>!
+	</GalleryButton>
+	<GalleryButton
+		src={enhanced_flustered}
+		original={flustered}
+		title="Nervous Mark"
+		alt="Headshot of an anthropomorphic blue jay with tiny round glasses looking quite flustered."
+	>
+		A lovely headshot of me looking rather characteristically sheepish about something with a
+		lovely pair of spectacles, by <a href="https://shlimaz.com/" title="Creator link">
+			Shlimaz
+		</a>!
+	</GalleryButton>
+	<GalleryButton
 		src={enhanced_fall}
 		original={fall}
 		title="Mark guy death pose"
@@ -106,7 +135,7 @@
 	<GalleryButton
 		src={enhanced_suited}
 		original={suited}
-		title="Bow-tied up"
+		title="Dapper jay"
 		alt="An anthropomorphic blue jay dressed formally, including a dark necktie, an off-white button-up, a grey vest, black slacks, dark loafers, and a leather longcoat. They're sitting on a bench with one leg crossed over the other."
 	>
 		Well-dressed bird, by the expert in such, <a
@@ -115,9 +144,20 @@
 		>
 	</GalleryButton>
 	<GalleryButton
+		src={enhanced_pridebeak}
+		original={pridebeak}
+		title="Pride Beak"
+		alt="Headshot of a chubby blue jay with a beak painted to be the gay man pride flag."
+	>
+		Showing my pride with some wonderful beak paint, by <a
+			href="https://marcyyorsa.com/"
+			title="Creator link">Marcy Yorsa</a
+		>!
+	</GalleryButton>
+	<GalleryButton
 		src={enhanced_fancy}
 		original={fancy}
-		title="Dapper jay"
+		title="Bow-tied up"
 		alt="A sketch of a fancily dressed anthrpomorphic blue jay dressed in a suit coat fastened at the neck with a bow tie. He also wears small round spectacles atop his beak."
 	>
 		Dapper (if shamefully bowtied) Mark by <a

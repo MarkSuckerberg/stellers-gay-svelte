@@ -1,5 +1,3 @@
-import type { D1Database, RateLimit } from '@cloudflare/workers-types';
-
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 declare global {
@@ -9,10 +7,10 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		interface Platform {
-			env: {
-				DB: D1Database;
-				RATE_LIMITER: RateLimit;
-			};
+			env: Env;
+			ctx: ExecutionContext;
+			caches: CacheStorage;
+			cf?: IncomingRequestCfProperties;
 		}
 	}
 }

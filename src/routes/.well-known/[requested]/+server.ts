@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 export async function GET({ url, fetch, params, request }) {
 	const requested = params.requested;
 
-	if (requested === 'nodeinfo' || requested === 'host-meta') {
+	if (requested === 'nodeinfo') {
 		return await fetch(PUBLIC_AKKOMA_URL + '.well-known/' + requested + url.search, {
 			...request
 		});

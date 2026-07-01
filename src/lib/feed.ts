@@ -5,7 +5,7 @@ import { render } from 'svelte/server';
 
 import markPFP from '$lib/assets/mrk2.webp?w=512&h=512&?enhanced';
 import jary from '$lib/assets/bluejarybeast.webp?w=512&h=512&?enhanced';
-import stellersButton from '$lib/assets/stellersbutton.gif';
+import stellersButton from '$lib/assets/88x31/stellersbutton.gif';
 import { AlreadyHas, EtagHeaders } from './caching';
 
 const posts = GetPosts();
@@ -98,7 +98,7 @@ const atomItems = feed.items.map(
 	</author>`
 			: ''
 	}
-	
+
   </entry>`
 );
 

@@ -4,5 +4,10 @@ import { defineConfig } from 'vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 
 export default defineConfig({
-	plugins: [enhancedImages(), sveltekit()]
+	plugins: [enhancedImages(), sveltekit()],
+	build: {
+		assetsInlineLimit(filePath, content) {
+			return filePath.includes('88x31') ? false : null;
+		}
+	}
 });
