@@ -1,6 +1,8 @@
 import { WEATHER_LAT, WEATHER_LONG } from '$env/static/private';
 import { fetchWeatherApi } from 'openmeteo';
 
+export const prerender = false;
+
 type WeatherRecord<K extends string | number | symbol, V> = Record<K, V> & {
 	time: V;
 };
