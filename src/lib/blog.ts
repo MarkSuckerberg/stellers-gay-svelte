@@ -49,7 +49,7 @@ export const posts = GetPosts();
 
 export function GetPostMeta(desc = true) {
 	const pages = Object.entries(
-		import.meta.glob<Partial<BlogMeta> | undefined>('../routes/blog/*.md', {
+		import.meta.glob<Partial<BlogMeta> | undefined>('/src/routes/blog/*.md', {
 			eager: true,
 			import: 'metadata'
 		})

@@ -4,13 +4,14 @@ import { mdsvex } from 'mdsvex';
 
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeImageToolkit from 'rehype-image-toolkit';
 //import rehypeToc from 'rehype-toc';
 
 const config = {
 	preprocess: [
 		mdsvex({
 			extensions: ['.md'],
-			rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
+			rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeImageToolkit]
 		}),
 		vitePreprocess()
 	],

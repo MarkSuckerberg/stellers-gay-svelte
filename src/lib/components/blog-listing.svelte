@@ -22,6 +22,14 @@
 					<a href={resolve('/blog/[slug]', { slug })} title={meta.summary || undefined}>
 						{meta.title}
 					</a>
+
+					<a href={resolve('/blog/[slug]/raw.md', { slug })} hidden>
+						Raw Markdown Version
+					</a>
+
+					<a href={resolve('/blog/[slug]/simple', { slug })} hidden>
+						Simple HTML Version
+					</a>
 				</td>
 				<td>
 					{#if meta.updated}

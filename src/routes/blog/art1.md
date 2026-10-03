@@ -2,6 +2,7 @@
 title: My experience with art
 
 date: 2026-4-19 2:30 PM CDT
+updated: 2026-9-28 11:18 AM CDT
 
 tags:
   - art
@@ -12,12 +13,12 @@ Since I'm nowhere near an expert on the subject, as well as I imagine it'll end 
 
 [RoawayArt](https://x.com/RoawayArt) is a big inspiration to me, especially as of late (if you're familiar with their old quest series (plural) it should be obvious), and some of the creatures are at least partly based on Pascoe, Pilot, and Ecoa from [Return to Sender](https://questden.org/wiki/Return_to_Sender). Another friend of mine actually shared my doodles with them, and they actually drew Pascoe and Ecoa in response! It was definitely very touching to have inspired it.
 
-![An array of sketched heads, mostly avian, with a range of basic expressions, drawn with black ink from a fountain pen](/blogimg/art1.webp)
+![An array of sketched heads, mostly avian, with a range of basic expressions, drawn with black ink from a fountain pen]([/blogimg/art1.webp])
 
 (eagle-eyed readers might be able to spot the rectangle I covered up, it was a drawing from reference that felt a little too close to the source material and was by someone I don't know so I just felt it best to not show it)
 
-![The roughly sketched upper body of an avian wearing a cloak and peaked mail cap, wearing tiny glasses](/blogimg/art2.png)
-![A roughly sketched gryphon with big ears, lots of neck fluff, and tiny glasses](/blogimg/art3.png)
+![The roughly sketched upper body of an avian wearing a cloak and peaked mail cap, wearing tiny glasses]([/blogimg/art2.png])
+![A roughly sketched gryphon with big ears, lots of neck fluff, and tiny glasses]([/blogimg/art3.png])
 
 Yes, I might have a thing for birdy couriers. And gryphons. Sue me. They're handsome.
 

@@ -1,7 +1,7 @@
 ---
 title: Misadventures in VR, the beginnings
 date: 2026-4-16 11:00 PM CDT
-updated: 2024-4-18 4:45 PM CDT
+updated: 2026-9-28 11:18 AM CDT
 
 summary: Brief overview of my work-in-progress DIY VR headset attempt, specifically focusing on the original idea, my first attempt with google cardboard + PhoneVR, and my findings about gyrometers, accelerometers, and magnetometers and how they help determine orientation.
 
@@ -17,7 +17,7 @@ Well, this is a long one, since I probably should have taken these notes down wh
 
 So, it all started when I saw [some YouTube video about someone making a VR headset out of CRT screens.](https://www.youtube.com/watch?v=rYPhC9lsVYs) I figured, if they can make one with that kind of handicap, why can't I make one as well? So, I looked into it, and found some initially promising results. There were two freely available open-source headsets on github, [Relativty](https://github.com/relativty/Relativty) (sic), and [HadesVR](https://github.com/HadesVR/HadesVR). The former, Relativty was more "complete" in the hardware department, but the driver for it was very heavily Windows-based, so I would have had to do a lot of rewriting (or use windows, but I don't want to do that, really). The latter, HadesVR, was missing a lot of the 3D print files for the hardware, but the driver was a lot closer to what I wanted. So, I followed the guides for both, getting lenses, a screen and controller board for it, and... attempted to print out the Relativty case. I'll admit, I struggle a lot with 3D printing, but that's a story for another day.
 
-![Google-cardboard reminiscent DIY VR headset with an added head strap and a breadboard attached to the top with a rubber band](/blogimg/markulusgrift1.webp)
+![Google-cardboard reminiscent DIY VR headset with an added head strap and a breadboard attached to the top with a rubber band]([/blogimg/markulusgrift1.webp])
 
 ## Google Cardboard
 

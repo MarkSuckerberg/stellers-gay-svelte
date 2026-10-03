@@ -45,6 +45,18 @@
 		href={resolve(`/blog/oembed?format=json&url=${page.url}`)}
 		title="oEmbed"
 	/>
+	<link
+		rel="alternate"
+		type="text/markdown"
+		href={resolve(`/blog/[slug]/raw.md`, { slug: page.params.slug || '' })}
+		title="raw markdown"
+	/>
+	<link
+		rel="alternate"
+		type="text/html"
+		href={resolve(`/blog/[slug]/simple`, { slug: page.params.slug || '' })}
+		title="reader"
+	/>
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 	<title>{data.title} - Steller's Gay</title>
@@ -52,7 +64,9 @@
 
 <article class="blog-article">
 	<nav>
-		<a href={resolve('/blog')}>Back to all posts</a>
+		<a href={resolve('/blog')}>Back to all posts</a> |
+		<a href={resolve(`/blog/[slug]/raw.md`, { slug: page.params.slug || '' })}>Raw markdown</a> |
+		<a href={resolve(`/blog/[slug]/simple`, { slug: page.params.slug || '' })}>Simple HTML</a>
 	</nav>
 
 	<h1>{data.title}</h1>
@@ -109,8 +123,8 @@
 			<summary>Send Feedback</summary>
 
 			<p>
-				Currently just set up to send a message directly to me, but I might make a full-fledged
-				comments system eventually!
+				Currently just set up to send a message directly to me, but I might make a
+				full-fledged comments system eventually!
 			</p>
 
 			{#if form}
@@ -123,10 +137,12 @@
 				style="display: grid; gap: 0.5em; grid-template-columns: min-content auto;"
 				use:enhance
 			>
-				<label for="name">Name:</label> <input type="text" name="name" id="name" maxlength="32" />
+				<label for="name">Name:</label>
+				<input type="text" name="name" id="name" maxlength="32" />
 
 				<label for="message">Message:</label>
-				<textarea name="message" id="message" maxlength="256" style="resize: vertical;"></textarea>
+				<textarea name="message" id="message" maxlength="256" style="resize: vertical;"
+				></textarea>
 
 				<div
 					class="cf-turnstile"
@@ -141,6 +157,7 @@
 </article>
 
 <style>
+	:global(.blog-article video),
 	:global(.blog-article img) {
 		max-width: 100%;
 	}

@@ -1,6 +1,7 @@
 ---
 title: Coding the Headset (VR Pt. 2)
 date: 2026-6-1 12:30 PM CDT
+updated: 2026-9-28 11:18 AM CDT
 
 imageUrl: /blogimg/markulusgrift1.webp
 
@@ -25,7 +26,7 @@ boards, but even this proved to be too much. So... I just made a new, slightly
 bigger cardboard headset, padded it thoroughly, and held it together with rubber
 bands.
 
-![Google-cardboard reminiscent DIY VR headset with an added head strap and a breadboard attached to the top with a rubber band](/blogimg/markulusgrift1.webp)
+![Google-cardboard reminiscent DIY VR headset with an added head strap and a breadboard attached to the top with a rubber band]([/blogimg/markulusgrift1.webp])
 
 ## Orientation
 
