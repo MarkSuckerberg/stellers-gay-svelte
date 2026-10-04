@@ -25,5 +25,5 @@ export async function GET({ platform, params }) {
 
 	const comment = result.results[0] as Comment;
 
-	return redirect(308, resolve(`/blog/${comment.PostSlug}#${comment.CommentId}`));
+	return redirect(308, resolve(`/blog/${comment.PostSlug}#comment-${comment.CommentId}`));
 }
