@@ -16,6 +16,15 @@ export interface BlogMeta {
 	}[];
 }
 
+export interface Comment {
+	PostSlug: string;
+	CommentId: number;
+	CommentUser: string;
+	CommentText: string;
+	CommentTime: string;
+	CommentReply: number | null;
+}
+
 export function SlugFromImport(importString: string) {
 	return importString.split('/').at(-1)!.replace('.md', '');
 }

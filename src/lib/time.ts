@@ -9,9 +9,12 @@ const fmt = new Intl.RelativeTimeFormat(undefined, {
 });
 
 export function relativeDate(input: string | number | Date) {
-	const date = new Date(input);
+	const date = typeof input == 'object' ? input : new Date(input);
 	const ago = Date.now() - date.valueOf();
 
+	if (ago < MIN) {
+		return 'just now';
+	}
 	if (ago < HOUR) {
 		return fmt.format(-Math.round(ago / MIN), 'minutes');
 	}

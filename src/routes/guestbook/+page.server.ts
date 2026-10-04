@@ -1,6 +1,6 @@
 import { resolve } from '$app/paths';
 import { DISCORD_WEBHOOK } from '$env/static/private';
-import { verifyCaptcha } from '$lib/captcha';
+import { verifyCaptcha } from '$lib/captcha.server';
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
 
@@ -19,15 +19,15 @@ export const load: PageServerLoad = async ({ platform }) => {
 	).run<GuestbookMessage>();
 
 	if (!messages?.success) {
-		return { messages: messages?.results || [] };
+		return { messages: (messages?.results || []) as GuestbookMessage[] };
 	}
 
-	messages.results.forEach((message) => {
+	messages.results.forEach((message: GuestbookMessage) => {
 		//mistakes were made alright
 		message.MessageTime = message.MessageTime + ' UTC';
 	});
 
-	return { messages: messages.results };
+	return { messages: messages.results as GuestbookMessage[] };
 };
 
 const advertisingRegex = /http|www\.|(?:[a-z0-9_-]+@[a-z0-9_-]+\.[a-z0-9_-]+)/i;

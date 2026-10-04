@@ -4,7 +4,7 @@ import type { Component } from 'svelte';
 
 export const prerender = false;
 
-export async function load({ params }) {
+export async function load({ params, data }) {
 	try {
 		const post: {
 			default: Component;
@@ -14,7 +14,8 @@ export async function load({ params }) {
 
 		return {
 			Content: content,
-			...post.metadata
+			...post.metadata,
+			comments: data.comments
 		};
 	} catch {
 		error(404);

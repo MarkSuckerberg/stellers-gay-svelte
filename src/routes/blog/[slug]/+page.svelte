@@ -5,11 +5,15 @@
 	import '$lib/codeblocks.css';
 	import { resolve } from '$app/paths';
 	import { enhance } from '$app/forms';
+	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
+	import { PUBLIC_TURNSTILE_SITEKEY } from '$env/static/public';
 
 	let { data, form } = $props();
 
 	let published = $derived(new Date(data.date));
 	let updated = $derived(data.updated ? new Date(data.updated) : undefined);
+
+	let replyingTo: number | undefined = $state();
 </script>
 
 <svelte:head>
@@ -65,7 +69,8 @@
 <article class="blog-article">
 	<nav>
 		<a href={resolve('/blog')}>Back to all posts</a> |
-		<a href={resolve(`/blog/[slug]/raw.md`, { slug: page.params.slug || '' })}>Raw markdown</a> |
+		<a href={resolve(`/blog/[slug]/raw.md`, { slug: page.params.slug || '' })}>Raw markdown</a>
+		|
 		<a href={resolve(`/blog/[slug]/simple`, { slug: page.params.slug || '' })}>Simple HTML</a>
 	</nav>
 
@@ -73,17 +78,13 @@
 
 	<p style="font-style: italic;">
 		<span>
-			Published: <time datetime={published.toISOString()} title={published.toLocaleString()}
-				>{published.toLocaleDateString()}</time
-			>
+			Published: <RelativeTimestamp datetime={published}></RelativeTimestamp>
 		</span>
 
 		{#if updated}
 			<br />
 			<span>
-				Updated: <time datetime={updated.toISOString()} title={updated.toLocaleString()}
-					>{updated.toLocaleDateString()}</time
-				>
+				Updated: <RelativeTimestamp datetime={updated}></RelativeTimestamp>
 			</span>
 		{/if}
 	</p>
@@ -119,13 +120,16 @@
 	{/if}
 
 	<aside>
-		<details>
-			<summary>Send Feedback</summary>
+		<hr class="win" />
 
-			<p>
-				Currently just set up to send a message directly to me, but I might make a
-				full-fledged comments system eventually!
-			</p>
+		<h2 id="comments">Comments</h2>
+
+		<hr class="win" />
+
+		<details open={!!replyingTo}>
+			<summary>Post Comment</summary>
+
+			<hr class="win" />
 
 			{#if form}
 				<p><b>Error submitting:</b> {form}</p>
@@ -137,6 +141,17 @@
 				style="display: grid; gap: 0.5em; grid-template-columns: min-content auto;"
 				use:enhance
 			>
+				{#if replyingTo}
+					<label for="reply" style="align-self: center;">Replying:</label>
+					<div style="display: flex">
+						<a style="align-self: center;" href={`#comment-${replyingTo}`}>
+							Comment #{replyingTo}
+						</a>
+						<input name="reply" id="reply" type="hidden" value={replyingTo} />
+						<button type="button" onclick={() => (replyingTo = undefined)}>X</button>
+					</div>
+				{/if}
+
 				<label for="name">Name:</label>
 				<input type="text" name="name" id="name" maxlength="32" />
 
@@ -144,15 +159,67 @@
 				<textarea name="message" id="message" maxlength="256" style="resize: vertical;"
 				></textarea>
 
+				<label
+					for="private"
+					style="align-self: center; text-decoration: dotted black 1px underline; cursor: help;"
+					title="Send this comment to a webhook ONLY, don't post it on the site"
+					>Private:
+				</label>
+				<div style="display: flex; gap: 0.5em">
+					<input type="checkbox" name="private" id="private" />
+
+					<button type="submit" style="flex: 1">Submit</button>
+				</div>
+
 				<div
 					class="cf-turnstile"
-					data-sitekey="0x4AAAAAABtXmAIQt-jTsWC6"
+					data-sitekey={PUBLIC_TURNSTILE_SITEKEY}
 					style="grid-column-end: span 2;"
 				></div>
-
-				<button type="submit" style="grid-column-end: span 2;">Submit</button>
 			</form>
 		</details>
+
+		<hr class="win" />
+
+		{#each data.comments as comment (comment.CommentId)}
+			<article class="outset" id={`comment-${comment.CommentId}`}>
+				<div
+					style="padding: 0 1em;"
+					style:border={page.url.hash == `#comment-${comment.CommentId}`
+						? '2px black dotted'
+						: '2px transparent solid'}
+				>
+					<div style="float: right; padding-top: 16px">
+						<a href={`#comment-${comment.CommentId}`}>#{comment.CommentId}</a>
+						<button
+							type="button"
+							onclick={() => {
+								replyingTo = comment.CommentId;
+							}}
+						>
+							Reply
+						</button>
+					</div>
+
+					<h3 style="font-weight: normal; font-size: medium;">
+						<span style="font-weight: bold">{comment.CommentUser}</span>,
+						<RelativeTimestamp datetime={comment.CommentTime}></RelativeTimestamp>:
+						{#if comment.CommentReply}
+							<span style="font-style: italic;">
+								(Replying to <a href={`#comment-${comment.CommentReply}`}>
+									{data.comments.find(
+										(otherComment) =>
+											otherComment.CommentId == comment.CommentReply
+									)?.CommentUser || 'comment'}
+									#{comment.CommentReply}
+								</a>)
+							</span>
+						{/if}
+					</h3>
+					<p>{comment.CommentText}</p>
+				</div>
+			</article>
+		{/each}
 	</aside>
 </article>
 

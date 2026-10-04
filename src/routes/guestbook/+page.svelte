@@ -1,7 +1,8 @@
 <script lang="ts">
 	let { data, form } = $props();
 	import { enhance } from '$app/forms';
-	import { relativeDate } from '$lib/time.js';
+	import { PUBLIC_TURNSTILE_SITEKEY } from '$env/static/public';
+	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
 </script>
 
 <svelte:head>
@@ -28,7 +29,7 @@
 		{#each data.messages as message (message.MessageId)}
 			<tr>
 				<td class="details" title={new Date(message.MessageTime).toString()}>
-					<time datetime={message.MessageTime}>{relativeDate(message.MessageTime)}</time>
+					<RelativeTimestamp datetime={message.MessageTime}></RelativeTimestamp>
 				</td>
 				<td class="details">{message.MessageUser}</td>
 				<td class="message">{message.MessageText}</td>
@@ -56,7 +57,7 @@
 
 	<div
 		class="cf-turnstile"
-		data-sitekey="0x4AAAAAABtXmAIQt-jTsWC6"
+		data-sitekey={PUBLIC_TURNSTILE_SITEKEY}
 		style="grid-column-end: span 2;"
 	></div>
 

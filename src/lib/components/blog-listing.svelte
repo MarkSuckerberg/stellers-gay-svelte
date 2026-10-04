@@ -2,6 +2,7 @@
 	import { resolve } from '$app/paths';
 	import type { BlogMeta } from '$lib/blog';
 	import BlogTags from './blog-tags.svelte';
+	import RelativeTimestamp from './relative-timestamp.svelte';
 
 	let { pages }: { pages: [string, BlogMeta][] } = $props();
 </script>
@@ -33,15 +34,13 @@
 				</td>
 				<td>
 					{#if meta.updated}
-						<time
+						<RelativeTimestamp
 							datetime={meta.date}
-							style="text-decoration: dotted black 1px underline; cursor: help;"
 							title={`Updated ${new Date(meta.updated).toLocaleDateString()}`}
-						>
-							{new Date(meta.date).toLocaleDateString()}
-						</time>
+							style="text-decoration: dotted black 1px underline; cursor: help;"
+						></RelativeTimestamp>
 					{:else}
-						<time datetime={meta.date}>{new Date(meta.date).toLocaleDateString()}</time>
+						<RelativeTimestamp datetime={meta.date}></RelativeTimestamp>
 					{/if}
 				</td>
 				<td>

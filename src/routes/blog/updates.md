@@ -1,7 +1,7 @@
 ---
 title: Site Updates
 date: 2026-02-09
-updated: 2026-07-01 6:12 PM CDT
+updated: 2026-10-03 7:07 PM CDT
 
 summary: Where I put site updates.
 
@@ -9,6 +9,15 @@ tags:
   - hosting
   - projects
 ---
+
+**Update 2026-10-03:** Woo! Added some new blog features, namely a proper comments system
+(though you can still send private mesages directly to me if you'd like)! It's nothing
+too complicated, you can set a name and a message and possibly reply to a different comment.
+Honestly even that is probably more than I'll ever need to handle feedback, but, hey.
+I also added the option to view a super simple HTML version of blog posts or even
+the raw markdown file that I actually write using the buttons at the top of the post.
+Also made more timestamps on the site use relative time (with the actual time visible when
+you hover it). Please be kind!!
 
 **Update 2026-07-01 part 2:** Added a little weather readout to the [fun](/fun) page that specifically shows
 the weather I'm currently experiencing. Since I thought It'd be funny. Also a box with the HTML code for
