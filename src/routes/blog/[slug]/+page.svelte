@@ -7,6 +7,7 @@
 	import { enhance } from '$app/forms';
 	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
 	import { PUBLIC_TURNSTILE_SITEKEY } from '$env/static/public';
+	import SimpleUserMarkdown from '$lib/components/simple-user-markdown.svelte';
 
 	let { data, form } = $props();
 
@@ -74,7 +75,7 @@
 		<a href={resolve(`/blog/[slug]/simple`, { slug: page.params.slug || '' })}>Simple HTML</a>
 	</nav>
 
-	<h1>{data.title}</h1>
+	<h1 id={data.title.toLowerCase().replaceAll(' ', '-')}>{data.title}</h1>
 
 	<p style="font-style: italic;">
 		<span>
@@ -216,7 +217,7 @@
 							</span>
 						{/if}
 					</h3>
-					<p>{comment.CommentText}</p>
+					<SimpleUserMarkdown message={comment.CommentText} />
 				</div>
 			</article>
 		{/each}

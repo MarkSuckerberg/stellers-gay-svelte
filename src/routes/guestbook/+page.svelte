@@ -3,6 +3,7 @@
 	import { enhance } from '$app/forms';
 	import { PUBLIC_TURNSTILE_SITEKEY } from '$env/static/public';
 	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
+	import SimpleUserMarkdown from '$lib/components/simple-user-markdown.svelte';
 </script>
 
 <svelte:head>
@@ -32,7 +33,7 @@
 					<RelativeTimestamp datetime={message.MessageTime}></RelativeTimestamp>
 				</td>
 				<td class="details">{message.MessageUser}</td>
-				<td class="message">{message.MessageText}</td>
+				<td class="message"><SimpleUserMarkdown message={message.MessageText} /></td>
 			</tr>
 		{/each}
 	</tbody>

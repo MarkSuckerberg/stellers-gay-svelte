@@ -1,5 +1,5 @@
 ---
-title: Stream of consciousness rant #1
+title: Stream of consciousness rant 1
 date: 2026-4-30 2:17 PM CST
 
 summary: A rather rambly rant that talks about a site update I did, birds I've seen, and a future plan I have in mind.
