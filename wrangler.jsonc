@@ -1,7 +1,9 @@
 {
 	"name": "stellers-gay-svelte",
 	"main": ".svelte-kit/cloudflare/_worker.js",
-	"compatibility_flags": ["nodejs_als"],
+	"compatibility_flags": [
+		"nodejs_als"
+	],
 	"compatibility_date": "2026-02-05",
 	"assets": {
 		"binding": "ASSETS",
@@ -42,5 +44,13 @@
 				"period": 60
 			}
 		}
-	]
+	],
+	"vars": {
+		"AKKOMA_URL": "https://social.stellers.gay/",
+		"AUTH_ISSUER_URL": "https://auth.stellers.gay/application/o/tailscale/",
+		"DISCORD_WEBHOOK": "https://discord.com/api/webhooks/1494786816417464461/F0kQzCSmJZqDFxWJC1wV3hTj9oJqQKKP7029wcf2yF4eLJiqv03D9kjO4AbAYeuxdohC",
+		"MATRIX_URL": "matrix.stellers.gay",
+		"PDS_URL": "https://pds.stellers.gay/",
+		"TURNSTILE_SITEKEY": "0x4AAAAAABtXmAIQt-jTsWC6"
+	}
 }

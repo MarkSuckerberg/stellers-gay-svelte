@@ -30,6 +30,10 @@
 
 	<ul>
 		<li>
+			<a href={resolve('/fun/birdseed')}>Birdseed Clicker (NEW)</a> - A beta version of a little
+			clicker I decided to throw together. WIP!
+		</li>
+		<li>
 			<a href={resolve('/fun/snake')}>Snake!</a> - It's snake. Real cutting edge Nokia 6110 type
 			stuff.
 		</li>

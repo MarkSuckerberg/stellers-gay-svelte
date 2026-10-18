@@ -139,34 +139,34 @@
 				break;
 
 			case 's':
-				navigation.navigate('https://bsky.app/profile/did:plc:2p67fsbkpwet3rp5a33wgl5v');
+				window.location.href = 'https://bsky.app/profile/did:plc:2p67fsbkpwet3rp5a33wgl5v';
 				break;
 			case 'd':
-				navigation.navigate('https://discord.com/users/525509257102098442');
+				window.location.href = 'https://discord.com/users/525509257102098442';
 				break;
 			case 'f':
-				navigation.navigate('https://social.stellers.gay/');
+				window.location.href = 'https://social.stellers.gay/';
 				break;
 			case 'i':
-				navigation.navigate('https://github.com/marksuckerberg');
+				window.location.href = 'https://github.com/marksuckerberg';
 				break;
 			case 'r':
-				navigation.navigate('https://matrix.to/#/@mark:stellers.gay');
+				window.location.href = 'https://matrix.to/#/@mark:stellers.gay';
 				break;
 			case 't':
-				navigation.navigate('https://tumblr.suckerberg.gay/');
+				window.location.href = 'https://tumblr.suckerberg.gay/';
 				break;
 			case 'x':
-				navigation.navigate('xmpp:mark@stellers.gay');
+				window.location.href = 'xmpp:mark@stellers.gay';
 				break;
 			case 'e':
-				navigation.navigate('mailto:mark@stellers.gay');
+				window.location.href = 'mailto:mark@stellers.gay';
 				break;
 			case 'k':
-				navigation.navigate('https://ko-fi.com/marksuckerberg');
+				window.location.href = 'https://ko-fi.com/marksuckerberg';
 				break;
 			case 'l':
-				navigation.navigate('https://auth.stellers.gay/');
+				window.location.href = 'https://auth.stellers.gay/';
 				break;
 		}
 	}

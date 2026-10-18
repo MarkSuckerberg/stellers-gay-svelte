@@ -3,6 +3,7 @@ import { DISCORD_WEBHOOK } from '$app/env/private';
 import { verifyCaptcha } from '$lib/captcha.server';
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
+import { env } from 'cloudflare:workers';
 
 export const prerender = false;
 
@@ -13,8 +14,8 @@ interface GuestbookMessage {
 	MessageTime: string;
 }
 
-export const load: PageServerLoad = async ({ platform }) => {
-	const messages = await platform?.env.DB.prepare(
+export const load: PageServerLoad = async () => {
+	const messages = await env.DB.prepare(
 		'SELECT * FROM guestbook ORDER BY MessageTime DESC LIMIT 50'
 	).run<GuestbookMessage>();
 
@@ -33,14 +34,14 @@ export const load: PageServerLoad = async ({ platform }) => {
 const advertisingRegex = /http|www\.|(?:[a-z0-9_-]+@[a-z0-9_-]+\.[a-z0-9_-]+)/i;
 
 export const actions = {
-	default: async ({ request, platform, fetch }) => {
+	default: async ({ request, fetch }) => {
 		const captcha = await verifyCaptcha(request);
 
 		if (!captcha.success) {
 			return fail(429, 'Failed to validate captcha');
 		}
 
-		const rate_limit = await platform?.env.RATE_LIMITER.limit({ key: 'guestbook' });
+		const rate_limit = await env.RATE_LIMITER.limit({ key: 'guestbook' });
 
 		if (!rate_limit?.success) {
 			return fail(429, 'Rate limit exceeded');
@@ -65,7 +66,7 @@ export const actions = {
 			return fail(400, 'Name or message too long');
 		}
 
-		const statement = platform?.env.DB.prepare(
+		const statement = env.DB.prepare(
 			'INSERT INTO guestbook (MessageUser, MessageText, MessageTime) VALUES (?, ?, current_timestamp)'
 		);
 

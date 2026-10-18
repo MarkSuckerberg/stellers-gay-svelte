@@ -6,11 +6,13 @@ import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import type { Comment } from '$lib/blog';
 
+import { env } from 'cloudflare:workers';
+
 export const prerender = false;
 
-export const load: PageServerLoad = async ({ params, platform }) => {
+export const load: PageServerLoad = async ({ params }) => {
 	try {
-		const comments = await platform?.env.DB.prepare(
+		const comments = await env.DB.prepare(
 			'SELECT * FROM comments WHERE PostSlug = ? ORDER BY CommentTime DESC LIMIT 50'
 		)
 			.bind(params.slug)
@@ -34,7 +36,7 @@ export const load: PageServerLoad = async ({ params, platform }) => {
 const advertisingRegex = /http|www\./i;
 
 export const actions = {
-	default: async ({ request, fetch, url, params, platform }) => {
+	default: async ({ request, fetch, url, params }) => {
 		const captcha = await verifyCaptcha(request);
 		url.hash = '';
 
@@ -70,7 +72,7 @@ export const actions = {
 				return fail(400, 'Specified reply comment is invalid');
 			}
 
-			const checkValidReplyStatement = platform?.env.DB.prepare(
+			const checkValidReplyStatement = env.DB.prepare(
 				'SELECT * FROM comments WHERE CommentId = ? AND PostSlug = ?'
 			);
 
@@ -83,7 +85,7 @@ export const actions = {
 
 		// Don't save it to DB if private
 		if (!data.get('private')) {
-			const statement = platform?.env.DB.prepare(
+			const statement = env.DB.prepare(
 				'INSERT INTO comments (PostSlug, CommentUser, CommentText, CommentReply, CommentTime) VALUES (?, ?, ?, ?, current_timestamp)'
 			);
 
