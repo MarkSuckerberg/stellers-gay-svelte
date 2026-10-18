@@ -6,7 +6,7 @@
 	import { resolve } from '$app/paths';
 	import { enhance } from '$app/forms';
 	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
-	import { PUBLIC_TURNSTILE_SITEKEY } from '$env/static/public';
+	import { TURNSTILE_SITEKEY } from '$app/env/public';
 	import SimpleUserMarkdown from '$lib/components/simple-user-markdown.svelte';
 
 	let { data, form } = $props();
@@ -174,7 +174,7 @@
 
 				<div
 					class="cf-turnstile"
-					data-sitekey={PUBLIC_TURNSTILE_SITEKEY}
+					data-sitekey={TURNSTILE_SITEKEY}
 					style="grid-column-end: span 2;"
 				></div>
 			</form>

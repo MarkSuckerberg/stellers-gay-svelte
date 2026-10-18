@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '../app.css';
-	import jary from '$lib/assets/bluejarybeast.webp?h=512&?enhanced';
+	import jary from '$lib/assets/bluejarybeast.webp?w=564;236&format=avif;webp&as=picture';
 	import construction from '$lib/assets/construction.webp';
-	import mrk2 from '$lib/assets/mrk2.webp?h=512&w=512&fit=cover&as=picture&format=png&?enhanced';
+	import mrk2 from '$lib/assets/mrk2.webp?h=512&w=512&fit=cover&format=png&as=img';
 	import bg from '$lib/assets/win95setup-clear.webp';
 
 	import quoteFile from '$lib/assets/quotes.json';
@@ -11,7 +11,8 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
-	import { building } from '$app/environment';
+	import { building } from '$app/env';
+	import { goto } from '$app/navigation';
 
 	let { children } = $props();
 
@@ -35,7 +36,7 @@
 	function exitButton() {
 		if (confirm('Are you sure you want to exit?')) {
 			close();
-			let index = 0;
+			let index;
 
 			for (index = 0; index < quoteFile.exitText.length; index++) {
 				const element = quoteFile.exitText[index];
@@ -108,17 +109,75 @@
 				}
 			}
 
+			if (Number.isNaN(target.currentTime) || Number.isNaN(target.duration)) {
+				return;
+			}
+
 			songTime = `${getTime(target.currentTime)}/${getTime(target.duration)}`;
 		});
 	});
+
+	function onKeyDown(event: KeyboardEvent) {
+		switch (event.key.toLowerCase()) {
+			case 'h':
+				goto(resolve('/'));
+				break;
+			case 'a':
+				goto(resolve('/about'));
+				break;
+			case 'm':
+				goto(resolve('/media'));
+				break;
+			case 'u':
+				goto(resolve('/fun'));
+				break;
+			case 'b':
+				goto(resolve('/blog'));
+				break;
+			case 'g':
+				goto(resolve('/guestbook'));
+				break;
+
+			case 's':
+				navigation.navigate('https://bsky.app/profile/did:plc:2p67fsbkpwet3rp5a33wgl5v');
+				break;
+			case 'd':
+				navigation.navigate('https://discord.com/users/525509257102098442');
+				break;
+			case 'f':
+				navigation.navigate('https://social.stellers.gay/');
+				break;
+			case 'i':
+				navigation.navigate('https://github.com/marksuckerberg');
+				break;
+			case 'r':
+				navigation.navigate('https://matrix.to/#/@mark:stellers.gay');
+				break;
+			case 't':
+				navigation.navigate('https://tumblr.suckerberg.gay/');
+				break;
+			case 'x':
+				navigation.navigate('xmpp:mark@stellers.gay');
+				break;
+			case 'e':
+				navigation.navigate('mailto:mark@stellers.gay');
+				break;
+			case 'k':
+				navigation.navigate('https://ko-fi.com/marksuckerberg');
+				break;
+			case 'l':
+				navigation.navigate('https://auth.stellers.gay/');
+				break;
+		}
+	}
 </script>
 
 <svelte:head>
 	<link rel="preload" href={bg} as="image" />
 
-	<meta property="og:image" content={'https://stellers.gay' + mrk2.img.src} />
-	<meta property="og:image:height" content={mrk2.img.h.toString()} />
-	<meta property="og:image:width" content={mrk2.img.w.toString()} />
+	<meta property="og:image" content={'https://stellers.gay' + mrk2.src} />
+	<meta property="og:image:height" content={mrk2.h.toString()} />
+	<meta property="og:image:width" content={mrk2.w.toString()} />
 	<meta property="og:image:type" content="image/png" />
 	<meta
 		property="og:image:alt"
@@ -127,12 +186,12 @@
 
 	<link
 		rel="alternate"
-		href={resolve('/feed.json')}
+		href={resolve('feed.json')}
 		type="application/feed+json"
 		title="JSON Feed"
 	/>
-	<link rel="alternate" href={resolve('/rss')} type="application/rss+xml" title="RSS Feed" />
-	<link rel="alternate" href={resolve('/atom')} type="application/atom+xml" title="ATOM Feed" />
+	<link rel="alternate" href={resolve('rss')} type="application/rss+xml" title="RSS Feed" />
+	<link rel="alternate" href={resolve('atom')} type="application/atom+xml" title="ATOM Feed" />
 
 	<link rel="canonical" href="https://stellers.gay{page.url.pathname}" />
 </svelte:head>
@@ -155,102 +214,94 @@
 		</header>
 
 		<aside id="sidehead">
-			<enhanced:img
-				src={jary}
-				alt="A large raptorlike bluejay-patterned creature laying down, asleep."
-				style="width: 100%; height: 100%; object-fit: contain;"
-			/>
+			<picture>
+				{#each Object.entries(jary.sources) as [format, srcset] (srcset)}
+					<source
+						type="image/{format}"
+						{srcset}
+						sizes="(max-width: 600px) 564px, 236px"
+					/>
+				{/each}
+				<img
+					src={jary.img.src}
+					sizes="(max-width: 600px) 564px, 236px"
+					alt="A large raptorlike bluejay-patterned creature laying down, asleep."
+					style="width: 100%; height: 100%; object-fit: contain;"
+				/>
+			</picture>
 		</aside>
 
 		<nav id="nav" class="navcontainer topcontainer">
-			<a href={resolve('/')} accesskey="h"><u>H</u>ome</a>
-			<a href={resolve('/about')} accesskey="a"><u>A</u>bout</a>
-			<a href={resolve('/media')} accesskey="m"><u>M</u>edia</a>
-			<a href={resolve('/fun')} accesskey="u">F<u>u</u>n stuff</a>
+			<a href={resolve('/')}><u>H</u>ome</a>
+			<a href={resolve('/about')}><u>A</u>bout</a>
+			<a href={resolve('/media')}><u>M</u>edia</a>
+			<a href={resolve('/fun')}>F<u>u</u>n stuff</a>
 		</nav>
 
 		<nav id="sidebar" class="navcontainer">
+			<a href={resolve('/blog')} title="See if I've remembered it exists!">
+				My <u>B</u>log
+			</a>
+
+			<a href={resolve('/guestbook')} title="Sign my guestbook!">
+				<u>G</u>uestbook
+			</a>
+
+			<hr class="win" />
+
 			<a
-				target="_blank"
 				rel="me"
-				href="https://bsky.app/profile/stellers.gay"
-				accesskey="s"
+				href="https://bsky.app/profile/did:plc:2p67fsbkpwet3rp5a33wgl5v"
 				title="I don't use this much!">My Blue<u>s</u>ky</a
 			>
+			<link rel="me" href="https://bsky.app/profile/stellers.gay" />
 			<a
-				target="_blank"
 				rel="me nofollow"
 				href="https://discord.com/users/525509257102098442"
-				title="The IM that we all use."
-				accesskey="d">My <u>D</u>iscord</a
+				title="The IM that we all use.">My <u>D</u>iscord</a
+			>
+			<a rel="me" href="https://social.stellers.gay/" title="I just think it's neat to have!"
+				>My <u>F</u>ediverse Instance</a
+			>
+			<a rel="me" href="https://github.com/marksuckerberg" title="My favourite social media."
+				>My G<u>i</u>thub</a
 			>
 			<a
-				target="_blank"
-				rel="me"
-				href="https://social.stellers.gay/"
-				accesskey="f"
-				title="I just think it's neat to have!">My <u>F</u>ediverse Instance</a
-			>
-			<a
-				target="_blank"
-				rel="me"
-				href="https://github.com/marksuckerberg"
-				accesskey="i"
-				title="My favourite social media.">My G<u>i</u>thub</a
-			>
-			<a
-				target="_blank"
 				rel="me nofollow"
 				href="https://matrix.to/#/@mark:stellers.gay"
-				title="The IM I wish we all used."
-				accesskey="r">My Mat<u>r</u>ix account</a
+				title="The IM I wish we all used.">My Mat<u>r</u>ix account</a
 			>
 			<a
-				target="_blank"
 				rel="me"
 				href="https://tumblr.suckerberg.gay"
-				accesskey="t"
 				title="I'm occasionally active here, too.">My <u>T</u>umblog</a
 			>
 			<a
-				target="_blank"
 				rel="me"
 				href="xmpp:mark@stellers.gay"
-				title="Another IM service that I am indifferent about."
-				accesskey="x">My <u>X</u>MPP account</a
+				title="Another IM service that I am indifferent about.">My <u>X</u>MPP account</a
 			>
 
 			<hr class="win" />
 
 			<a
-				target="_blank"
 				href="https://hits.stellers.gay/"
 				class="black-background"
 				title="Watch the hits roll in!"
-				><img
+			>
+				<img
 					src="https://hits.stellers.gay/unique/ticker.webp"
 					class="hit-counter"
 					alt="A hitcounter in the style of a seven-segment display."
 				/>
 			</a>
 
-			<a href={resolve('/blog')} accesskey="b" title="See if I've remembered it exists!">
-				My <u>B</u>log
-			</a>
-
-			<a href={resolve('/guestbook')} accesskey="g" title="Sign my guestbook!">
-				<u>G</u>uestbook
-			</a>
-
-			<a href="mailto:mark@stellers.gay" accesskey="e" title="No spam, plz!"
-				><u>E</u>-mail me!</a
-			>
+			<a href="mailto:mark@stellers.gay" title="No spam, plz!"><u>E</u>-mail me!</a>
 
 			<a
 				target="_blank"
 				rel="me"
 				href="https://ko-fi.com/marksuckerberg"
-				accesskey="k"
 				title="EXTREMELY appreciated!">Buy me a <u>K</u>o-Fi!</a
 			>
 
@@ -259,10 +310,20 @@
 			<a
 				target="_blank"
 				href="https://auth.stellers.gay"
-				accesskey="l"
 				title="Log-in to my suite of services."
 				>Steller's Gay <u>L</u>ogin
 			</a>
+
+			<label style="color: #7f7f7f; text-shadow: 1px 1px 0 white;" class="small-inset">
+				Enable keyboard shortcuts
+				<input
+					type="checkbox"
+					onchange={(ev) => {
+						if (ev.currentTarget.checked) window.onkeydown = onKeyDown;
+						else window.onkeydown = null;
+					}}
+				/>
+			</label>
 		</nav>
 
 		<main id="content" class="inset">
@@ -382,8 +443,8 @@
 	}
 
 	.navcontainer {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: subgrid;
 		gap: 10px;
 	}
 

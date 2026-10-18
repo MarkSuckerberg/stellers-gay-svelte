@@ -1,39 +1,39 @@
 <script lang="ts">
-	import ref from '$lib/assets/mark_ref.webp';
-	import msp from '$lib/assets/mark_msp.webp';
-	import icon from '$lib/assets/mark_icon.webp';
-	import fall from '$lib/assets/mark_fall.png';
-	import cowbird from '$lib/assets/mark_cowbird.jpg';
-	import suited from '$lib/assets/mark_suit.jpg';
-	import fancy from '$lib/assets/mark_fancy.png';
-	import fragile from '$lib/assets/mark_fragile.png';
-	import mrk from '$lib/assets/mrk.webp';
-	import mrk2 from '$lib/assets/mrk2.webp';
-	import markrow from '$lib/assets/markrow.jpg';
-	import tired from '$lib/assets/tired.png';
-	import supermark from '$lib/assets/super_mark.png';
-	import jary from '$lib/assets/bluejarybeast.webp';
-	import flomnf from '$lib/assets/flomnf.png';
-	import flustered from '$lib/assets/flustered.png';
-	import pridebeak from '$lib/assets/pridebeak.png';
+	import ref from '$lib/assets/mark_ref.webp?format=webp;avif;png&as=picture';
+	import msp from '$lib/assets/mark_msp.webp?format=webp;avif;png&as=picture';
+	import icon from '$lib/assets/mark_icon.webp?format=webp;avif;png&as=picture';
+	import fall from '$lib/assets/mark_fall.png?format=webp;avif;png&as=picture';
+	import cowbird from '$lib/assets/mark_cowbird.jpg?format=webp;avif;png&as=picture';
+	import suited from '$lib/assets/mark_suit.jpg?format=webp;avif;png&as=picture';
+	import fancy from '$lib/assets/mark_fancy.png?format=webp;avif;png&as=picture';
+	import fragile from '$lib/assets/mark_fragile.png?format=webp;avif;png&as=picture';
+	import mrk from '$lib/assets/mrk.webp?format=webp;avif;png&as=picture';
+	import mrk2 from '$lib/assets/mrk2.webp?format=webp;avif;png&as=picture';
+	import markrow from '$lib/assets/markrow.jpg?format=webp;avif;png&as=picture';
+	import tired from '$lib/assets/tired.png?format=webp;avif;png&as=picture';
+	import supermark from '$lib/assets/super_mark.png?format=webp;avif;png&as=picture';
+	import jary from '$lib/assets/bluejarybeast.webp?format=webp;avif;png&as=picture';
+	import flomnf from '$lib/assets/flomnf.png?format=webp;avif;png&as=picture';
+	import flustered from '$lib/assets/flustered.png?format=webp;avif;png&as=picture';
+	import pridebeak from '$lib/assets/pridebeak.png?format=webp;avif;png&as=picture';
 
-	import enhanced_ref from '$lib/assets/mark_ref.webp?enhanced';
-	import enhanced_msp from '$lib/assets/mark_msp.webp?enhanced';
-	import enhanced_icon from '$lib/assets/mark_icon.webp?enhanced';
-	import enhanced_fall from '$lib/assets/mark_fall.png?enhanced';
-	import enhanced_cowbird from '$lib/assets/mark_cowbird.jpg?enhanced';
-	import enhanced_suited from '$lib/assets/mark_suit.jpg?enhanced';
-	import enhanced_fancy from '$lib/assets/mark_fancy.png?enhanced';
-	import enhanced_fragile from '$lib/assets/mark_fragile.png?enhanced';
+	import enhanced_ref from '$lib/assets/mark_ref.webp?h=250&w=250&format=avif;webp;png&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_msp from '$lib/assets/mark_msp.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_icon from '$lib/assets/mark_icon.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_fall from '$lib/assets/mark_fall.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_cowbird from '$lib/assets/mark_cowbird.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_suited from '$lib/assets/mark_suit.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_fancy from '$lib/assets/mark_fancy.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_fragile from '$lib/assets/mark_fragile.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
 	//import enhanced_mrk from '$lib/assets/mrk.webp?enhanced';
-	import enhanced_mrk2 from '$lib/assets/mrk2.webp?enhanced';
-	import enhanced_markrow from '$lib/assets/markrow.jpg?enhanced';
-	import enhanced_tired from '$lib/assets/tired.png?enhanced';
-	import enhanced_supermark from '$lib/assets/super_mark.png?enhanced';
-	import enhanced_jary from '$lib/assets/bluejarybeast.webp?enhanced';
-	import enhanced_flomnf from '$lib/assets/flomnf.png?enhanced';
-	import enhanced_flustered from '$lib/assets/flustered.png?enhanced';
-	import enhanced_pridebeak from '$lib/assets/pridebeak.png?enhanced';
+	import enhanced_mrk2 from '$lib/assets/mrk2.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_markrow from '$lib/assets/markrow.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_tired from '$lib/assets/tired.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_supermark from '$lib/assets/super_mark.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_jary from '$lib/assets/bluejarybeast.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_flomnf from '$lib/assets/flomnf.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_flustered from '$lib/assets/flustered.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_pridebeak from '$lib/assets/pridebeak.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
 
 	import GalleryButton from '$lib/components/gallery-button.svelte';
 </script>
@@ -73,6 +73,7 @@
 		src={enhanced_mrk2}
 		original={[mrk2, mrk]}
 		alt="A portrait of an exceptionally fluffy and softly rendered anthropomorphic blue jay with their eyes happily shut."
+		title="Floofy Jay"
 	>
 		An absolutely beautiful portrait by
 		<a href="https://furaffinity.net/user/returnaddress" title="Creator link">ReturnAddress</a>!

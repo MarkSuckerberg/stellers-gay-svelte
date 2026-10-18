@@ -1,5 +1,5 @@
 import { resolve } from '$app/paths';
-import { DISCORD_WEBHOOK } from '$env/static/private';
+import { DISCORD_WEBHOOK } from '$app/env/private';
 import { verifyCaptcha } from '$lib/captcha.server';
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';

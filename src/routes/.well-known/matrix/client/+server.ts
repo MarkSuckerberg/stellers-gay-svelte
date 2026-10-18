@@ -1,12 +1,11 @@
-import { PUBLIC_MATRIX_URL } from '$env/static/public';
-import { json } from '@sveltejs/kit';
+import { MATRIX_URL } from '$app/env/public';
 
 export const prerender = true;
 
 export async function GET() {
-	return json(
+	return Response.json(
 		{
-			'm.homeserver': { base_url: 'https://' + (PUBLIC_MATRIX_URL || 'matrix.stellers.gay') },
+			'm.homeserver': { base_url: 'https://' + (MATRIX_URL || 'matrix.stellers.gay') },
 			'org.matrix.msc2965.authentication': {
 				issuer: 'https://auth.stellers.gay/application/o/matrix-server/',
 				account: 'https://auth.stellers.gay/if/user/'

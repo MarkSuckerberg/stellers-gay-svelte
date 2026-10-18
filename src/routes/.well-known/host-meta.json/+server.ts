@@ -1,5 +1,3 @@
-import { json } from '@sveltejs/kit';
-
 export const prerender = true;
 
 export async function GET() {
@@ -21,7 +19,7 @@ export async function GET() {
 		]
 	};
 
-	return json(data, {
+	return Response.json(data, {
 		headers: {
 			'Content-Type': 'application/xrd+json',
 			'Access-Control-Allow-Origin': '*'

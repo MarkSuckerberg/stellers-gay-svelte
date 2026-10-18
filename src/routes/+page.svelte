@@ -135,7 +135,7 @@
 		<a
 			target="_blank"
 			rel="license"
-			href={asset('/license.txt')}
+			href={asset('license.txt')}
 			title="This site's HTML and CSS is licensed under the MIT license."
 			><img
 				src={mitLicense}

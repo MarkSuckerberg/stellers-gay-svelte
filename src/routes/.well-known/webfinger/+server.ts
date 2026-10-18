@@ -1,22 +1,21 @@
-import { PUBLIC_AKKOMA_URL, PUBLIC_AUTH_ISSUER_URL } from '$env/static/public';
-import { json } from '@sveltejs/kit';
+import { AKKOMA_URL, AUTH_ISSUER_URL } from '$app/env/public';
 
 export async function GET({ url, fetch, request }) {
 	const resource = url.searchParams.get('resource');
 
 	if (!resource) {
-		return json({
+		return Response.json({
 			subject: null,
 			links: [
 				{
 					rel: 'http://openid.net/specs/connect/1.0/issuer',
-					href: PUBLIC_AUTH_ISSUER_URL
+					href: AUTH_ISSUER_URL
 				}
 			]
 		});
 	}
 
-	const result = await fetch(PUBLIC_AKKOMA_URL + '.well-known/webfinger' + url.search, {
+	const result = await fetch(AKKOMA_URL + '.well-known/webfinger' + url.search, {
 		...request
 	});
 
@@ -29,18 +28,18 @@ export async function GET({ url, fetch, request }) {
 			await result.json();
 
 		if (resource)
-		data.links.push({
-			rel: 'http://openid.net/specs/connect/1.0/issuer',
-			href: PUBLIC_AUTH_ISSUER_URL
-		});
+			data.links.push({
+				rel: 'http://openid.net/specs/connect/1.0/issuer',
+				href: AUTH_ISSUER_URL
+			});
 
 		const headers = new Headers(result.headers);
 
 		headers.delete('Content-Encoding');
 		headers.delete('Content-Length');
 
-		return json(data, { headers });
+		return Response.json(data, { headers });
 	} catch {
-		return await fetch(PUBLIC_AKKOMA_URL + '.well-known/webfinger' + url.search);
+		return await fetch(AKKOMA_URL + '.well-known/webfinger' + url.search);
 	}
 }

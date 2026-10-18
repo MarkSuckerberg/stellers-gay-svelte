@@ -1,18 +1,30 @@
 <script lang="ts">
-	import { relativeDate } from '$lib/time.js';
+	import { MONTH, relativeDate } from '$lib/time.js';
 
 	let {
 		datetime,
 		title,
-		style = 'cursor: help;'
-	}: { datetime: string | number | Date; title?: string; style?: string } = $props();
+		style = 'cursor: help;',
+		maxTime = MONTH
+	}: {
+		datetime: string | number | Date;
+		title?: string;
+		style?: string;
+		maxTime?: number;
+	} = $props();
 
 	let dateValue = $derived(new Date(datetime));
+	let since = $derived(Date.now() - dateValue.valueOf());
+
 	let actualTitle = $derived(title || dateValue.toLocaleString());
 </script>
 
-{#if dateValue}
+{#if since > maxTime}
 	<time datetime={dateValue.toISOString()} title={actualTitle} {style}>
-		{relativeDate(dateValue)}
+		{relativeDate(dateValue, maxTime)}
+	</time>
+{:else}
+	<time datetime={dateValue.toISOString()} title={actualTitle} {style}>
+		{relativeDate(dateValue, maxTime)}
 	</time>
 {/if}

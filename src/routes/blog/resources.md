@@ -94,6 +94,12 @@ it's just awesome to have.
 A pretty good DBMS that lets you access and manage all sorts of different databases. Requires a paid version for some types
 of database, but for mariaDB, postgreSQL, sqlite, and such, it seems to work pretty well. Supports linux!
 
+### [DM Playground](https://play.dm-lang.org/)
+
+A sandbox for [BYOND's](https://www.byond.com/) [Dream Maker](https://www.byond.com/docs/ref/index.html) language.
+Also includes a bytecode display which I think is super neat for understanding the intricacies of what exactly each
+proc does.
+
 ### [Hello, World! In Every Programming Language](https://github.com/leachim6/hello-world)
 
 Mostly a novelty, but I find it's rather neat to see all the different ways programming languages accomplish that specific task.

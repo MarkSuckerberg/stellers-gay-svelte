@@ -1,4 +1,4 @@
-import { TURNSTILE } from '$env/static/private';
+import { TURNSTILE } from '$app/env/private';
 
 interface TurnstileResponse {
 	action: string;

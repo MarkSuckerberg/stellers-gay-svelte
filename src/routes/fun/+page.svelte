@@ -110,7 +110,7 @@
 
 	<a href="https://stellers.gay" title="Button for this site, lovingly sprited by Ryerice!">
 		<img
-			src="https://stellers.gay{asset('/assets/stellersbutton.gif')}"
+			src="https://stellers.gay{asset('assets/stellersbutton.gif')}"
 			style="height: 31px; width: 88px;"
 			alt="An animated button showing a pixelated sleeping blue jay raptor-creature. Credit to Rylie/RyeRice!"
 		/>

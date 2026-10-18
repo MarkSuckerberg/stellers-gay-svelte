@@ -16,9 +16,9 @@
 <BlogListing pages={data.pages} />
 
 <p>
-	Subscribe to my <a href={resolve('/rss')} rel="alternate" type="application/rss+xml">RSS</a>/<a
-		href={resolve('/atom')}
+	Subscribe to my <a href={resolve('rss')} rel="alternate" type="application/rss+xml">RSS</a>/<a
+		href={resolve('atom')}
 		rel="alternate"
 		type="application/atom+xml">ATOM</a
-	>/<a href={resolve('/feed.json')} rel="alternate" type="application/feed+json">JSON</a> Feed!
+	>/<a href={resolve('feed.json')} rel="alternate" type="application/feed+json">JSON</a> Feed!
 </p>

@@ -1,17 +1,17 @@
-import { PUBLIC_AKKOMA_URL, PUBLIC_PDS_URL } from '$env/static/public';
 import { error } from '@sveltejs/kit';
+import { AKKOMA_URL, PDS_URL } from '$app/env/public';
 
 export async function GET({ url, fetch, params, request }) {
 	const requested = params.requested;
 
 	if (requested === 'nodeinfo') {
-		return await fetch(PUBLIC_AKKOMA_URL + '.well-known/' + requested + url.search, {
+		return await fetch(AKKOMA_URL + '.well-known/' + requested + url.search, {
 			...request
 		});
 	}
 
 	if (requested === 'atproto-did') {
-		return await fetch(PUBLIC_PDS_URL + '.well-known/' + requested + url.search, {
+		return await fetch(PDS_URL + '.well-known/' + requested + url.search, {
 			...request
 		});
 	}

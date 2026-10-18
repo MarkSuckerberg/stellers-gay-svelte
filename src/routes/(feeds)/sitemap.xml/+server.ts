@@ -1,7 +1,6 @@
 import { resolve } from '$app/paths';
-import type { Pathname } from '$app/types';
+import type { PageRouteId } from '$app/types';
 import { GetPostMeta, SlugFromImport } from '$lib/blog';
-import { text } from '@sveltejs/kit';
 
 export const prerender = true;
 
@@ -18,8 +17,10 @@ const pages = Object.entries({
 	'/fun/gameoflife': 0.2,
 	'/atom': 0.2,
 	'/rss': 0.2,
-	'/feed.json': 0.2
-} as Record<Pathname, number>) as [Pathname, number][];
+	'/feed.json': 0.2,
+	'/blog/[slug]': 0,
+	'/blog/tag/[tag]': 0
+} as Record<PageRouteId, number>) as [PageRouteId, number][];
 
 const subdomains = Object.entries({
 	'https://social.stellers.gay/': 0.5,
@@ -46,6 +47,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8" ?>
   xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
 >
   ${pages
+		.filter(([, value]) => value > 0)
 		.map(
 			([page, priority]) => `
   <url>
@@ -96,7 +98,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8" ?>
 </urlset>`;
 
 export async function GET() {
-	return text(sitemap, {
+	return new Response(sitemap, {
 		headers: {
 			'content-type': 'application/xml'
 		}

@@ -1,4 +1,4 @@
-import { error, json } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { render } from 'svelte/server';
 import markPFP from '$lib/assets/mrk2.webp?w=512&h=512&?enhanced';
 import { GetPosts } from '$lib/blog.js';
@@ -35,7 +35,8 @@ export async function GET({ url }) {
 		author_name:
 			details.metadata.authors?.map((author) => author.name)?.join(', ') || 'Mark Suckerbird',
 		author_url:
-			details.metadata.authors?.map((author) => author.url)?.join(', ') || 'https://stellers.gay',
+			details.metadata.authors?.map((author) => author.url)?.join(', ') ||
+			'https://stellers.gay',
 		provider_name: "Steller's Gay",
 		provider_url: 'https://stellers.gay',
 		title: details.metadata.title,
@@ -44,5 +45,5 @@ export async function GET({ url }) {
 		thumbnail_width: 512
 	};
 
-	return json(embed);
+	return Response.json(embed);
 }

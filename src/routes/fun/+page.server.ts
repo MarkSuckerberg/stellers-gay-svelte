@@ -1,4 +1,4 @@
-import { WEATHER_LAT, WEATHER_LONG } from '$env/static/private';
+import { WEATHER_LAT, WEATHER_LONG } from '$app/env/private';
 import { fetchWeatherApi } from 'openmeteo';
 
 export const prerender = false;

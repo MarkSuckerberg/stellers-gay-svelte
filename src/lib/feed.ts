@@ -1,6 +1,5 @@
 import { asset, resolve } from '$app/paths';
 import { GetPosts } from '$lib/blog';
-import { json, text } from '@sveltejs/kit';
 import { render } from 'svelte/server';
 
 import markPFP from '$lib/assets/mrk2.webp?w=512&h=512&?enhanced';
@@ -20,7 +19,7 @@ const feed = {
 		"The RSS feed for Mark Suckerbird's personal blog. Expect rambling about computers, video games, technology, and the like.",
 	home_page_url: 'https://stellers.gay/blog',
 	feed_url: 'https://stellers.gay/feed',
-	favicon: 'https://stellers.gay' + asset('/favicon.webp'),
+	favicon: 'https://stellers.gay' + asset('favicon.webp'),
 	language: 'en-US',
 	icon: 'https://stellers.gay' + jary,
 	authors: [
@@ -106,7 +105,7 @@ const feedATOM = `<?xml version="1.0" encoding="UTF-8" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${feed.title}</title>
   <link href="${feed.home_page_url}" />
-  <link href="https://stellers.gay${resolve('/atom')}" rel="self" />
+  <link href="https://stellers.gay${resolve('/(feeds)/atom')}" rel="self" />
   <subtitle>${feed.description}</subtitle>
   <updated>${builtISO}</updated>
   <language>${feed.language}</language>
@@ -142,21 +141,21 @@ export async function getFeed(request: Request, type = FeedType.ANY) {
 
 	switch (type) {
 		case FeedType.RSS:
-			return text(feedRSS, {
+			return new Response(feedRSS, {
 				headers: {
 					'Content-Type': 'application/rss+xml',
 					...(await EtagHeaders(feedATOM))
 				}
 			});
 		case FeedType.ATOM:
-			return text(feedATOM, {
+			return new Response(feedATOM, {
 				headers: {
 					'Content-Type': 'application/atom+xml',
 					...(await EtagHeaders(feedATOM))
 				}
 			});
 		case FeedType.JSON:
-			return json(feed, {
+			return Response.json(feed, {
 				headers: {
 					'Content-Type': 'application/feed+json',
 					...(await EtagHeaders(feedATOM))
@@ -169,7 +168,7 @@ export async function getFeed(request: Request, type = FeedType.ANY) {
 
 	const accept = request.headers.get('Accept');
 	if (accept?.includes('application/feed+json')) {
-		return json(feed, {
+		return Response.json(feed, {
 			headers: {
 				'Content-Type': 'application/feed+json',
 				Vary: 'Accept',
@@ -179,7 +178,7 @@ export async function getFeed(request: Request, type = FeedType.ANY) {
 	}
 
 	if (accept?.includes('application/atom+xml')) {
-		return text(feedATOM, {
+		return new Response(feedATOM, {
 			headers: {
 				'Content-Type': 'application/atom+xml',
 				Vary: 'Accept',
@@ -188,7 +187,7 @@ export async function getFeed(request: Request, type = FeedType.ANY) {
 		});
 	}
 
-	return text(feedRSS, {
+	return new Response(feedRSS, {
 		headers: {
 			'Content-Type': 'application/rss+xml',
 			Vary: 'Accept',

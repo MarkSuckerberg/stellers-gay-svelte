@@ -1,5 +1,3 @@
-import { text } from '@sveltejs/kit';
-
 export const prerender = true;
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -13,7 +11,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 </XRD>`;
 
 export async function GET() {
-	return text(xml, {
+	return new Response(xml, {
 		headers: {
 			'Content-Type': 'application/xrd+xml',
 			'Access-Control-Allow-Origin': '*'

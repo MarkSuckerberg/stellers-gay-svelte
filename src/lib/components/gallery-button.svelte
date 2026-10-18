@@ -1,26 +1,25 @@
 <script lang="ts">
-	import type { Picture } from '@sveltejs/enhanced-img';
 	import type { Snippet } from 'svelte';
 	import Window from './window.svelte';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-	import { pushState } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import type { Picture } from '@sveltejs/enhanced-img';
 
 	let {
 		src,
 		original,
-		title = (typeof original == 'string' ? original : original[0])
-			.split('/')
-			.at(-1)
-			?.split('.')
-			.at(0) || 'title',
+		title,
 		alt,
 		children
 	}: {
-		src: Picture;
-		original: string[] | string;
-		title?: string;
+		src: {
+			src: string;
+			srcset?: string;
+		};
+		original: Picture[] | Picture;
+		title: string;
 		alt?: string | null;
 		children?: Snippet;
 	} = $props();
@@ -38,52 +37,104 @@
 	{title}
 	bind:open
 	onOpen={() => {
-		pushState(resolve(`/media#${title}`), page.state);
+		goto(resolve(`/media#${title}`));
 	}}
 	onClose={() => {
-		pushState(resolve(`/media`), page.state);
+		goto(resolve(`/media`));
 	}}
 >
 	<figure
 		style="display: flex; align-items: center; flex-direction: column; padding: 0.5em; overflow: scroll;"
 	>
-		{#if typeof original == 'string'}
-			<a href={original} title="View Original" rel="external" target="_blank">
-				<enhanced:img
-					{src}
-					{alt}
-					sizes="720px"
-					style="max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
-					class="inset"
-					loading="lazy"
-				>
-				</enhanced:img>
-				<!--<img
-					src={original}
-					{alt}
-					style="max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
-					class="inset"
-					loading="lazy"
-				/>-->
-			</a>
-		{:else}
-			<div style="display: flex; max-width: 80dvw; gap: 1em" class="inset">
-				{#each original as image (image)}
-					<a href={image} title="View Original" rel="external" target="_blank">
-						<!--<enhanced:img
-                            {src}
-                            {alt}
-                            style="max-height: 80dvh; object-fit: contain;"
-                            loading="lazy"
-                        >
-                        </enhanced:img>-->
+		{#if !Array.isArray(original)}
+			<div>
+				<a href={original.img.src} title="View Original" rel="external" target="_blank">
+					<picture>
+						{#each Object.entries(original.sources) as [format, srcset] (srcset)}
+							<source {srcset} type="image/{format}" />
+						{/each}
 						<img
-							src={image}
+							src={original.img.src}
 							{alt}
-							style="max-height: 80dvh; object-fit: contain"
+							class="inset"
 							loading="lazy"
+							style="max-height: 80dvh; max-width: 80dvw; object-fit: contain;"
 						/>
-					</a>
+					</picture>
+				</a>
+
+				<menu
+					style="list-style: none; display: flex; flex-direction: row; text-align: center;"
+				>
+					<li style="flex: 1;">
+						<a
+							href={original.img.src}
+							rel="external"
+							type="image/png"
+							download="{title.replace(' ', '_').toLowerCase()}.png">PNG</a
+						>
+					</li>
+					{#each Object.entries(original.sources) as [format, url] (url)}
+						<li style="flex: 1;">
+							<a
+								href={url.split(' ')[0]}
+								rel="external"
+								type="image/{format}"
+								download="{title.replace(' ', '_').toLowerCase()}.{format}"
+								>{format.toUpperCase()}</a
+							>
+						</li>
+					{/each}
+				</menu>
+			</div>
+		{:else}
+			<div style="display: flex; max-width: 80dvw; gap: 1em">
+				{#each original as image, idx (image)}
+					<div>
+						<a
+							href={image.img.src}
+							title="View Original"
+							rel="external"
+							target="_blank"
+						>
+							<picture>
+								{#each Object.entries(image.sources) as [format, srcset] (srcset)}
+									<source {srcset} type="image/{format}" />
+								{/each}
+								<img
+									src={image.img.src}
+									{alt}
+									class="inset"
+									loading="lazy"
+									style="max-height: 80dvh; object-fit: contain;"
+								/>
+							</picture>
+						</a>
+						<menu
+							style="list-style: none; display: flex; flex-direction: row; text-align: center;"
+						>
+							<li style="flex: 1;">
+								<a
+									href={image.img.src}
+									rel="external"
+									type="image/png"
+									download="{title.replace(' ', '_').toLowerCase()}_{idx + 1}.png"
+									>Download PNG</a
+								>
+							</li>
+							{#each Object.entries(image.sources) as [format, url] (url)}
+								<li style="flex: 1;">
+									<a
+										href={url.split(' ')[0]}
+										rel="external"
+										type="image/{format}"
+										download="{title.replace(' ', '_').toLowerCase()}_{idx +
+											1}.{format}">Download {format.toUpperCase()}</a
+									>
+								</li>
+							{/each}
+						</menu>
+					</div>
 				{/each}
 			</div>
 		{/if}
@@ -94,8 +145,13 @@
 </Window>
 
 <button {title} onclick={() => (open = true)} class="media-button">
-	<enhanced:img {src} {alt} {title} sizes="250px" width="220" height="220" class="button-img">
-	</enhanced:img>
+	<img
+		{alt}
+		src={src.src}
+		srcset={src.srcset}
+		style="height: 220px; width: 220px"
+		class="button-img"
+	/>
 </button>
 
 <style>

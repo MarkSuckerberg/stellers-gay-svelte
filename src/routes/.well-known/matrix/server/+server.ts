@@ -1,8 +1,7 @@
-import { PUBLIC_MATRIX_URL } from '$env/static/public';
-import { json } from '@sveltejs/kit';
+import { MATRIX_URL } from '$app/env/public';
 
 export const prerender = true;
 
 export async function GET() {
-	return json({ 'm.server': (PUBLIC_MATRIX_URL || 'matrix.stellers.gay') + ':443' });
+	return Response.json({ 'm.server': (MATRIX_URL || 'matrix.stellers.gay') + ':443' });
 }

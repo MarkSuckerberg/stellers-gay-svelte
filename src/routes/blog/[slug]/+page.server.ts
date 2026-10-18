@@ -1,4 +1,4 @@
-import { DISCORD_WEBHOOK } from '$env/static/private';
+import { DISCORD_WEBHOOK } from '$app/env/private';
 import { verifyCaptcha } from '$lib/captcha.server';
 import type { Actions } from '@sveltejs/kit';
 import { fail, redirect } from '@sveltejs/kit';

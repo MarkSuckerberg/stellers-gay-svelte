@@ -1,9 +1,9 @@
 const SEC = 1000;
 const MIN = 60 * SEC;
 const HOUR = 60 * MIN;
-const DAY = 24 * HOUR;
-const WEEK = 7 * DAY;
-const MONTH = 30 * DAY;
+export const DAY = 24 * HOUR;
+export const WEEK = 7 * DAY;
+export const MONTH = 30 * DAY;
 const YEAR = 365.2425 * DAY;
 
 const fmt = new Intl.RelativeTimeFormat(undefined, {
