@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PixelCanvas } from '$lib/gameoflife.svelte';
+	import { PixelCanvas } from '#lib/gameoflife.svelte';
 	import { onMount } from 'svelte';
 
 	let canvas: HTMLCanvasElement | undefined = $state();

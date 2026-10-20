@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import BlogTags from '$lib/components/blog-tags.svelte';
+	import BlogTags from '#lib/components/blog-tags.svelte';
 
-	import '$lib/codeblocks.css';
+	import '#lib/codeblocks.css';
 	import { resolve } from '$app/paths';
 	import { enhance } from '$app/forms';
-	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
+	import RelativeTimestamp from '#lib/components/relative-timestamp.svelte';
 	import { TURNSTILE_SITEKEY } from '$app/env/public';
-	import SimpleUserMarkdown from '$lib/components/simple-user-markdown.svelte';
+	import SimpleUserMarkdown from '#lib/components/simple-user-markdown.svelte';
 
 	let { data, form } = $props();
 

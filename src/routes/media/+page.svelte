@@ -1,41 +1,41 @@
 <script lang="ts">
-	import ref from '$lib/assets/mark_ref.webp?format=webp;avif;png&as=picture';
-	import msp from '$lib/assets/mark_msp.webp?format=webp;avif;png&as=picture';
-	import icon from '$lib/assets/mark_icon.webp?format=webp;avif;png&as=picture';
-	import fall from '$lib/assets/mark_fall.png?format=webp;avif;png&as=picture';
-	import cowbird from '$lib/assets/mark_cowbird.jpg?format=webp;avif;png&as=picture';
-	import suited from '$lib/assets/mark_suit.jpg?format=webp;avif;png&as=picture';
-	import fancy from '$lib/assets/mark_fancy.png?format=webp;avif;png&as=picture';
-	import fragile from '$lib/assets/mark_fragile.png?format=webp;avif;png&as=picture';
-	import mrk from '$lib/assets/mrk.webp?format=webp;avif;png&as=picture';
-	import mrk2 from '$lib/assets/mrk2.webp?format=webp;avif;png&as=picture';
-	import markrow from '$lib/assets/markrow.jpg?format=webp;avif;png&as=picture';
-	import tired from '$lib/assets/tired.png?format=webp;avif;png&as=picture';
-	import supermark from '$lib/assets/super_mark.png?format=webp;avif;png&as=picture';
-	import jary from '$lib/assets/bluejarybeast.webp?format=webp;avif;png&as=picture';
-	import flomnf from '$lib/assets/flomnf.png?format=webp;avif;png&as=picture';
-	import flustered from '$lib/assets/flustered.png?format=webp;avif;png&as=picture';
-	import pridebeak from '$lib/assets/pridebeak.png?format=webp;avif;png&as=picture';
+	import ref from '#lib/assets/mark_ref.webp?format=webp;avif;png&as=picture';
+	import msp from '#lib/assets/mark_msp.webp?format=webp;avif;png&as=picture';
+	import icon from '#lib/assets/mark_icon.webp?format=webp;avif;png&as=picture';
+	import fall from '#lib/assets/mark_fall.png?format=webp;avif;png&as=picture';
+	import cowbird from '#lib/assets/mark_cowbird.jpg?format=webp;avif;png&as=picture';
+	import suited from '#lib/assets/mark_suit.jpg?format=webp;avif;png&as=picture';
+	import fancy from '#lib/assets/mark_fancy.png?format=webp;avif;png&as=picture';
+	import fragile from '#lib/assets/mark_fragile.png?format=webp;avif;png&as=picture';
+	import mrk from '#lib/assets/mrk.webp?format=webp;avif;png&as=picture';
+	import mrk2 from '#lib/assets/mrk2.webp?format=webp;avif;png&as=picture';
+	import markrow from '#lib/assets/markrow.jpg?format=webp;avif;png&as=picture';
+	import tired from '#lib/assets/tired.png?format=webp;avif;png&as=picture';
+	import supermark from '#lib/assets/super_mark.png?format=webp;avif;png&as=picture';
+	import jary from '#lib/assets/bluejarybeast.webp?format=webp;avif;png&as=picture';
+	import flomnf from '#lib/assets/flomnf.png?format=webp;avif;png&as=picture';
+	import flustered from '#lib/assets/flustered.png?format=webp;avif;png&as=picture';
+	import pridebeak from '#lib/assets/pridebeak.png?format=webp;avif;png&as=picture';
 
-	import enhanced_ref from '$lib/assets/mark_ref.webp?h=250&w=250&format=avif;webp;png&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_msp from '$lib/assets/mark_msp.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_icon from '$lib/assets/mark_icon.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_fall from '$lib/assets/mark_fall.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_cowbird from '$lib/assets/mark_cowbird.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_suited from '$lib/assets/mark_suit.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_fancy from '$lib/assets/mark_fancy.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_fragile from '$lib/assets/mark_fragile.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	//import enhanced_mrk from '$lib/assets/mrk.webp?enhanced';
-	import enhanced_mrk2 from '$lib/assets/mrk2.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_markrow from '$lib/assets/markrow.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_tired from '$lib/assets/tired.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_supermark from '$lib/assets/super_mark.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_jary from '$lib/assets/bluejarybeast.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_flomnf from '$lib/assets/flomnf.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_flustered from '$lib/assets/flustered.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
-	import enhanced_pridebeak from '$lib/assets/pridebeak.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_ref from '#lib/assets/mark_ref.webp?h=250&w=250&format=avif;webp;png&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_msp from '#lib/assets/mark_msp.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_icon from '#lib/assets/mark_icon.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_fall from '#lib/assets/mark_fall.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_cowbird from '#lib/assets/mark_cowbird.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_suited from '#lib/assets/mark_suit.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_fancy from '#lib/assets/mark_fancy.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_fragile from '#lib/assets/mark_fragile.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	//import enhanced_mrk from '#lib/assets/mrk.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_mrk2 from '#lib/assets/mrk2.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_markrow from '#lib/assets/markrow.jpg?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_tired from '#lib/assets/tired.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_supermark from '#lib/assets/super_mark.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_jary from '#lib/assets/bluejarybeast.webp?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_flomnf from '#lib/assets/flomnf.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_flustered from '#lib/assets/flustered.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
+	import enhanced_pridebeak from '#lib/assets/pridebeak.png?h=250&w=250&format=avif;webp;png&fit=outside&as=img';
 
-	import GalleryButton from '$lib/components/gallery-button.svelte';
+	import GalleryButton from '#lib/components/gallery-button.svelte';
 </script>
 
 <svelte:head>

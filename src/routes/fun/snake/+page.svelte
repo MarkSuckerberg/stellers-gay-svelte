@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Vec2 } from '$lib/vec2';
+	import { Vec2 } from '#lib/vec2.ts';
 
 	const sizeX = 47;
 	const sizeY = 30;

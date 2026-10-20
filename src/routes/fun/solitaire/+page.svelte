@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { beforeNavigate } from '$app/navigation';
-	import CardButton from '$lib/components/card.svelte';
-	import { canMoveOnto, Rank, Suit, SuitReverse, type Card, Setup } from '$lib/solitaire';
+	import CardButton from '#lib/components/card.svelte';
+	import { canMoveOnto, Rank, Suit, SuitReverse, type Card, Setup } from '#lib/solitaire.ts';
 	import { onMount } from 'svelte';
 
 	let deck: Card[] = $state([]);

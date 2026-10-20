@@ -52,5 +52,9 @@
 		"@magidoc/plugin-svelte-marked": "^7.0.0",
 		"marked": "^18.1.1",
 		"openmeteo": "^1.2.3"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
 	}
 }

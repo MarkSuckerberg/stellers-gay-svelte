@@ -1,6 +1,6 @@
 <script>
 	import { asset, resolve } from '$app/paths';
-	import { relativeDate as relativeTime } from '$lib/time.js';
+	import { relativeDate as relativeTime } from '#lib/time.ts';
 
 	let { data } = $props();
 

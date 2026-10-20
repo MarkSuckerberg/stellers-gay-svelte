@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MONTH, relativeDate } from '$lib/time.js';
+	import { MONTH, relativeDate } from '#lib/time.ts';
 
 	let {
 		datetime,

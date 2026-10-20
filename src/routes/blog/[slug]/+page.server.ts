@@ -1,10 +1,10 @@
 import { DISCORD_WEBHOOK } from '$app/env/private';
-import { verifyCaptcha } from '$lib/captcha.server';
+import { verifyCaptcha } from '#lib/captcha.server.ts';
 import type { Actions } from '@sveltejs/kit';
 import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import type { Comment } from '$lib/blog';
+import type { Comment } from '#lib/blog.ts';
 
 import { env } from 'cloudflare:workers';
 

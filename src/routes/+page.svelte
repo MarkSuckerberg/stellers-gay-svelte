@@ -1,30 +1,30 @@
 <script>
-	import pixelSafari from '$lib/assets/88x31/pixelsafari.webp';
-	import linux from '$lib/assets/88x31/1linux2.webp';
-	import shiptest from '$lib/assets/88x31/shiptest-button.webp';
-	import css from '$lib/assets/88x31/css.webp';
-	import yogstation from '$lib/assets/88x31/yogstation.gif';
-	import snapps from '$lib/assets/88x31/snapps.gif';
-	import honk from '$lib/assets/88x31/honk.webp';
-	import htmlbutton from '$lib/assets/88x31/htmlbutton.png';
-	import guestbook from '$lib/assets/88x31/signguest.gif';
-	import mitLicense from '$lib/assets/88x31/mit-license.webp';
-	import btn17776 from '$lib/assets/88x31/17776.gif';
-	import stellers from '$lib/assets/88x31/stellersbutton.webp';
-	import btn88x31 from '$lib/assets/88x31/88x31.gif';
-	import canineTools from '$lib/assets/88x31/caninetools.png';
-	import bigrat from '$lib/assets/88x31/bigratdotmonster.png';
-	import gay from '$lib/assets/88x31/gay.gif';
-	import crouton from '$lib/assets/88x31/crouton.png';
-	import ia from '$lib/assets/88x31/ia.webp';
-	import parrot from '$lib/assets/88x31/parrotbanner.gif';
+	import pixelSafari from '#lib/assets/88x31/pixelsafari.webp';
+	import linux from '#lib/assets/88x31/1linux2.webp';
+	import shiptest from '#lib/assets/88x31/shiptest-button.webp';
+	import css from '#lib/assets/88x31/css.webp';
+	import yogstation from '#lib/assets/88x31/yogstation.gif';
+	import snapps from '#lib/assets/88x31/snapps.gif';
+	import honk from '#lib/assets/88x31/honk.webp';
+	import htmlbutton from '#lib/assets/88x31/htmlbutton.png';
+	import guestbook from '#lib/assets/88x31/signguest.gif';
+	import mitLicense from '#lib/assets/88x31/mit-license.webp';
+	import btn17776 from '#lib/assets/88x31/17776.gif';
+	import stellers from '#lib/assets/88x31/stellersbutton.webp';
+	import btn88x31 from '#lib/assets/88x31/88x31.gif';
+	import canineTools from '#lib/assets/88x31/caninetools.png';
+	import bigrat from '#lib/assets/88x31/bigratdotmonster.png';
+	import gay from '#lib/assets/88x31/gay.gif';
+	import crouton from '#lib/assets/88x31/crouton.png';
+	import ia from '#lib/assets/88x31/ia.webp';
+	import parrot from '#lib/assets/88x31/parrotbanner.gif';
 
-	import barbedWire from '$lib/assets/barbedwire.webp';
-	import pokeOverworld from '$lib/assets/pokeoverworld.gif';
-	import iLoveCrows from '$lib/assets/ilovecrows.webp';
+	import barbedWire from '#lib/assets/barbedwire.webp';
+	import pokeOverworld from '#lib/assets/pokeoverworld.gif';
+	import iLoveCrows from '#lib/assets/ilovecrows.webp';
 
 	import { asset, resolve } from '$app/paths';
-	import { posts } from '$lib/blog';
+	import { posts } from '#lib/blog.ts';
 
 	const Updates = posts['updates'].default;
 </script>

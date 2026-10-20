@@ -129,7 +129,6 @@ export class NeighMap {
 
 		if (y != 0) {
 			const above = this.getRow(y - 1, x - 1, 3);
-			above.
 		}
 	}
 }
@@ -183,7 +182,6 @@ export class ArrayGrid {
 
 		if (y != 0) {
 			const above = this.getRow(y - 1, x - 1, 3);
-			above.
 		}
 	}
 }

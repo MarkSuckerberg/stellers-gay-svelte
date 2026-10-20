@@ -1,4 +1,4 @@
-import type { BlogMeta } from '$lib/blog.js';
+import type { BlogMeta } from '#lib/blog.ts';
 import { error } from '@sveltejs/kit';
 import type { Component } from 'svelte';
 

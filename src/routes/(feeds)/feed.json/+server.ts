@@ -1,4 +1,4 @@
-import { FeedType, getFeed } from '$lib/feed';
+import { FeedType, getFeed } from '#lib/feed.ts';
 
 export const prerender = true;
 

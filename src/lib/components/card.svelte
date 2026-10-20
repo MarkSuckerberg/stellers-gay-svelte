@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { MouseEventHandler } from 'svelte/elements';
-	import { Color, Icon, Rank, type Card } from '$lib/solitaire';
+	import { Color, Icon, Rank, type Card } from '#lib/solitaire.ts';
 	import type { Snippet } from 'svelte';
 
 	let {

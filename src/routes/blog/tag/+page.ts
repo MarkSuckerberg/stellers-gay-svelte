@@ -1,4 +1,4 @@
-import { GetPostMeta } from '$lib/blog';
+import { GetPostMeta } from '#lib/blog.ts';
 
 const tags = GetPostMeta() // Get the posts
 	.flatMap(([, data]) => data.tags || []) // Turn into an array of all tags

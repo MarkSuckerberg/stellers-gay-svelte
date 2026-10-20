@@ -1,9 +1,9 @@
 //const html = render(data.default).body;
 import { render } from 'svelte/server';
 
-import Codeblocks from '$lib/codeblocks.css?inline';
+import Codeblocks from '#lib/codeblocks.css?inline';
 import type { Component } from 'svelte';
-import type { BlogMeta } from '$lib/blog';
+import type { BlogMeta } from '#lib/blog.ts';
 
 export const prerender = true;
 

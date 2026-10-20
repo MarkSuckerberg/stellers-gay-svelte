@@ -13,7 +13,6 @@ export default defineConfig({
 	plugins: [
 		enhancedImages(),
 		sveltekit({
-			alias: { $lib: 'src/lib' },
 			preprocess: [
 				mdsvex({
 					extensions: ['.md', '.svx'],
@@ -39,7 +38,7 @@ export default defineConfig({
 	],
 	build: {
 		assetsInlineLimit(filePath, content) {
-			return filePath.includes('88x31') ? false : null;
+			return filePath.includes('88x31') ? false : undefined;
 		}
 	}
 });

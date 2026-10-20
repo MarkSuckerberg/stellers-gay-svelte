@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { render } from 'svelte/server';
-import markPFP from '$lib/assets/mrk2.webp?w=512&h=512&?enhanced';
-import { GetPosts } from '$lib/blog.js';
+import markPFP from '#lib/assets/mrk2.webp?w=512&h=512&?enhanced';
+import { GetPosts } from '#lib/blog.ts';
 
 const posts = GetPosts();
 

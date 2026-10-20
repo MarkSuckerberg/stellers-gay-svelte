@@ -1,6 +1,6 @@
 import { resolve } from '$app/paths';
 import type { PageRouteId } from '$app/types';
-import { GetPostMeta, SlugFromImport } from '$lib/blog';
+import { GetPostMeta, SlugFromImport } from '#lib/blog.ts';
 
 export const prerender = true;
 
@@ -19,7 +19,8 @@ const pages = Object.entries({
 	'/rss': 0.2,
 	'/feed.json': 0.2,
 	'/blog/[slug]': 0,
-	'/blog/tag/[tag]': 0
+	'/blog/tag/[tag]': 0,
+	'/fun/birdseed': 0.2
 } as Record<PageRouteId, number>) as [PageRouteId, number][];
 
 const subdomains = Object.entries({

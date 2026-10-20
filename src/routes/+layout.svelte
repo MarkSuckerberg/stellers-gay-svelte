@@ -1,11 +1,11 @@
 <script lang="ts">
 	import '../app.css';
-	import jary from '$lib/assets/bluejarybeast.webp?w=564;236&format=avif;webp&as=picture';
-	import construction from '$lib/assets/construction.webp';
-	import mrk2 from '$lib/assets/mrk2.webp?h=512&w=512&fit=cover&format=png&as=img';
-	import bg from '$lib/assets/win95setup-clear.webp';
+	import jary from '#lib/assets/bluejarybeast.webp?w=564;236&format=avif;webp&as=picture';
+	import construction from '#lib/assets/construction.webp';
+	import mrk2 from '#lib/assets/mrk2.webp?h=512&w=512&fit=cover&format=png&as=img';
+	import bg from '#lib/assets/win95setup-clear.webp';
 
-	import quoteFile from '$lib/assets/quotes.json';
+	import quoteFile from '#lib/assets/quotes.json';
 	const quotes = quoteFile.quotes;
 
 	import { page } from '$app/state';

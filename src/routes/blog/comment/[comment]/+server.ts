@@ -1,6 +1,6 @@
 import { error, redirect } from '@sveltejs/kit';
 import { resolve } from '$app/paths';
-import type { Comment } from '$lib/blog.js';
+import type { Comment } from '#lib/blog.ts';
 import { env } from 'cloudflare:workers';
 
 export async function GET({ params }) {

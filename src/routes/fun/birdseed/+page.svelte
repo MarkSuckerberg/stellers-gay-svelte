@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { birds, BirdSeedState, Upgrades } from '$lib/birdseed.svelte';
+	import { birds, BirdSeedState, Upgrades } from '#lib/birdseed.svelte.ts';
 	import { onMount } from 'svelte';
 
 	let game = $state(new BirdSeedState());
 
 	function CleanupTimers() {
 		var killId = setTimeout(function () {
-			for (var i = killId; i > 0; i--) clearInterval(i);
+			for (var i = killId as unknown as number; i > 0; i--) clearInterval(i);
 
 			game.Start();
 		}, 1000);

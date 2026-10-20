@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import BlogListing from '$lib/components/blog-listing.svelte';
+	import BlogListing from '#lib/components/blog-listing.svelte';
 
 	let { data } = $props();
 </script>

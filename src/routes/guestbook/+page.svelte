@@ -2,8 +2,8 @@
 	let { data, form } = $props();
 	import { enhance } from '$app/forms';
 	import { TURNSTILE_SITEKEY } from '$app/env/public';
-	import RelativeTimestamp from '$lib/components/relative-timestamp.svelte';
-	import SimpleUserMarkdown from '$lib/components/simple-user-markdown.svelte';
+	import RelativeTimestamp from '#lib/components/relative-timestamp.svelte';
+	import SimpleUserMarkdown from '#lib/components/simple-user-markdown.svelte';
 </script>
 
 <svelte:head>

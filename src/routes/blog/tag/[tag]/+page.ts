@@ -1,4 +1,4 @@
-import { GetPostMeta } from '$lib/blog';
+import { GetPostMeta } from '#lib/blog.ts';
 import { error } from '@sveltejs/kit';
 
 const pages = GetPostMeta();

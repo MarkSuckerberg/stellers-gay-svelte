@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import type { BlogMeta } from '$lib/blog';
+	import type { BlogMeta } from '#lib/blog.ts';
 	import BlogTags from './blog-tags.svelte';
 	import RelativeTimestamp from './relative-timestamp.svelte';
 
