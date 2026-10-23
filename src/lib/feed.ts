@@ -89,7 +89,7 @@ const atomItems = feed.items.map(
 	<summary>${post.summary}</summary>
     <content>${post.content_html}</content>
 	<published>${post.date_published}</published>
-	<updated>${post.date_modified}</updated>
+	<updated>${post.date_modified || post.date_published}</updated>
 	${
 		post.authors
 			? `<author>

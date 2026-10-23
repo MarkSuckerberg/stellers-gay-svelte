@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import { asset, resolve } from '$app/paths';
 	import { relativeDate as relativeTime } from '#lib/time.ts';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
@@ -9,6 +10,23 @@
 		style="height: 31px; width: 88px;"
 		alt="An animated button showing a pixelated sleeping blue jay raptor-creature. Credit to Rylie/RyeRice!" />
 </a>`;
+
+	let date = $state(Date.now());
+
+	onMount(() => {
+		const currentTime = new Date(Date.now());
+
+		setTimeout(
+			() => {
+				date = Date.now();
+
+				setInterval(() => {
+					date = Date.now();
+				}, 60000);
+			},
+			60000 - currentTime.getSeconds() * 1000
+		);
+	});
 </script>
 
 <svelte:head>
@@ -73,7 +91,7 @@
 	<hr class="paperclip-divider" />
 
 	<p>
-		It's currently {new Date(Date.now()).toLocaleTimeString(undefined, {
+		It's currently {new Date(date).toLocaleTimeString(undefined, {
 			timeZone: 'America/Chicago',
 			timeStyle: 'short'
 		})} where I'm at!
